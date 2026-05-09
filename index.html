@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pako Ortiz — Senior Product Designer with 15+ years shaping digital products across agencies, startups and large brands. Currently at El Corte Inglés.">
+<meta name="author" content="Pako Ortiz">
+<meta property="og:title" content="Pako Ortiz — Creative Product Designer">
+<meta property="og:description" content="Senior Product Designer based in Madrid. 15+ years of experience in UX/UI, interaction design and design systems.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<title>Pako Ortiz — Creative Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="nav-logo" data-i18n data-en="Hi, I'm Pako Ortiz" data-es="Hola, soy Pako Ortiz">Hi, I'm Pako Ortiz</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
+    <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
+    <li><a href="#skills" data-i18n data-en="Skills" data-es="Habilidades">Skills</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#contact" class="nav-cta" style="border-radius:8px" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
+    <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()">EN</button>
+  </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+  <div class="mobile-lang-switcher">
+    <button class="mobile-lang-btn" id="mobile-btn-en" onclick="toggleLang('en')">English</button>
+    <span class="mobile-lang-sep">·</span>
+    <button class="mobile-lang-btn" id="mobile-btn-es" onclick="toggleLang('es')">Español</button>
+  </div>
+  <a href="#about" class="mobile-link" data-i18n data-en="About" data-es="Sobre mí">About</a>
+  <a href="#projects" class="mobile-link" data-i18n data-en="Projects" data-es="Proyectos">Projects</a>
+  <a href="#skills" class="mobile-link" data-i18n data-en="Skills" data-es="Habilidades">Skills</a>
+</div>
+
+<div class="mobile-cta-sticky" id="mobileCta">
+  <a href="#contact" class="nav-cta" style="border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.15);min-height:48px;font-size:15px;padding:14px 36px" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
+</div>
+
+<section class="hero" id="home">
+  <div class="hero-bg-text" aria-hidden="true">Design</div>
+  <span class="hero-intro" data-i18n data-en="Creative Product Designer · Madrid" data-es="Diseñador de Producto Creativo · Madrid">Creative Product Designer · Madrid</span>
+  <h1 class="hero-headline">
+    <span data-i18n-html data-en="Reading environments.<br><em>Understanding needs.</em><br>Designing <span class='accent'>digital products.</span>" data-es="Leyendo contextos.<br><em>Entendiendo necesidades.</em><br>Diseñando <span class='accent'>productos digitales.</span>">Reading environments.<br><em>Understanding needs.</em><br>Designing <span class="accent">digital products.</span></span>
+  </h1>
+  <p class="hero-sub" data-i18n data-en="Over 15 years shaping digital products across agencies, startups, and large brands. Currently at El Corte Inglés, building experiences for millions of users." data-es="Más de 15 años diseñando productos digitales en agencias, startups y grandes marcas. Actualmente en El Corte Inglés, creando experiencias para millones de usuarios.">Over 15 years shaping digital products across agencies, startups, and large brands. Currently at El Corte Inglés, building experiences for millions of users.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-num">15+</span><span class="hero-stat-label" data-i18n data-en="Years of experience" data-es="Años de experiencia">Years of experience</span></div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat"><span class="hero-stat-num">20+</span><span class="hero-stat-label" data-i18n data-en="Products launched" data-es="Productos lanzados">Products launched</span></div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat"><span class="hero-stat-num">8</span><span class="hero-stat-label" data-i18n data-en="Companies" data-es="Empresas">Companies</span></div>
+  </div>
+  <div class="hero-actions">
+    <a href="#projects" class="contact-link" data-i18n data-en="See my work →" data-es="Ver proyectos →">See my work →</a>
+    <a href="#about" class="contact-link" data-i18n data-en="About me" data-es="Sobre mí">About me</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <span class="section-label" data-i18n data-en="About me" data-es="Sobre mí">About me</span>
+  <div class="about-grid">
+    <div class="about-text">
+      <img src="assets/img_01.jpg" alt="Pako Ortiz" style="width:160px;height:160px;border-radius:0;object-fit:cover;object-position:center top;margin-bottom:24px;display:block">
+      <h2 class="section-title" data-i18n-html data-en="Creative is not what I do — it's how I <em>think.</em>" data-es="Creatividad no es lo que hago — es cómo <em>pienso.</em>">Creative is not what I do — it's how I <em>think.</em></h2>
+      <p data-i18n data-en="Born in Valencia in 1984, based in Madrid. I started in Fine Arts and ended up designing products used by millions — which is basically art at scale." data-es="Nacido en Valencia en 1984, afincado en Madrid. Empecé en Bellas Artes y acabé diseñando productos usados por millones de personas — que es básicamente arte a escala.">Born in Valencia in 1984, based in Madrid. I started in Fine Arts and ended up designing products used by millions — which is basically art at scale.</p>
+      <p data-i18n data-en="With over 15 years in the design field, I've worked across agencies, consultancies, startups, and large brands. I've led teams of six and shipped solo, both work great when the process is right." data-es="Con más de 15 años en diseño, he trabajado en agencias, consultoras, startups y grandes marcas. He liderado equipos de seis personas y trabajado en solitario — ambos funcionan cuando el proceso es el correcto.">With <strong>over 15 years in the design field</strong>, I've worked across agencies, consultancies, startups, and large brands. I've led teams of six and shipped solo, both work great when the process is right.</p>
+      <p data-i18n data-en="I speak Scrum, I've done Kanban, and I always adapt the workflow to what the project actually needs — not the other way around." data-es="Hablo Scrum, he trabajado con Kanban, y siempre adapto el flujo de trabajo a lo que el proyecto necesita, nunca al revés.">I speak Scrum, I've done Kanban, and I always adapt the workflow to what the project actually needs — not the other way around.</p>
+    </div>
+    <div>
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab(this,'career')" data-i18n data-en="Career path" data-es="Trayectoria">Career path</button>
+        <button class="tab-btn" onclick="switchTab(this,'training')" data-i18n data-en="Training" data-es="Formación">Training</button>
+        <button class="tab-btn" onclick="switchTab(this,'tools')" data-i18n data-en="Tools &amp; Skills" data-es="Herramientas">Tools & Skills</button>
+      </div>
+      <div class="tab-content active" id="tab-career">
+        <div class="current-item">
+          <div class="current-date-range">
+            <span class="current-now" data-i18n data-en="Now" data-es="Hoy">Now</span>
+            <span class="current-since" data-i18n data-en="Since 2023" data-es="Desde 2023">Since 2023</span>
+          </div>
+          <div class="timeline-content">
+            <span class="role">Senior Product Designer</span>
+            <span class="company" data-i18n data-en="El Corte Inglés — Search & Shopping squads" data-es="El Corte Inglés — Squads de Búsqueda y Compra">El Corte Inglés — Search & Shopping squads</span>
+          </div>
+        </div>
+        <div class="timeline-item timeline-item--gap">
+          <span class="timeline-year">2020–23</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content"><span class="role">Lead Product Designer</span><span class="company" data-i18n data-en="Woowbe — Fintech cashback startup" data-es="Woowbe — Startup fintech de cashback">Woowbe — Fintech cashback startup</span></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2019–20</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content"><span class="role">Product Designer</span><span class="company">Loycus</span></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2017–19</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content"><span class="role">UX/UI Designer</span><span class="company" data-i18n data-en="Softtek — Enterprise & banking" data-es="Softtek — Banca y grandes marcas">Softtek — Enterprise & banking</span></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2015–17</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content"><span class="role">UX/UI Mobile Designer</span><span class="company" data-i18n data-en="4andGo — Mobile apps" data-es="4andGo — Apps móviles">4andGo — Mobile apps</span></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2014–15</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content"><span class="role">UX/UI Designer</span><span class="company">MediaNet Software</span></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2013–14</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content"><span class="role">Media Creative / UI Designer</span><span class="company">Nvia</span></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2010–13</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content"><span class="role">Creative / Graphic Designer</span><span class="company">Actúa Comunicación</span></div>
+        </div>
+      </div>
+      <div class="tab-content" id="tab-training">
+        <div class="timeline-item">
+          <span class="timeline-year">2020</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content"><span class="role">Data Driven Design</span><span class="company">KSchool, Madrid</span></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2016</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content"><span class="role">Interactive Prototype in Axure</span><span class="company">Credly by Pearson</span></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2007–09</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content"><span class="role">Master in Artistic Production (Art & Technology)</span><span class="company">Universitat Politècnica de València</span></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2002–07</span>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content"><span class="role">Degree in Fine Arts</span><span class="company">Universitat Politècnica de València</span></div>
+        </div>
+      </div>
+      <div class="tab-content" id="tab-tools">
+        <p style="font-size:14px;color:var(--ink-light);margin-bottom:16px;" data-i18n data-en="Design" data-es="Diseño">Design</p>
+        <div class="skills-cloud" style="margin-bottom:20px;"><span class="skill-tag">UX/UI Design</span><span class="skill-tag">Interaction Design</span><span class="skill-tag" data-i18n data-en="Design Systems" data-es="Sistemas de Diseño">Design Systems</span><span class="skill-tag">Prototyping</span><span class="skill-tag">Wireframing</span><span class="skill-tag">Usability Research</span><span class="skill-tag">Card Sorting</span><span class="skill-tag">Design Thinking</span><span class="skill-tag">Information Architecture</span><span class="skill-tag">Branding</span></div>
+        <p style="font-size:14px;color:var(--ink-light);margin-bottom:16px;" data-i18n data-en="Tools" data-es="Herramientas">Tools</p>
+        <div class="skills-cloud" style="margin-bottom:20px;"><span class="skill-tag">Figma</span><span class="skill-tag">Jira</span><span class="skill-tag">Confluence</span><span class="skill-tag">Photoshop</span><span class="skill-tag">Illustrator</span><span class="skill-tag">After Effects</span><span class="skill-tag">Axure</span><span class="skill-tag">Sketch</span><span class="skill-tag">Zeplin</span><span class="skill-tag">FullStory</span></div>
+        <p style="font-size:14px;color:var(--ink-light);margin-bottom:16px;" data-i18n data-en="Methodology" data-es="Metodología">Methodology</p>
+        <div class="skills-cloud"><span class="skill-tag">Scrum</span><span class="skill-tag">Kanban</span><span class="skill-tag">Agile</span><span class="skill-tag">Data Driven Design</span><span class="skill-tag">HTML / CSS</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="projects-header">
+    <div>
+      <span class="section-label" data-i18n data-en="Selected work" data-es="Proyectos seleccionados">Selected work</span>
+      <h2 class="section-title" data-i18n-html data-en="Projects that <em>solve<br>real problems.</em>" data-es="Proyectos que <em>resuelven<br>problemas reales.</em>">Projects that <em>solve<br>real problems.</em></h2>
+    </div>
+  </div>
+
+  <div class="projects-list">
+  <div class="eci-banner reveal">
+    <div class="eci-banner-inner">
+      <div>
+        <span class="eci-label" data-i18n data-en="Currently · Since Oct 2023" data-es="Actualmente · Desde oct 2023">Currently · Since Oct 2023</span>
+        <h3 class="eci-title" data-i18n-html data-en="El Corte Inglés — <em>Designing at scale</em>" data-es="El Corte Inglés — <em>Diseñando a escala</em>">El Corte Inglés — <em>Designing at scale</em></h3>
+        <p class="eci-desc" data-i18n data-en="Working as a Product Designer within the product design team, embedded in cross-functional squads alongside product managers, engineers, and data analysts. Collaborating in a full agile environment (Scrum) on one of the biggest e-commerce platforms in Spain." data-es="Trabajando como Product Designer dentro del equipo de diseño de producto, integrado en squads multidisciplinares junto a product managers, ingenieros y analistas de datos. Colaborando en un entorno ágil (Scrum) en una de las mayores plataformas de e-commerce de España.">Working as a Product Designer within the product design team, embedded in cross-functional squads alongside product managers, engineers, and data analysts. Collaborating in a full agile environment (Scrum) on one of the biggest e-commerce platforms in Spain.</p>
+        <span class="coming-soon-badge" data-i18n data-en="Case studies coming soon" data-es="Casos de estudio próximamente">Case studies coming soon</span>
+      </div>
+      <div class="eci-squads">
+        <div class="eci-squad-item"><div class="eci-squad-icon">🔍</div><div class="eci-squad-info"><span class="squad-name" data-i18n data-en="Search Squad" data-es="Squad de Búsqueda">Search Squad</span><span class="squad-desc" data-i18n data-en="Improving search relevance & user findability" data-es="Mejorando la relevancia de búsqueda y la localización">Improving search relevance & user findability</span></div></div>
+        <div class="eci-squad-item"><div class="eci-squad-icon">🛒</div><div class="eci-squad-info"><span class="squad-name" data-i18n data-en="Shopping Squad" data-es="Squad de Compra">Shopping Squad</span><span class="squad-desc" data-i18n data-en="Optimizing the purchasing experience" data-es="Optimizando la experiencia de compra">Optimizing the purchasing experience</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="project-card reveal">
+    <div class="project-visual" style="background:#F2EDE6;min-height:300px;overflow:hidden;position:relative;display:flex;align-items:center">
+      <img src="assets/img_02.webp" alt="Woowbe" style="position:absolute;top:28px;left:28px;z-index:2;width:72px;height:72px;border-radius:18px;flex-shrink:0">
+      <img src="assets/img_03.svg" alt="" style="position:absolute;right:0;bottom:0;height:100%;width:auto;object-fit:contain;object-position:right bottom">
+    </div>
+
+    <div class="project-info">
+      <span class="project-tag" data-i18n data-en="Fintech · Card-Linked Offers · iOS &amp; Android · 2020–2023" data-es="Fintech · Card-Linked Offers · iOS &amp; Android · 2020–2023">Fintech · Card-Linked Offers · iOS &amp; Android · 2020–2023</span>
+      <h3 class="project-title" data-i18n data-en="Woowbe — Frictionless automatic cashback" data-es="Woowbe — Cashback automático sin fricción">Woowbe — Cashback automático sin fricción</h3>
+      <p class="project-company" data-i18n data-en="Lead Product Designer · Woowbe" data-es="Lead Product Designer · Woowbe">Lead Product Designer · Woowbe</p>
+      <div class="story-block"><span class="story-label" data-i18n data-en="The Problem" data-es="El Problema">The Problem</span><p class="story-text" data-i18n data-en="Existing loyalty programmes are fragmented and full of friction for all three ecosystem actors: users lose rewards through complexity, merchants invest without measuring real ROI, and banks lack the technology to build their own programme." data-es="Los programas de fidelización existentes son fragmentados y llenos de fricción para los tres actores: el usuario pierde recompensas por complejidad, el comercio invierte sin medir ROI real y el banco no tiene tecnología para crear un programa propio.">Los programas de fidelización existentes son fragmentados y llenos de fricción para los tres actores: el usuario pierde recompensas por complejidad, el comercio invierte sin medir ROI real y el banco no tiene tecnología para crear un programa propio.</p></div>
+      <div class="story-block"><span class="story-label" data-i18n data-en="The Solution" data-es="La Solución">The Solution</span><p class="story-text" data-i18n data-en="Woowbe acts as an intelligence layer between the bank card and points of sale. When an eligible transaction is detected, cashback is credited automatically — no coupons, no QR codes, no change in payment habits." data-es="Woowbe actúa como capa de inteligencia entre la tarjeta bancaria y los puntos de venta. Cuando se detecta una transacción elegible, el cashback se abona automáticamente — sin cupones, sin QRs, sin cambiar hábitos de pago.">Woowbe actúa como capa de inteligencia entre la tarjeta bancaria y los puntos de venta. Cuando se detecta una transacción elegible, el cashback se abona automáticamente — sin cupones, sin QRs, sin cambiar hábitos de pago.</p></div>
+      <div class="story-block"><span class="story-label" data-i18n data-en="My Role" data-es="Mi Rol">My Role</span><p class="story-text" data-i18n data-en="I led end-to-end design for 3 years: B2C mobile app (iOS &amp; Android), B2B merchant portal, Design System, onboarding and Card-Linking flows, and design management for partner banks." data-es="Lideré el diseño end-to-end durante 3 años: app móvil B2C (iOS &amp; Android), portal B2B para comercios, Design System, flujos de onboarding y Card-Linking, y gestión del diseño para bancos partners.">Lideré el diseño end-to-end durante 3 años: app móvil B2C (iOS &amp; Android), portal B2B para comercios, Design System, flujos de onboarding y Card-Linking, y gestión del diseño para bancos partners.</p></div>
+      <div class="project-tags-row"><span class="project-tag-chip">Product Design</span><span class="project-tag-chip">Design System</span><span class="project-tag-chip">Mobile App</span><span class="project-tag-chip">B2B Portal</span><span class="project-tag-chip">Card-Linked Offers</span><span class="project-tag-chip">User Research</span></div>
+    </div>
+  </div>
+  <div class="project-card reveal">
+    <div class="project-visual" style="background:#F2E8E4;overflow:hidden;padding:0">
+      <img src="assets/img_04.jpg" alt="4andGo projects" style="width:100%;height:auto;display:block">
+    </div>
+    <div class="project-info">
+      <span class="project-tag" data-i18n data-en="Mobile · UX/UI · Interaction · 2015–2017" data-es="Mobile · UX/UI · Interacción · 2015–2017">Mobile · UX/UI · Interaction · 2015–2017</span>
+      <h3 class="project-title" data-i18n data-en="4andGo — Mobile design for media and large brands" data-es="4andGo — Diseño mobile para medios y grandes marcas">4andGo — Diseño mobile para medios y grandes marcas</h3>
+      <p class="project-company" data-i18n data-en="UX/UI Mobile Designer · 4andGo" data-es="UX/UI Mobile Designer · 4andGo">UX/UI Mobile Designer · 4andGo</p>
+      <div class="story-block"><span class="story-label" data-i18n data-en="The Challenge" data-es="El Reto">The Challenge</span><p class="story-text" data-i18n data-en="Design complex mobile experiences for large media and consumer brands where interaction design and visual quality had to match premium standards." data-es="Diseñar experiencias mobile complejas para grandes marcas de medios y consumo donde el diseño de interacción y la calidad visual debían estar a la altura del estándar premium de cada marca.">Diseñar experiencias mobile complejas para grandes marcas de medios y consumo donde el diseño de interacción y la calidad visual debían estar a la altura del estándar premium de cada marca.</p></div>
+      <div class="story-block"><span class="story-label" data-i18n data-en="Key Projects" data-es="Proyectos Clave">Proyectos Clave</span><p class="story-text" data-i18n data-en="BBVA Open Space · BBVA Open Summit 2017 · Aluzina Madrid App (Philips Smart Light Contest 2017 winner) · Cadena SER App · El Español App · App Game Guide Meristation" data-es="BBVA Open Space · BBVA Open Summit 2017 · Aluzina Madrid App (ganadora Philips Smart Light Contest 2017) · App Cadena SER · App El Español · App Game Guide Meristation">BBVA Open Space · BBVA Open Summit 2017 · Aluzina Madrid App (ganadora Philips Smart Light Contest 2017) · App Cadena SER · App El Español · App Game Guide Meristation</p></div>
+      <div class="project-tags-row"><span class="project-tag-chip">Mobile UX/UI</span><span class="project-tag-chip">iOS / Android</span><span class="project-tag-chip">Art Direction</span><span class="project-tag-chip">Web Design</span></div>
+    </div>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-visual" style="background:#F7F0E8;overflow:hidden;padding:0">
+      <img src="assets/img_05.jpg" alt="ClotheShow app" style="width:100%;height:auto;display:block">
+    </div>
+    <div class="project-info">
+      <span class="project-tag" data-i18n data-en="Fashion Tech · Interaction · iOS · 2015–2017" data-es="Fashion Tech · Interacción · iOS · 2015–2017">Fashion Tech · Interaction · iOS · 2015–2017</span>
+      <h3 class="project-title" data-i18n data-en="ClotheShow — Rate and discover next season's collection" data-es="ClotheShow — Descubre y valora las prendas de la próxima colección">ClotheShow — Descubre y valora las prendas de la próxima colección</h3>
+      <p class="project-company" data-i18n data-en="UX/UI Mobile Designer · Softtek × Zara Man" data-es="UX/UI Mobile Designer · Softtek × Zara Man">UX/UI Mobile Designer · Softtek × Zara Man</p>
+      <div class="story-block"><span class="story-label" data-i18n data-en="The Problem" data-es="El Problema">The Problem</span><p class="story-text" data-i18n data-en="Each season, Zara Man store managers attended new collection presentations using a PDF on a tablet, rating garments by hand on paper. Notes were collected manually at the end to decide which pieces went to market." data-es="Cada temporada, los responsables de tienda de Zara Man valoraban la nueva colección sobre un PDF en tablet, anotando sus opiniones a mano en papel. Al final de la sesión se recogían las notas para decidir qué prendas saldrían al mercado.">Cada temporada, los responsables de tienda de Zara Man valoraban la nueva colección sobre un PDF en tablet, anotando sus opiniones a mano en papel. Al final de la sesión se recogían las notas para decidir qué prendas saldrían al mercado.</p></div>
+      <div class="story-block"><span class="story-label" data-i18n data-en="The Solution" data-es="La Solución">The Solution</span><p class="story-text" data-i18n data-en="A private iOS app where invited attendees browse the collection as a feed, react to each garment with an emoji-based rating, and leave comments. Reactions convert automatically into quantitative data, generating a real-time ranking of best-rated pieces." data-es="Una app iOS privada donde los asistentes exploran la colección en un feed, reaccionan a cada prenda con valoraciones por emojis y dejan comentarios. Las reacciones se convierten automáticamente en datos cuantitativos, generando un ranking en tiempo real de las prendas mejor valoradas.">Una app iOS privada donde los asistentes exploran la colección en un feed, reaccionan a cada prenda con valoraciones por emojis y dejan comentarios. Las reacciones se convierten automáticamente en datos cuantitativos, generando un ranking en tiempo real de las prendas mejor valoradas.</p></div>
+      <div class="story-block"><span class="story-label" data-i18n data-en="My Role" data-es="Mi Rol">My Role</span><p class="story-text" data-i18n data-en="Designed the full interaction model: the garment feed, the emoji-based reaction mechanic, the detail view, the pre-event waiting screen and the circular content flow. Delivered a fully interactive Axure prototype." data-es="Diseñé el modelo de interacción completo: el feed de prendas, la mecánica de valoración por reacciones, la vista de detalle, la pantalla de espera pre-evento y el flujo circular de contenido. Entregué un prototipo completamente interactivo en Axure.">Diseñé el modelo de interacción completo: el feed de prendas, la mecánica de valoración por reacciones, la vista de detalle, la pantalla de espera pre-evento y el flujo circular de contenido. Entregué un prototipo completamente interactivo en Axure.</p></div>
+      <div class="project-tags-row"><span class="project-tag-chip">Interaction Design</span><span class="project-tag-chip">Fashion Tech</span><span class="project-tag-chip">iOS</span><span class="project-tag-chip">Axure Prototype</span><span class="project-tag-chip">Data-driven Design</span><span class="project-tag-chip">Internal Tool</span></div>
+    </div>
+  </div>
+  <div class="project-card reveal">
+    <div class="project-visual" style="background:#8FBFB0;overflow:hidden;padding:0">
+      <img src="assets/img_06.jpg" alt="Card Sorting session — Inditex Logistics" style="width:100%;height:auto;display:block">
+    </div>
+    <div class="project-info">
+      <span class="project-tag" data-i18n data-en="Retail Logistics · Enterprise UX · 2017–2019" data-es="Logística en Retail · Enterprise UX · 2017–2019">Retail Logistics · Enterprise UX · 2017–2019</span>
+      <h3 class="project-title" data-i18n data-en="Inditex Logistics — Simplifying warehouse operations" data-es="Inditex Logistics — Simplificando las operaciones de almacén">Inditex Logistics — Simplificando las operaciones de almacén</h3>
+      <p class="project-company" data-i18n data-en="UX/UI Designer · Softtek for Inditex" data-es="UX/UI Designer · Softtek para Inditex">UX/UI Designer · Softtek para Inditex</p>
+      <div class="story-block"><span class="story-label" data-i18n data-en="The Problem" data-es="El Problema">The Problem</span><p class="story-text" data-i18n data-en="Internal logistics management tools had been designed by developers and technical profiles, translating all technical complexity directly into the interface and making daily warehouse operations unnecessarily hard for staff." data-es="Las herramientas internas de gestión logística de Inditex tenían interfaces diseñadas por desarrolladores y perfiles técnicos, trasladando toda la complejidad técnica al diseño y haciendo las operaciones diarias innecesariamente difíciles para el personal de almacén.">Las herramientas internas de gestión logística de Inditex tenían interfaces diseñadas por desarrolladores y perfiles técnicos, trasladando toda la complejidad técnica al diseño y haciendo las operaciones diarias innecesariamente difíciles para el personal de almacén.</p></div>
+      <div class="story-block"><span class="story-label" data-i18n data-en="The Solution" data-es="La Solución">The Solution</span><p class="story-text" data-i18n data-en="Redesign of the packaging, stock, delivery and general warehouse process management platforms. Simplified interfaces focusing on task execution flows to improve daily operations." data-es="Rediseño de las plataformas de gestión de empaquetado, stock, repartos y procesos de almacén. Simplificación de interfaces haciendo foco en flujos de ejecución de tareas para mejorar las operaciones diarias.">Rediseño de las plataformas de gestión de empaquetado, stock, repartos y procesos de almacén. Simplificación de interfaces haciendo foco en flujos de ejecución de tareas para mejorar las operaciones diarias.</p></div>
+      <div class="project-tags-row"><span class="project-tag-chip">Enterprise UX</span><span class="project-tag-chip">Retail Logistics</span><span class="project-tag-chip">Information Architecture</span><span class="project-tag-chip">Card Sorting</span><span class="project-tag-chip">Wireframing</span></div>
+    </div>
+  </div>
+
+  <div class="project-card reveal">
+    <div class="project-visual" style="background:#ECEEF0;overflow:hidden;padding:0">
+      <img src="assets/img_07.jpg" alt="Bankinter Internal Tool UI" style="width:100%;height:auto;display:block">
+    </div>
+    <div class="project-info">
+      <span class="project-tag" data-i18n data-en="Banking · Enterprise UX · 2017–2019" data-es="Banca · Enterprise UX · 2017–2019">Banking · Enterprise UX · 2017–2019</span>
+      <h3 class="project-title" data-i18n data-en="Bankinter — Redesigning internal banking tools" data-es="Bankinter — Rediseño de herramientas internas bancarias">Bankinter — Rediseño de herramientas internas bancarias</h3>
+      <p class="project-company" data-i18n data-en="UX/UI Designer · Softtek for Bankinter" data-es="UX/UI Designer · Softtek para Bankinter">UX/UI Designer · Softtek para Bankinter</p>
+      <div class="story-block"><span class="story-label" data-i18n data-en="The Problem" data-es="El Problema">The Problem</span><p class="story-text" data-i18n data-en="Internal banking tools had 90s-era interfaces: dense, inconsistent and inaccessible. Managers took twice as long to complete key tasks due to poor information architecture and visual complexity." data-es="Las herramientas internas bancarias tenían interfaces de los años 90: densas, inconsistentes y sin accesibilidad. Los gestores tardaban el doble en completar tareas clave por la mala arquitectura de información y la complejidad visual.">Las herramientas internas bancarias tenían interfaces de los años 90: densas, inconsistentes y sin accesibilidad. Los gestores tardaban el doble en completar tareas clave por la mala arquitectura de información y la complejidad visual.</p></div>
+      <div class="story-block"><span class="story-label" data-i18n data-en="The Solution" data-es="La Solución">The Solution</span><p class="story-text" data-i18n data-en="Redesign of the internal tool applying Information Architecture, Card Sorting and real-user validation before each delivery, simplifying workflows and reducing cognitive load." data-es="Rediseño de la herramienta interna aplicando Arquitectura de Información, Card Sorting y validación con usuarios reales antes de cada entrega, simplificando flujos y reduciendo la carga cognitiva.">Rediseño de la herramienta interna aplicando Arquitectura de Información, Card Sorting y validación con usuarios reales antes de cada entrega, simplificando flujos y reduciendo la carga cognitiva.</p></div>
+      <div class="project-tags-row"><span class="project-tag-chip">Enterprise UX</span><span class="project-tag-chip">Banking</span><span class="project-tag-chip">Information Architecture</span><span class="project-tag-chip">Card Sorting</span><span class="project-tag-chip">Wireframing</span></div>
+    </div>
+  </div>
+
+  </div><!-- /projects-list -->
+
+</section>
+
+<section class="skills-section" id="skills">
+  <span class="section-label" data-i18n data-en="Capabilities" data-es="Capacidades">Capabilities</span>
+  <h2 class="section-title" data-i18n-html data-en="What I bring <em>to the table.</em>" data-es="Lo que aporto <em>al equipo.</em>">What I bring <em>to the table.</em></h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal"><span class="skill-card-icon">🎯</span><h3 class="skill-card-title">Product Design</h3><p class="skill-card-desc" data-i18n data-en="From research to final UI, I own the full design process. I care about the why as much as the how." data-es="De la investigación a la UI final, soy dueño del proceso completo. Me importa tanto el porqué como el cómo.">From research to final UI, I own the full design process. I care about the why as much as the how.</p><div class="tools-row"><span class="tool-tag">UX Research</span><span class="tool-tag">Wireframing</span><span class="tool-tag">Prototyping</span><span class="tool-tag">Usability Testing</span></div></div>
+    <div class="skill-card reveal" style="transition-delay:.1s"><span class="skill-card-icon">⚡</span><h3 class="skill-card-title">Interaction & Motion</h3><p class="skill-card-desc" data-i18n data-en="Microinteractions and prototypes that communicate behavior before a single line of code is written." data-es="Microinteracciones y prototipos que comunican comportamiento antes de escribir una línea de código.">Microinteractions and prototypes that communicate behavior before a single line of code is written.</p><div class="tools-row"><span class="tool-tag">After Effects</span><span class="tool-tag">Figma Prototyping</span><span class="tool-tag">Axure</span></div></div>
+    <div class="skill-card reveal" style="transition-delay:.2s"><span class="skill-card-icon">📁</span><h3 class="skill-card-title">Design Systems</h3><p class="skill-card-desc" data-i18n data-en="I build and maintain component libraries that scale. Consistency as a feature, not an afterthought." data-es="Construyo y mantengo librerías de componentes que escalan. La consistencia como feature, no como añadido.">I build and maintain component libraries that scale. Consistency as a feature, not an afterthought.</p><div class="tools-row"><span class="tool-tag">Figma</span><span class="tool-tag">Tokens</span><span class="tool-tag">Style Guides</span></div></div>
+    <div class="skill-card reveal"><span class="skill-card-icon">🔬</span><h3 class="skill-card-title">Research & Data</h3><p class="skill-card-desc" data-i18n data-en="Card sorting, user interviews, FullStory analytics. Decisions backed by evidence, not gut feeling." data-es="Card sorting, entrevistas de usuarios, analítica FullStory. Decisiones respaldadas por evidencia, no intuición.">Card sorting, user interviews, FullStory analytics. Decisions backed by evidence, not gut feeling.</p><div class="tools-row"><span class="tool-tag">Card Sorting</span><span class="tool-tag">FullStory</span><span class="tool-tag">Data Driven Design</span></div></div>
+    <div class="skill-card reveal" style="transition-delay:.1s"><span class="skill-card-icon">🎨</span><h3 class="skill-card-title">Illustration & Art Direction</h3><p class="skill-card-desc" data-i18n data-en="Fine Arts background that feeds directly into product work. Visual storytelling always on-brand." data-es="Base en Bellas Artes que alimenta directamente el trabajo de producto. Storytelling visual siempre en línea con la marca.">Fine Arts background that feeds directly into product work. Visual storytelling always on-brand.</p><div class="tools-row"><span class="tool-tag">Illustrator</span><span class="tool-tag">Photoshop</span><span class="tool-tag">Branding</span></div></div>
+    <div class="skill-card reveal" style="transition-delay:.2s"><span class="skill-card-icon">🤝</span><h3 class="skill-card-title">Leadership & Agile</h3><p class="skill-card-desc" data-i18n data-en="Team lead experience. Scrum practitioner. I adapt the process to the project, not the other way around." data-es="Experiencia como líder de equipo. Practicante de Scrum. Adapto el proceso al proyecto, nunca al revés.">Team lead experience. Scrum practitioner. I adapt the process to the project, not the other way around.</p><div class="tools-row"><span class="tool-tag">Scrum</span><span class="tool-tag">Kanban</span><span class="tool-tag">Jira / Confluence</span></div></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <h2 class="contact-tagline reveal" data-i18n-html data-en="Let's build something <em>worth using.</em>" data-es="Construyamos algo <em>que merezca la pena.</em>">Let's build something <em>worth using.</em></h2>
+    <p class="contact-desc reveal" data-i18n data-en="Open to new challenges. If you're looking for a product designer who cares about craft and impact — let's talk." data-es="Abierto a nuevos retos. Si buscas un diseñador de producto que se preocupa por el trabajo bien hecho y su impacto — hablemos.">Open to new challenges. If you're looking for a product designer who cares about craft and impact — let's talk.</p>
+    <div class="contact-links reveal">
+      <a href="mailto:pakortiz@gmail.com" class="contact-link" data-i18n data-en="✉ Email me" data-es="✉ Escríbeme">✉ Email me</a>
+      <a href="https://www.linkedin.com/in/pakortiz/" target="_blank" class="contact-link">LinkedIn</a>
+      <a href="tel:+34636143611" class="contact-link" data-i18n data-en="📞 Call me" data-es="📞 Llámame">📞 Call me</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p data-i18n data-en="© 2026 Pako Ortiz — Creative Product Designer" data-es="© 2026 Pako Ortiz — Diseñador de Producto Creativo">© 2026 Pako Ortiz — Creative Product Designer</p>
+  <p data-i18n data-en="Madrid, Spain · Available for new projects" data-es="Madrid, España · Disponible para nuevos proyectos">Madrid, Spain · Available for new projects</p>
+</footer>
+
+<script src="assets/main.js" defer></script>
+</body>
+</html>
