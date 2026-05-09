@@ -14,6 +14,54 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ── Case study button ── */
+  .case-study-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 20px; padding: 10px 20px;
+    font-family: inherit; font-size: 13px; font-weight: 500;
+    color: var(--ink); background: transparent;
+    border: 1.5px solid var(--ink); border-radius: 8px;
+    cursor: pointer; transition: background .2s, color .2s, transform .15s;
+  }
+  .case-study-btn:hover { background: var(--ink); color: #fff; transform: translateY(-1px); }
+
+  /* ── Modal ── */
+  .cs-modal {
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(0,0,0,0); backdrop-filter: blur(0px);
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none; transition: background .3s, backdrop-filter .3s;
+  }
+  .cs-modal.open {
+    background: rgba(0,0,0,.55); backdrop-filter: blur(6px);
+    pointer-events: all;
+  }
+  .cs-modal-inner {
+    position: relative; width: calc(100% - 48px); max-width: 1200px;
+    height: calc(100vh - 48px); max-height: 900px;
+    background: #fff; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,.25);
+    transform: translateY(24px) scale(.98); opacity: 0;
+    transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .35s;
+  }
+  .cs-modal.open .cs-modal-inner { transform: translateY(0) scale(1); opacity: 1; }
+  .cs-modal-close {
+    position: absolute; top: 14px; right: 14px; z-index: 10;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,.9); border: 1px solid rgba(0,0,0,.1);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: #1a1a18;
+    transition: background .2s, transform .15s;
+  }
+  .cs-modal-close:hover { background: #fff; transform: scale(1.1); }
+  #csFrame { width: 100%; height: 100%; border: none; display: block; }
+
+  @media (max-width: 600px) {
+    .cs-modal-inner { width: 100%; height: 100%; max-height: 100%; border-radius: 0; }
+    .cs-modal { align-items: flex-end; }
+  }
+</style>
 </head>
 <body>
 
@@ -202,6 +250,7 @@
       <div class="story-block"><span class="story-label" data-i18n data-en="The Solution" data-es="La Solución">The Solution</span><p class="story-text" data-i18n data-en="Woowbe acts as an intelligence layer between the bank card and points of sale. When an eligible transaction is detected, cashback is credited automatically — no coupons, no QR codes, no change in payment habits." data-es="Woowbe actúa como capa de inteligencia entre la tarjeta bancaria y los puntos de venta. Cuando se detecta una transacción elegible, el cashback se abona automáticamente — sin cupones, sin QRs, sin cambiar hábitos de pago.">Woowbe actúa como capa de inteligencia entre la tarjeta bancaria y los puntos de venta. Cuando se detecta una transacción elegible, el cashback se abona automáticamente — sin cupones, sin QRs, sin cambiar hábitos de pago.</p></div>
       <div class="story-block"><span class="story-label" data-i18n data-en="My Role" data-es="Mi Rol">My Role</span><p class="story-text" data-i18n data-en="I led end-to-end design for 3 years: B2C mobile app (iOS &amp; Android), B2B merchant portal, Design System, onboarding and Card-Linking flows, and design management for partner banks." data-es="Lideré el diseño end-to-end durante 3 años: app móvil B2C (iOS &amp; Android), portal B2B para comercios, Design System, flujos de onboarding y Card-Linking, y gestión del diseño para bancos partners.">Lideré el diseño end-to-end durante 3 años: app móvil B2C (iOS &amp; Android), portal B2B para comercios, Design System, flujos de onboarding y Card-Linking, y gestión del diseño para bancos partners.</p></div>
       <div class="project-tags-row"><span class="project-tag-chip">Product Design</span><span class="project-tag-chip">Design System</span><span class="project-tag-chip">Mobile App</span><span class="project-tag-chip">B2B Portal</span><span class="project-tag-chip">Card-Linked Offers</span><span class="project-tag-chip">User Research</span></div>
+      <button class="case-study-btn" onclick="openCaseStudy('woowbe.html')" data-i18n data-en="View case study →" data-es="Ver case study →">Ver case study →</button>
     </div>
   </div>
   <div class="project-card reveal">
@@ -293,6 +342,41 @@
   <p data-i18n data-en="© 2026 Pako Ortiz — Creative Product Designer" data-es="© 2026 Pako Ortiz — Diseñador de Producto Creativo">© 2026 Pako Ortiz — Creative Product Designer</p>
   <p data-i18n data-en="Madrid, Spain · Available for new projects" data-es="Madrid, España · Disponible para nuevos proyectos">Madrid, Spain · Available for new projects</p>
 </footer>
+
+<!-- CASE STUDY MODAL -->
+<div class="cs-modal" id="csModal" role="dialog" aria-modal="true" aria-label="Case study">
+  <div class="cs-modal-inner">
+    <button class="cs-modal-close" onclick="closeCaseStudy()" aria-label="Cerrar">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 2l14 14M16 2L2 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <iframe id="csFrame" src="" title="Case study" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+  function openCaseStudy(url) {
+    var modal = document.getElementById('csModal');
+    var frame = document.getElementById('csFrame');
+    frame.src = url;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCaseStudy() {
+    var modal = document.getElementById('csModal');
+    var frame = document.getElementById('csFrame');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(function() { frame.src = ''; }, 350);
+  }
+  // Cerrar al clicar el fondo
+  document.getElementById('csModal').addEventListener('click', function(e) {
+    if (e.target === this) closeCaseStudy();
+  });
+  // Cerrar con Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeCaseStudy();
+  });
+</script>
 
 <script src="assets/main.js" defer></script>
 </body>
