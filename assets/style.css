@@ -13,7 +13,7 @@ body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--ink
 .nav-links a:not(.nav-cta)::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1.5px;background:var(--sage);transform:scaleX(0);transition:transform .4s var(--ease-spring);transform-origin:left}
 .nav-links a:not(.nav-cta):hover{color:var(--ink)}
 .nav-links a:not(.nav-cta):hover::after{transform:scaleX(1)}
-.nav-cta{font-size:13px;font-weight:500;color:var(--white)!important;background:var(--ink);padding:9px 20px;border-radius:var(--radius-pill);text-decoration:none;transition:background var(--dur-mid) var(--ease-out-smooth),transform var(--dur-mid) var(--ease-spring)}
+.nav-cta{font-size:13px;font-weight:500;color:var(--white)!important;background:var(--ink);padding:9px 20px;border-radius:8px;text-decoration:none;transition:background var(--dur-mid) var(--ease-out-smooth),transform var(--dur-mid) var(--ease-spring)}
 .nav-cta:hover{background:var(--sage);transform:translateY(-3px) scale(1.02)}
 .nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .nav-divider{display:block;width:1px;height:20px;background:var(--border-strong);flex-shrink:0;margin:0 4px}
