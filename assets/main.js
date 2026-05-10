@@ -55,3 +55,24 @@ function toggleMenu(open){
 hamburger.addEventListener('click',()=>toggleMenu(!hamburger.classList.contains('open')));
 mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')toggleMenu(false)});
+// ── Case study modal ──────────────────────────────────────────────────────
+function openCaseStudy(url) {
+  var modal = document.getElementById('csModal');
+  var frame = document.getElementById('csFrame');
+  frame.src = url;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCaseStudy() {
+  var modal = document.getElementById('csModal');
+  var frame = document.getElementById('csFrame');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(function() { frame.src = ''; }, 350);
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var modal = document.getElementById('csModal');
+  if (!modal) return;
+  modal.addEventListener('click', function(e) { if (e.target === this) closeCaseStudy(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeCaseStudy(); });
+});
