@@ -4,7 +4,7 @@ html{scroll-behavior:smooth}
 body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--ink);background:var(--cream);overflow-x:hidden}
 nav{position:fixed;top:16px;left:max(24px, calc(50% - 616px));right:max(12px, calc(50% - 628px));z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(26,26,24,0.1);border-radius:12px;box-shadow:none;transition:box-shadow .3s}
 .nav-logo{font-family:var(--font-display);font-size:15px;font-weight:400;color:var(--ink);text-decoration:none;letter-spacing:-.3px;flex-shrink:0}
-.nav-links{display:flex;align-items:center;gap:32px;list-style:none;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;margin-left:48px}
 .nav-links a{font-size:14px;color:var(--ink-mid);text-decoration:none;position:relative;transition:color .2s}
 .nav-links a:not(.nav-cta)::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1.5px;background:var(--sage);transform:scaleX(0);transition:transform .25s ease;transform-origin:left}
 .nav-links a:not(.nav-cta):hover{color:var(--ink)}
@@ -140,6 +140,17 @@ footer p{font-size:13px;color:var(--ink-light)}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 /* ── Hamburger button ── */
+/* ── Mobile nav lang toggle ── */
+.nav-mobile-lang{display:none;align-items:center;background:#DBDEDC;border:none;border-radius:var(--radius-pill);padding:3px;gap:2px;flex-shrink:0}
+.nav-mobile-lang button{font-family:var(--font-body);font-size:12px;font-weight:500;color:#2F3732;background:none;border:none;cursor:pointer;padding:6px 12px;border-radius:var(--radius-pill);transition:background .2s,color .2s;line-height:1}
+.nav-mobile-lang button.active{color:var(--ink);font-weight:600;background:var(--white);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+/* ── Mobile nav second row ── */
+.nav-mobile-links{display:none;gap:0;list-style:none;padding:0 20px 10px;margin:0}
+.nav-mobile-links a{font-size:13px;color:var(--ink-mid);text-decoration:none;padding:0 14px;position:relative;transition:color .2s}
+.nav-mobile-links li:first-child a{padding-left:0}
+.nav-mobile-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1.5px;background:var(--sage);transform:scaleX(0);transition:transform .25s ease;transform-origin:left}
+.nav-mobile-links a:hover{color:var(--ink)}
+.nav-mobile-links a:hover::after{transform:scaleX(1)}
 .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;padding:4px;border-radius:var(--radius-sm)}
 .nav-hamburger span{display:block;height:1.5px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s,width .3s}
 .nav-hamburger span:nth-child(2){width:75%;margin-left:auto}
@@ -154,11 +165,13 @@ footer p{font-size:13px;color:var(--ink-light)}
 .mobile-cta-sticky a{display:flex;width:100%;justify-content:center}
 @media(max-width:768px){.mobile-cta-sticky{display:block}}
 @media(max-width:768px){
-  nav{padding:14px 20px;top:12px;left:16px;right:16px}
+  nav{padding:12px 20px 0;top:12px;left:16px;right:16px;flex-wrap:wrap;align-items:center}
   section{padding:64px 20px}
   .nav-links{display:none}
   .nav-right{display:none}
-  .nav-hamburger{display:flex}
+  .nav-hamburger{display:none}
+  .nav-mobile-lang{display:flex}
+  .nav-mobile-links{display:flex;width:100%}
   .hero{padding:88px 20px 120px;min-height:100svh}
   .hero-bg-text{font-size:28vw;right:-10px;bottom:-0.16em}
   .hero-headline{font-size:clamp(40px,11vw,60px);letter-spacing:-2px}
