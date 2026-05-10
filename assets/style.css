@@ -12,6 +12,7 @@ nav{position:fixed;top:16px;left:max(24px, calc(50% - 616px));right:max(12px, ca
 .nav-cta{font-size:13px;font-weight:500;color:var(--white)!important;background:var(--ink);padding:9px 20px;border-radius:var(--radius-pill);text-decoration:none;transition:background var(--dur-mid) var(--ease-out-smooth),transform var(--dur-mid) var(--ease-spring)}
 .nav-cta:hover{background:var(--sage);transform:translateY(-3px) scale(1.02)}
 .nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nav-divider{display:block;width:1px;height:20px;background:var(--border-strong);flex-shrink:0;margin:0 4px}
 .nav-mobile-top{display:none}
 .nav-mobile-lang{display:none}
 .nav-mobile-links{display:none}
