@@ -27,32 +27,10 @@
   </div>
 </header>
 
-<!-- NAV PRIMARY: sections + CTA — becomes sticky at top -->
-<nav class="nav-primary" id="nav">
-  <ul class="nav-links">
-    <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
-    <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
-    <li><a href="#skills" data-i18n data-en="Skills" data-es="Habilidades">Skills</a></li>
-  </ul>
-  <div style="flex:1"></div>
-  <div class="nav-right">
-    <a href="#contact" class="nav-cta" style="border-radius:8px" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
-  </div>
-  <!-- Mobile: section links bottom row -->
-  <ul class="nav-mobile-links">
-    <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
-    <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
-    <li><a href="#skills" data-i18n data-en="Skills" data-es="Habilidades">Skills</a></li>
-  </ul>
-  <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" style="display:none">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
 
 <div class="mobile-cta-sticky" id="mobileCta">
   <a href="#contact" class="nav-cta" style="border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.15);min-height:48px;font-size:15px;padding:14px 36px" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
 </div>
-
 
 <section class="hero" id="home">
   <div class="hero-bg-text" aria-hidden="true">Design</div>
@@ -72,6 +50,28 @@
     <a href="#projects" class="contact-link" data-i18n data-en="See my work →" data-es="Ver proyectos →">See my work →</a>
     <a href="#about" class="contact-link" data-i18n data-en="About me" data-es="Sobre mí">About me</a>
   </div>
+
+  <!-- NAV PRIMARY lives at the bottom of the hero so it scrolls up with it and sticks at top -->
+  <nav class="nav-primary" id="nav">
+    <ul class="nav-links">
+      <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
+      <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
+      <li><a href="#skills" data-i18n data-en="Skills" data-es="Habilidades">Skills</a></li>
+    </ul>
+    <div style="flex:1"></div>
+    <div class="nav-right">
+      <a href="#contact" class="nav-cta" style="border-radius:8px" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
+    </div>
+    <!-- Mobile: section links only -->
+    <ul class="nav-mobile-links">
+      <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
+      <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
+      <li><a href="#skills" data-i18n data-en="Skills" data-es="Habilidades">Skills</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" style="display:none">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 </section>
 
 <section class="about" id="about">
