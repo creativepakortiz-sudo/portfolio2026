@@ -176,7 +176,7 @@ footer p{font-size:13px;color:var(--ink-light)}
   footer{flex-direction:column;gap:8px;text-align:center;padding:24px 20px}
 }
 /* ── Case study button ── */
-.case-study-btn{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:10px 20px;font-family:inherit;font-size:14px;font-weight:400;color:var(--sage);background:none;border:1px solid var(--sage);border-radius:var(--radius-pill);cursor:pointer;text-decoration:none;transition:all .2s}
+.case-study-btn{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:10px 20px;font-family:inherit;font-size:14px;font-weight:400;color:var(--sage);background:none;border:1px solid var(--sage);border-radius:8px;cursor:pointer;text-decoration:none;transition:all .2s;width:fit-content}
 .case-study-btn:hover{background:var(--sage);color:var(--white)}
 
 /* ── Case study modal ── */
