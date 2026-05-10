@@ -11,20 +11,27 @@ function applyLang(lang) {
     var val = el.getAttribute('data-' + lang);
     if (val !== null) el.innerHTML = val;
   });
-  // Mobile single toggle: shows opposite lang
-  var mobileToggle = document.getElementById('lang-toggle-mobile');
-  if (mobileToggle) mobileToggle.textContent = lang === 'en' ? 'ES' : 'EN';
-  // Desktop dual buttons: highlight active
+  // Desktop dual buttons: highlight active + move slider
   var btnEn = document.getElementById('desktop-btn-en');
   var btnEs = document.getElementById('desktop-btn-es');
   if (btnEn) btnEn.classList.toggle('active', lang === 'en');
   if (btnEs) btnEs.classList.toggle('active', lang === 'es');
-  // Move liquid slider to active button
   var slider = document.getElementById('langSlider');
   var activeBtn = lang === 'en' ? btnEn : btnEs;
   if (slider && activeBtn) {
     slider.style.width = activeBtn.offsetWidth + 'px';
     slider.style.transform = 'translateX(' + activeBtn.offsetLeft + 'px)';
+  }
+  // Mobile dual buttons: highlight active + move slider (same logic)
+  var mobileBtnEn = document.getElementById('mobile-btn-en');
+  var mobileBtnEs = document.getElementById('mobile-btn-es');
+  if (mobileBtnEn) mobileBtnEn.classList.toggle('active', lang === 'en');
+  if (mobileBtnEs) mobileBtnEs.classList.toggle('active', lang === 'es');
+  var mobileSlider = document.getElementById('langSliderMobile');
+  var mobileActiveBtn = lang === 'en' ? mobileBtnEn : mobileBtnEs;
+  if (mobileSlider && mobileActiveBtn) {
+    mobileSlider.style.width = mobileActiveBtn.offsetWidth + 'px';
+    mobileSlider.style.transform = 'translateX(' + mobileActiveBtn.offsetLeft + 'px)';
   }
   document.getElementById('hamburger').setAttribute('aria-label', lang === 'es' ? 'Abrir menú' : 'Toggle menu');
 }
@@ -37,14 +44,19 @@ function toggleLang(lang) {
 
 document.addEventListener('DOMContentLoaded', function() {
   applyLang(currentLang);
-  // Init slider without transition on first render
+  // Init desktop slider without transition on first render
   var slider = document.getElementById('langSlider');
   if (slider) {
     slider.style.transition = 'none';
     applyLang(currentLang);
-    requestAnimationFrame(function() {
-      slider.style.transition = '';
-    });
+    requestAnimationFrame(function() { slider.style.transition = ''; });
+  }
+  // Init mobile slider without transition on first render
+  var mobileSlider = document.getElementById('langSliderMobile');
+  if (mobileSlider) {
+    mobileSlider.style.transition = 'none';
+    applyLang(currentLang);
+    requestAnimationFrame(function() { mobileSlider.style.transition = ''; });
   }
 });
 

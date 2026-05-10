@@ -154,11 +154,10 @@ footer p{font-size:13px;color:var(--ink-light)}
   .nav-right{display:none}
   .nav-hamburger{display:none}
   .nav-lang-desktop{display:none}
-  /* Top row: logo + single lang toggle */
+  /* Top row: logo + dual lang selector */
   .nav-mobile-top{display:flex;align-items:center;justify-content:space-between;width:100%;height:48px;overflow:hidden;transition:max-height .3s ease,opacity .3s ease;max-height:48px;opacity:1}
   .nav-mobile-top .nav-logo-mobile{display:block!important;font-family:var(--font-display);font-size:15px;font-weight:400;color:var(--ink);text-decoration:none;letter-spacing:-.3px}
-  .nav-mobile-lang-single{display:block}
-  .nav-mobile-lang-single:active{background:#B8D0C6;color:var(--ink);transform:scale(.96)}
+  .nav-mobile-top .nav-lang-desktop{display:flex}
   .nav-mobile-top.hidden{max-height:0;opacity:0;pointer-events:none}
   /* Bottom row: section links — same 48px height */
   .nav-mobile-links{display:flex;align-items:center;list-style:none;padding:0;margin:0;width:100%;height:48px;gap:0}
