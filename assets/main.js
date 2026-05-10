@@ -19,10 +19,11 @@ function applyLang(lang) {
   var slider = document.getElementById('langSlider');
   var activeBtn = lang === 'en' ? btnEn : btnEs;
   if (slider && activeBtn) {
+    var pad = parseFloat(getComputedStyle(activeBtn.parentElement).paddingLeft) || 3;
     slider.style.width = activeBtn.offsetWidth + 'px';
-    slider.style.transform = 'translateX(' + activeBtn.offsetLeft + 'px)';
+    slider.style.transform = 'translateX(' + (activeBtn.offsetLeft - pad) + 'px)';
   }
-  // Mobile dual buttons: highlight active + move slider (same logic)
+  // Mobile dual buttons: highlight active + move slider
   var mobileBtnEn = document.getElementById('mobile-btn-en');
   var mobileBtnEs = document.getElementById('mobile-btn-es');
   if (mobileBtnEn) mobileBtnEn.classList.toggle('active', lang === 'en');
@@ -30,8 +31,9 @@ function applyLang(lang) {
   var mobileSlider = document.getElementById('langSliderMobile');
   var mobileActiveBtn = lang === 'en' ? mobileBtnEn : mobileBtnEs;
   if (mobileSlider && mobileActiveBtn) {
+    var mpad = parseFloat(getComputedStyle(mobileActiveBtn.parentElement).paddingLeft) || 3;
     mobileSlider.style.width = mobileActiveBtn.offsetWidth + 'px';
-    mobileSlider.style.transform = 'translateX(' + mobileActiveBtn.offsetLeft + 'px)';
+    mobileSlider.style.transform = 'translateX(' + (mobileActiveBtn.offsetLeft - mpad) + 'px)';
   }
   document.getElementById('hamburger').setAttribute('aria-label', lang === 'es' ? 'Abrir menú' : 'Toggle menu');
 }
