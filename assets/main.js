@@ -83,7 +83,7 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   var io = new IntersectionObserver(function(entries) {
     var gone = !entries[0].isIntersecting;
     nav.classList.toggle('is-sticky', gone);
-    if (!gone) positionNav(); // restore negative margin when un-sticking
+    if (!gone) { positionNav(); } // restore negative margin when un-sticking
     if (cta && window.innerWidth <= 768) {
       var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
       cta.style.opacity = (gone && !nearBottom) ? '1' : '0';
@@ -107,6 +107,7 @@ function positionNav() {
   var nav = document.getElementById('nav');
   if (!nav || nav.classList.contains('is-sticky')) return;
   nav.style.marginTop = '-64px';
+  // Preserve lateral margins set by CSS (don't touch marginLeft/marginRight)
 }
 document.addEventListener('DOMContentLoaded', positionNav);
 window.addEventListener('resize', positionNav);

@@ -152,8 +152,8 @@ footer p{font-size:13px;color:var(--ink-light)}
 @media(max-width:768px){
   /* nav-identity visible en mobile, fluye con el scroll */
   .nav-identity{display:flex;padding:0 24px}
-  /* nav-primary: sin margen, sin border-radius, section links */
-  .nav-primary{margin:-116px 0 0;border-radius:0;padding:14px 24px;flex-wrap:wrap;overflow:hidden;top:0}
+  /* nav-primary mobile: siempre 8px de margen lateral, sticky top:12px */
+  .nav-primary{margin:-64px 8px 0;border-radius:12px;padding:14px 20px;flex-wrap:wrap;overflow:hidden;top:12px}
   .nav-primary.is-sticky{box-shadow:0 8px 32px rgba(0,0,0,.08);margin-left:8px;margin-right:8px;border-radius:12px}
   .nav-links{display:none}
   .nav-right{display:none}
@@ -173,7 +173,7 @@ footer p{font-size:13px;color:var(--ink-light)}
   .mobile-cta-sticky.visible{display:block}
   /* Hero */
   section{padding:56px 24px}
-  .hero{padding:120px 24px 0;min-height:100svh;overflow:hidden}
+  .hero{padding:120px 24px 0;min-height:115svh;overflow:hidden}
   .hero-bg-text{font-size:28vw;right:0;bottom:-0.18em}
   .hero-headline{font-size:clamp(44px,12vw,64px);letter-spacing:-2px}
   .hero-intro{font-size:13px}
