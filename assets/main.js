@@ -15,10 +15,17 @@ function applyLang(lang) {
   var mobileToggle = document.getElementById('lang-toggle-mobile');
   if (mobileToggle) mobileToggle.textContent = lang === 'en' ? 'ES' : 'EN';
   // Desktop dual buttons: highlight active
-  var btnDesktopEn = document.getElementById('desktop-btn-en');
-  var btnDesktopEs = document.getElementById('desktop-btn-es');
-  if (btnDesktopEn) btnDesktopEn.classList.toggle('active', lang === 'en');
-  if (btnDesktopEs) btnDesktopEs.classList.toggle('active', lang === 'es');
+  var btnEn = document.getElementById('desktop-btn-en');
+  var btnEs = document.getElementById('desktop-btn-es');
+  if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+  if (btnEs) btnEs.classList.toggle('active', lang === 'es');
+  // Move liquid slider to active button
+  var slider = document.getElementById('langSlider');
+  var activeBtn = lang === 'en' ? btnEn : btnEs;
+  if (slider && activeBtn) {
+    slider.style.width = activeBtn.offsetWidth + 'px';
+    slider.style.transform = 'translateX(' + activeBtn.offsetLeft + 'px)';
+  }
   document.getElementById('hamburger').setAttribute('aria-label', lang === 'es' ? 'Abrir menú' : 'Toggle menu');
 }
 
@@ -28,7 +35,18 @@ function toggleLang(lang) {
   applyLang(currentLang);
 }
 
-document.addEventListener('DOMContentLoaded', function() { applyLang(currentLang); });
+document.addEventListener('DOMContentLoaded', function() {
+  applyLang(currentLang);
+  // Init slider without transition on first render
+  var slider = document.getElementById('langSlider');
+  if (slider) {
+    slider.style.transition = 'none';
+    applyLang(currentLang);
+    requestAnimationFrame(function() {
+      slider.style.transition = '';
+    });
+  }
+});
 
 // ── Tabs
 function switchTab(btn,tabId){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-'+tabId).classList.add('active')}
