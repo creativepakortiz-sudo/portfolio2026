@@ -35,7 +35,6 @@ function applyLang(lang) {
     mobileSlider.style.width = mobileActiveBtn.offsetWidth + 'px';
     mobileSlider.style.transform = 'translateX(' + (mobileActiveBtn.offsetLeft - mpad) + 'px)';
   }
-  document.getElementById('hamburger').setAttribute('aria-label', lang === 'es' ? 'Abrir menú' : 'Toggle menu');
 }
 
 function toggleLang(lang) {
@@ -69,65 +68,6 @@ function switchTab(btn,tabId){document.querySelectorAll('.tab-btn').forEach(b=>b
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Nav-primary: fixed at top when hero scrolls out of view
-(function() {
-  var nav = document.getElementById('nav');
-  var hero = document.getElementById('home');
-  var cta = document.getElementById('mobileCta');
-  if (!nav || !hero) return;
-
-  var io = new IntersectionObserver(function(entries) {
-    var heroVisible = entries[0].isIntersecting;
-    nav.classList.toggle('is-sticky', !heroVisible);
-    if (cta && window.innerWidth <= 768) {
-      var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
-      cta.style.opacity = (!heroVisible && !nearBottom) ? '1' : '0';
-      cta.style.pointerEvents = (!heroVisible && !nearBottom) ? 'auto' : 'none';
-    }
-  }, { threshold: 0 });
-
-  io.observe(hero);
-
-  window.addEventListener('scroll', function() {
-    if (!cta || window.innerWidth > 768) return;
-    var heroVisible = hero.getBoundingClientRect().bottom > 0;
-    var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
-    cta.style.opacity = (!heroVisible && !nearBottom) ? '1' : '0';
-    cta.style.pointerEvents = (!heroVisible && !nearBottom) ? 'auto' : 'none';
-  }, { passive: true });
-})();
-
-(function(){
-  var topRow=document.getElementById('navIdentity');
-  if(!topRow)return;
-  var lastY=window.scrollY;
-  var hideTimer=null;
-  var isMobile=function(){return window.innerWidth<=768;};
-  function showTopRow(){topRow.style.opacity='1';topRow.style.pointerEvents='';}
-  function hideTopRow(){topRow.style.opacity='0';topRow.style.pointerEvents='none';}
-  function resetTimer(){clearTimeout(hideTimer);hideTimer=setTimeout(showTopRow,3000);}
-  window.addEventListener('scroll',function(){
-    if(!isMobile())return;
-    var y=window.scrollY;
-    if(y<=10){showTopRow();clearTimeout(hideTimer);lastY=y;return;}
-    if(y<lastY){showTopRow();clearTimeout(hideTimer);}
-    else if(y>lastY){hideTopRow();resetTimer();}
-    lastY=y;
-  },{passive:true});
-})();
-
-// Hamburger menu
-const hamburger=document.getElementById('hamburger');
-const mobileMenu=document.getElementById('mobileMenu');
-function toggleMenu(open){
-  hamburger.classList.toggle('open',open);
-  mobileMenu.classList.toggle('open',open);
-  hamburger.setAttribute('aria-expanded',String(open));
-  document.body.style.overflow=open?'hidden':'';
-}
-hamburger.addEventListener('click',()=>toggleMenu(!hamburger.classList.contains('open')));
-mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
-document.addEventListener('keydown',e=>{if(e.key==='Escape')toggleMenu(false)});
 // ── Case study modal ──────────────────────────────────────────────────────
 function openCaseStudy(url) {
   var modal = document.getElementById('csModal');
