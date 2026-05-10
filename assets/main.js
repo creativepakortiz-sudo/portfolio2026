@@ -83,6 +83,7 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   var io = new IntersectionObserver(function(entries) {
     var gone = !entries[0].isIntersecting;
     nav.classList.toggle('is-sticky', gone);
+    if (!gone) positionNav(); // restore negative margin when un-sticking
     if (cta && window.innerWidth <= 768) {
       var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
       cta.style.opacity = (gone && !nearBottom) ? '1' : '0';
@@ -101,7 +102,15 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   }, { passive: true });
 })();
 
-// Mobile nav top-row (nav-identity) hide on scroll, show after 3s idle or on scroll up
+// Position nav-primary: overlap hero by (nav height + 64px)
+function positionNav() {
+  var nav = document.getElementById('nav');
+  if (!nav || nav.classList.contains('is-sticky')) return;
+  var h = nav.offsetHeight;
+  nav.style.marginTop = '-' + (h + 64) + 'px';
+}
+window.addEventListener('DOMContentLoaded', positionNav);
+window.addEventListener('resize', positionNav);
 (function(){
   var topRow=document.getElementById('navIdentity');
   if(!topRow)return;
