@@ -17,30 +17,33 @@
 </head>
 <body>
 
-<!-- ── SITE HEADER: always fixed at top, two rows ── -->
-<header class="site-header" id="siteHeader">
-  <!-- Row 1: logo + lang (desktop & mobile) -->
-  <div class="nav-identity" id="navIdentity">
-    <a href="#" class="nav-logo" data-i18n data-en="Hi, I'm Pako Ortiz" data-es="Hola, soy Pako Ortiz">Hi, I'm Pako Ortiz</a>
-    <div class="nav-lang-desktop">
-      <span class="lang-slider" id="langSlider"></span>
-      <button id="desktop-btn-en" onclick="toggleLang('en')">EN</button>
-      <button id="desktop-btn-es" onclick="toggleLang('es')">ES</button>
-    </div>
+<!-- NAV IDENTITY: logo + lang — flows with scroll -->
+<header class="nav-identity" id="navIdentity">
+  <a href="#" class="nav-logo" data-i18n data-en="Hi, I'm Pako Ortiz" data-es="Hola, soy Pako Ortiz">Hi, I'm Pako Ortiz</a>
+  <div class="nav-lang-desktop">
+    <span class="lang-slider" id="langSlider"></span>
+    <button id="desktop-btn-en" onclick="toggleLang('en')">EN</button>
+    <button id="desktop-btn-es" onclick="toggleLang('es')">ES</button>
   </div>
-  <!-- Row 2: nav links + CTA (desktop) / nav links only (mobile) -->
-  <nav class="nav-primary" id="nav">
-    <ul class="nav-links">
-      <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
-      <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
-      <li><a href="#skills" data-i18n data-en="Skills" data-es="Habilidades">Skills</a></li>
-    </ul>
-    <div style="flex:1"></div>
-    <div class="nav-right">
-      <a href="#contact" class="nav-cta" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
-    </div>
-  </nav>
 </header>
+
+<!-- NAV PRIMARY: flows with content, sticks at top once nav-identity scrolls out -->
+<nav class="nav-primary" id="nav">
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
+    <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
+    <li><a href="#skills" data-i18n data-en="Skills" data-es="Habilidades">Skills</a></li>
+  </ul>
+  <div style="flex:1"></div>
+  <div class="nav-right">
+    <a href="#contact" class="nav-cta" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
+  </div>
+  <ul class="nav-mobile-links">
+    <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
+    <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
+    <li><a href="#skills" data-i18n data-en="Skills" data-es="Habilidades">Skills</a></li>
+  </ul>
+</nav>
 
 <section class="hero" id="home">
   <div class="hero-bg-text" aria-hidden="true">Design</div>
