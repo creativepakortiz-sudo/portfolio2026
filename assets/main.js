@@ -69,25 +69,41 @@ function switchTab(btn,tabId){document.querySelectorAll('.tab-btn').forEach(b=>b
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Nav sticky detection: add is-sticky when nav-primary reaches top of viewport
-window.addEventListener('scroll', function() {
+// Detect when nav-primary becomes sticky using IntersectionObserver
+(function() {
   var nav = document.getElementById('nav');
   var cta = document.getElementById('mobileCta');
-  var isMobile = window.innerWidth <= 768;
   if (!nav) return;
 
-  var navRect = nav.getBoundingClientRect();
-  var isSticky = navRect.top <= 0;
-  nav.classList.toggle('is-sticky', isSticky);
+  // Sentinel: invisible element placed just above the nav inside the hero
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;height:1px;width:100%;pointer-events:none;';
+  nav.parentElement.insertBefore(sentinel, nav);
 
-  // Mobile CTA: show only when nav is sticky and not near bottom
-  if (cta && isMobile) {
+  var observer = new IntersectionObserver(function(entries) {
+    var isSticky = !entries[0].isIntersecting;
+    nav.classList.toggle('is-sticky', isSticky);
+
+    if (cta && window.innerWidth <= 768) {
+      var distFromBottom = document.body.scrollHeight - window.scrollY - window.innerHeight;
+      var show = isSticky && distFromBottom > 200;
+      cta.style.opacity = show ? '1' : '0';
+      cta.style.pointerEvents = show ? 'auto' : 'none';
+    }
+  }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
+
+  observer.observe(sentinel);
+
+  // Also update CTA on scroll for the distFromBottom check
+  window.addEventListener('scroll', function() {
+    if (!cta || window.innerWidth > 768) return;
+    var isSticky = nav.classList.contains('is-sticky');
     var distFromBottom = document.body.scrollHeight - window.scrollY - window.innerHeight;
     var show = isSticky && distFromBottom > 200;
     cta.style.opacity = show ? '1' : '0';
     cta.style.pointerEvents = show ? 'auto' : 'none';
-  }
-}, { passive: true });
+  }, { passive: true });
+})();
 
 // Mobile nav top-row (nav-identity) hide on scroll, show after 3s idle or on scroll up
 (function(){
