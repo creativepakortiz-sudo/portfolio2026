@@ -145,6 +145,7 @@ footer p{font-size:13px;color:var(--ink-light)}
 /* ── Mobile nav ── */
 .mobile-cta-sticky{display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:98;width:50vw;opacity:1;transition:opacity .3s;pointer-events:auto}
 .mobile-cta-sticky a{display:flex;width:100%;justify-content:center}
+@media(max-width:768px){.mobile-cta-sticky{display:block}}
 @media(max-width:768px){
   nav{padding:0 20px;top:12px;left:16px;right:16px;flex-wrap:wrap;overflow:hidden}
   .nav-logo{display:none}
