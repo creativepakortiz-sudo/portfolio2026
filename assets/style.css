@@ -163,11 +163,12 @@ footer p{font-size:13px;color:var(--ink-light)}
   .nav-mobile-links a{font-size:15px;color:var(--ink-mid);text-decoration:none;padding-right:24px;position:relative;transition:color .2s;line-height:1}
   .nav-mobile-links li:first-child a{padding-left:0}
   .nav-mobile-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:24px;height:1.5px;background:var(--sage);transform:scaleX(0);transition:transform .25s ease;transform-origin:left}
+  .nav-mobile-links li:last-child a{padding-right:0}
   .nav-mobile-links li:last-child a::after{right:0}
   .nav-mobile-links a:hover{color:var(--ink)}
   .nav-mobile-links a:hover::after{transform:scaleX(1)}
   /* Hero: more top air */
-  .hero{padding:160px 20px 100px;min-height:100svh}
+  .hero{padding:160px 32px 100px;min-height:100svh}
   .hero-bg-text{font-size:28vw;right:-10px;bottom:-0.16em}
   .hero-headline{font-size:clamp(44px,12vw,64px);letter-spacing:-2px}
   .hero-intro{font-size:13px}
@@ -180,11 +181,11 @@ footer p{font-size:13px;color:var(--ink-light)}
   .section-label{font-size:12px}
   .about-grid{grid-template-columns:1fr;gap:40px}
   .project-card .project-visual{min-height:220px}
-  .project-info{padding:28px 20px}
-  .eci-banner{padding:32px 24px}
+  .project-info{padding:28px 32px}
+  .eci-banner{padding:32px 32px}
   .eci-banner-inner{grid-template-columns:1fr;gap:28px}
   .skills-grid{grid-template-columns:1fr;gap:16px}
-  footer{flex-direction:column;gap:8px;text-align:center;padding:24px 20px}
+  footer{flex-direction:column;gap:8px;text-align:center;padding:24px 32px}
 }
 /* ── Case study button ── */
 .case-study-btn{display:inline-flex;align-items:center;gap:8px;margin-top:32px;padding:10px 20px;font-family:inherit;font-size:14px;font-weight:400;color:var(--sage);background:none;border:1px solid var(--sage);border-radius:8px;cursor:pointer;text-decoration:none;transition:all .2s;width:fit-content;align-self:flex-start}
