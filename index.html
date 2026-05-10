@@ -17,8 +17,18 @@
 </head>
 <body>
 
-<nav id="nav">
+<!-- NAV IDENTITY: logo + lang — flows with scroll (desktop + mobile) -->
+<header class="nav-identity" id="navIdentity">
   <a href="#" class="nav-logo" data-i18n data-en="Hi, I'm Pako Ortiz" data-es="Hola, soy Pako Ortiz">Hi, I'm Pako Ortiz</a>
+  <div class="nav-lang-desktop">
+    <span class="lang-slider" id="langSlider"></span>
+    <button id="desktop-btn-en" onclick="toggleLang('en')">EN</button>
+    <button id="desktop-btn-es" onclick="toggleLang('es')">ES</button>
+  </div>
+</header>
+
+<!-- NAV PRIMARY: sections + CTA — becomes sticky at top -->
+<nav class="nav-primary" id="nav">
   <ul class="nav-links">
     <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
     <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
@@ -27,22 +37,8 @@
   <div style="flex:1"></div>
   <div class="nav-right">
     <a href="#contact" class="nav-cta" style="border-radius:8px" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
-    <span class="nav-divider"></span>
-    <div class="nav-lang-desktop">
-      <span class="lang-slider" id="langSlider"></span>
-      <button id="desktop-btn-en" onclick="toggleLang('en')">EN</button>
-      <button id="desktop-btn-es" onclick="toggleLang('es')">ES</button>
-    </div>
   </div>
-  <!-- Mobile only: logo + single lang toggle top row, section links bottom row -->
-  <div class="nav-mobile-top">
-    <a href="#" class="nav-logo-mobile" data-i18n data-en="Hi, I'm Pako Ortiz" data-es="Hola, soy Pako Ortiz">Hi, I'm Pako Ortiz</a>
-    <div class="nav-lang-desktop">
-      <span class="lang-slider" id="langSliderMobile"></span>
-      <button id="mobile-btn-en" onclick="toggleLang('en')">EN</button>
-      <button id="mobile-btn-es" onclick="toggleLang('es')">ES</button>
-    </div>
-  </div>
+  <!-- Mobile: section links bottom row -->
   <ul class="nav-mobile-links">
     <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
     <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
