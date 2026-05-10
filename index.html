@@ -36,7 +36,11 @@
   <!-- Mobile only: logo + single lang toggle top row, section links bottom row -->
   <div class="nav-mobile-top">
     <a href="#" class="nav-logo-mobile" data-i18n data-en="Hi, I'm Pako Ortiz" data-es="Hola, soy Pako Ortiz">Hi, I'm Pako Ortiz</a>
-    <button class="nav-mobile-lang-single" id="lang-toggle-mobile" onclick="toggleLang()">EN</button>
+    <div class="nav-lang-desktop">
+      <span class="lang-slider" id="langSliderMobile"></span>
+      <button id="mobile-btn-en" onclick="toggleLang('en')">EN</button>
+      <button id="mobile-btn-es" onclick="toggleLang('es')">ES</button>
+    </div>
   </div>
   <ul class="nav-mobile-links">
     <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
@@ -292,7 +296,7 @@
     <h2 class="contact-tagline reveal" data-i18n-html data-en="Let's build something <em>worth using.</em>" data-es="Construyamos algo <em>que merezca la pena.</em>">Let's build something <em>worth using.</em></h2>
     <p class="contact-desc reveal" data-i18n data-en="Open to new challenges. If you're looking for a product designer who cares about craft and impact — let's talk." data-es="Abierto a nuevos retos. Si buscas un diseñador de producto que se preocupa por el trabajo bien hecho y su impacto — hablemos.">Open to new challenges. If you're looking for a product designer who cares about craft and impact — let's talk.</p>
     <div class="contact-links reveal">
-      <a href="mailto:pakortiz@gmail.com" class="contact-link" data-i18n data-en="✉ Email me" data-es="✉ Escríbeme">✉ Email me</a>
+      <a href="mailto:creative.pakortiz@gmail.com" class="contact-link" data-i18n data-en="✉ Email me" data-es="✉ Escríbeme">✉ Email me</a>
       <a href="https://www.linkedin.com/in/pakortiz/" target="_blank" class="contact-link">LinkedIn</a>
       <a href="tel:+34636143611" class="contact-link" data-i18n data-en="📞 Call me" data-es="📞 Llámame">📞 Call me</a>
     </div>
