@@ -21,14 +21,13 @@ body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--ink
 .nav-mobile-lang{display:none}
 .nav-mobile-links{display:none}
 .nav-logo-mobile{display:none}
-/* ── Viewport wrap: nav-identity + nav-primary + hero = exactly 100vh ── */
-.viewport-wrap{display:flex;flex-direction:column;height:100vh;background:var(--cream)}
+/* ── Viewport wrap: removed — hero uses height calc instead ── */
 section{padding:100px max(48px, calc(50% - 592px))}
 .section-label{font-size:11px;font-weight:500;color:var(--sage);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;display:block}
 .section-title{font-family:var(--font-display);font-size:clamp(36px,5vw,64px);font-weight:300;line-height:1.1;letter-spacing:-2px;color:var(--ink);margin-bottom:48px}
 .section-title em{font-style:italic;color:var(--sage)}
 .about .section-title em{color:#D4614A}
-.hero{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--side) 80px;position:relative;overflow:hidden;background:var(--cream)}
+.hero{height:calc(100vh - 64px - 12px - 52px - 12px);min-height:500px;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--side) 80px;position:relative;overflow:hidden;background:var(--cream)}
 .hero-bg-text{position:absolute;bottom:0;right:0;font-family:var(--font-display);font-size:min(22vw,280px);font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:-8px;white-space:nowrap;pointer-events:none;user-select:none;line-height:0.75;z-index:0}
 .hero-intro{font-size:14px;font-weight:400;color:var(--sage);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fadeUp .8s .2s forwards;position:relative;z-index:1}
 .hero-headline{font-family:var(--font-display);font-size:clamp(52px,8vw,110px);font-weight:300;line-height:1.0;letter-spacing:-3px;color:var(--ink);margin-bottom:24px;opacity:0;animation:fadeUp .8s .4s forwards;position:relative;z-index:1}
@@ -153,7 +152,6 @@ footer p{font-size:13px;color:var(--ink-light)}
 @media(max-width:768px){.mobile-cta-sticky{display:block}}
 @media(max-width:768px){
   /* nav-identity: fluye con el scroll */
-  .viewport-wrap{height:100svh}
   .nav-identity{display:flex;padding:0 24px;margin-bottom:8px}
   /* nav-primary mobile: sticky top:8px, margen lateral 8px */
   .nav-primary{position:sticky;top:8px;margin:0 8px;border-radius:12px;padding:12px 20px;box-shadow:0 4px 16px rgba(0,0,0,.04)}
@@ -173,7 +171,7 @@ footer p{font-size:13px;color:var(--ink-light)}
   .nav-mobile-links a:hover::after{transform:scaleX(1)}
   /* Hero */
   section{padding:56px 24px}
-  .hero{padding:48px 24px 0;min-height:0;overflow:hidden;position:relative}
+  .hero{padding:48px 24px 0;height:100svh;min-height:560px;overflow:hidden;position:relative}
   .hero-bg-text{font-size:28vw;right:0;bottom:0;line-height:0.75}
   .hero-headline{font-size:clamp(44px,12vw,64px);letter-spacing:-2px}
   .hero-intro{font-size:13px}
