@@ -1,14 +1,13 @@
 :root{--side:max(48px, calc(50% - 592px));--ease-spring:cubic-bezier(.34,1.56,.64,1);--ease-out-smooth:cubic-bezier(.22,1,.36,1);--ease-in-out:cubic-bezier(.65,0,.35,1);--dur-fast:.2s;--dur-mid:.35s;--dur-slow:.5s;--sage:#7A9E8E;--sage-light:#DDE8E3;--coral:#D4614A;--coral-light:#F5E0D8;--salmon:#F2C4B8;--ink:#1A1A18;--ink-mid:#4A4A45;--ink-light:#8A8A82;--cream:#EFF0EC;--white:#FFFFFF;--border:rgba(26,26,24,0.09);--border-strong:rgba(26,26,24,0.18);--radius-sm:6px;--radius-md:12px;--radius-lg:20px;--radius-pill:100px;--font-display:'Fraunces',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--ink);background:var(--cream)}
-/* ── SITE HEADER: always fixed, two rows ── */
-.site-header{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--cream)}
-/* Row 1: logo + lang */
-.nav-identity{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 var(--side)}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--ink);background:var(--cream);overflow-x:hidden}
+/* ── NAV IDENTITY (logo + lang, flows with scroll) ── */
+.nav-identity{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 var(--side);background:var(--cream);margin-bottom:12px}
 .nav-logo{font-family:var(--font-display);font-size:24px;font-weight:400;color:var(--ink);text-decoration:none;letter-spacing:-.4px;flex-shrink:0}
-/* Row 2: nav links + CTA */
-.nav-primary{display:flex;align-items:center;padding:14px 28px;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(26,26,24,0.1);border-radius:12px;margin:0 var(--side) 16px;box-shadow:0 8px 32px rgba(0,0,0,.06)}
+/* ── NAV PRIMARY: in-flow, sticky at top once identity scrolls out ── */
+.nav-primary{display:flex;align-items:center;justify-content:flex-start;padding:14px 28px;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(26,26,24,0.1);border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.04);position:sticky;top:12px;z-index:100;margin:0 var(--side)}
+.nav-primary.is-sticky{box-shadow:0 8px 32px rgba(0,0,0,.10)}
 .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
 .nav-links a{font-size:14px;color:var(--ink-mid);text-decoration:none;position:relative;transition:color var(--dur-mid) var(--ease-out-smooth)}
 .nav-links a:not(.nav-cta)::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1.5px;background:var(--sage);transform:scaleX(0);transition:transform .4s var(--ease-spring);transform-origin:left}
@@ -27,7 +26,7 @@ section{padding:100px max(48px, calc(50% - 592px))}
 .section-title{font-family:var(--font-display);font-size:clamp(36px,5vw,64px);font-weight:300;line-height:1.1;letter-spacing:-2px;color:var(--ink);margin-bottom:48px}
 .section-title em{font-style:italic;color:var(--sage)}
 .about .section-title em{color:#D4614A}
-.hero{height:100vh;min-height:600px;display:flex;flex-direction:column;justify-content:flex-start;padding:60px var(--side) 0;overflow:hidden;background:var(--cream)}
+.hero{height:100vh;min-height:600px;display:flex;flex-direction:column;justify-content:flex-start;padding:80px var(--side) 0;position:relative;overflow:hidden;background:var(--cream)}
 .hero-bg-text{position:absolute;bottom:0;right:0;font-family:var(--font-display);font-size:min(22vw,280px);font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:-8px;white-space:nowrap;pointer-events:none;user-select:none;line-height:0.75;z-index:0}
 .hero-intro{font-size:14px;font-weight:400;color:var(--sage);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fadeUp .8s .2s forwards;position:relative;z-index:1}
 .hero-headline{font-family:var(--font-display);font-size:clamp(52px,8vw,110px);font-weight:300;line-height:1.0;letter-spacing:-3px;color:var(--ink);margin-bottom:24px;opacity:0;animation:fadeUp .8s .4s forwards;position:relative;z-index:1}
@@ -148,14 +147,27 @@ footer p{font-size:13px;color:var(--ink-light)}
 .nav-lang-desktop button{font-family:var(--font-body);font-size:12px;font-weight:500;color:#2F3732;background:none;border:none;cursor:pointer;padding:6px 14px;border-radius:var(--radius-pill);line-height:1;position:relative;z-index:1;transition:color .25s;white-space:nowrap}
 .nav-lang-desktop button.active{color:var(--ink);font-weight:600}
 @media(max-width:768px){
-  /* Header rows: stack vertically, full width */
-  .nav-identity{padding:0 24px;height:56px}
-  .nav-primary{margin:0 8px 12px;padding:12px 20px}
-  .nav-links{display:flex;gap:24px}
+  /* nav-identity: fluye con el scroll */
+  .nav-identity{display:flex;padding:0 24px;margin-bottom:8px}
+  /* nav-primary mobile: sticky top:8px, margen lateral 8px */
+  .nav-primary{position:sticky;top:8px;margin:0 8px;border-radius:12px;padding:12px 20px;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+  .nav-links{display:none}
   .nav-right{display:none}
+  .nav-hamburger{display:none}
+  .nav-lang-desktop{display:flex}
+  .nav-mobile-top{display:none}
+  /* Section links row */
+  .nav-mobile-links{display:flex;align-items:center;list-style:none;padding:0;margin:0;width:100%;height:48px;gap:0}
+  .nav-mobile-links a{font-size:15px;color:var(--ink-mid);text-decoration:none;padding-right:24px;position:relative;transition:color .2s;line-height:1}
+  .nav-mobile-links li:first-child a{padding-left:0}
+  .nav-mobile-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:24px;height:1.5px;background:var(--sage);transform:scaleX(0);transition:transform .25s ease;transform-origin:left}
+  .nav-mobile-links li:last-child a{padding-right:0}
+  .nav-mobile-links li:last-child a::after{right:0}
+  .nav-mobile-links a:hover{color:var(--ink)}
+  .nav-mobile-links a:hover::after{transform:scaleX(1)}
   /* Hero */
   section{padding:56px 24px}
-  .hero{padding:40px 24px 0;height:100svh;min-height:560px;overflow:hidden}
+  .hero{padding:48px 24px 0;height:100svh;min-height:560px;overflow:hidden;position:relative}
   .hero-bg-text{font-size:28vw;right:0;bottom:0;line-height:0.75}
   .hero-headline{font-size:clamp(44px,12vw,64px);letter-spacing:-2px}
   .hero-intro{font-size:13px}

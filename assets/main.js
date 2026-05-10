@@ -68,6 +68,18 @@ function switchTab(btn,tabId){document.querySelectorAll('.tab-btn').forEach(b=>b
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
+// Nav shadow: add .is-sticky once nav-identity has scrolled out
+(function() {
+  var nav = document.getElementById('nav');
+  var identity = document.getElementById('navIdentity');
+  if (!nav || !identity) return;
+  function update() {
+    nav.classList.toggle('is-sticky', window.scrollY >= identity.offsetHeight);
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
 // ── Case study modal ──────────────────────────────────────────────────────
 function openCaseStudy(url) {
   var modal = document.getElementById('csModal');
