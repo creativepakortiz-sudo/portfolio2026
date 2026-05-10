@@ -69,32 +69,35 @@ function switchTab(btn,tabId){document.querySelectorAll('.tab-btn').forEach(b=>b
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Detect when nav-primary transitions from bottom-sticky to top-sticky
+// Detect when nav-primary becomes sticky at the top
 (function() {
   var nav = document.getElementById('nav');
   var cta = document.getElementById('mobileCta');
   if (!nav) return;
 
-  // Use scroll position to detect: when nav's natural position would be above top:32px
-  function checkSticky() {
-    var navRect = nav.getBoundingClientRect();
-    // Nav is top-sticky when it would naturally be above the viewport top
-    var isMobile = window.innerWidth <= 768;
-    var stickyTop = isMobile ? 12 : 32;
-    var gone = navRect.top <= stickyTop && nav.classList.contains('is-sticky') ||
-               window.scrollY > (nav.offsetTop - stickyTop);
-    nav.classList.toggle('is-sticky', gone);
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'height:1px;pointer-events:none;';
+  nav.parentNode.insertBefore(sentinel, nav);
 
-    if (cta && isMobile) {
+  var io = new IntersectionObserver(function(entries) {
+    var gone = !entries[0].isIntersecting;
+    nav.classList.toggle('is-sticky', gone);
+    if (cta && window.innerWidth <= 768) {
       var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
       cta.style.opacity = (gone && !nearBottom) ? '1' : '0';
       cta.style.pointerEvents = (gone && !nearBottom) ? 'auto' : 'none';
     }
-  }
+  }, { threshold: 0, rootMargin: '-32px 0px 0px 0px' });
 
-  window.addEventListener('scroll', checkSticky, { passive: true });
-  window.addEventListener('resize', checkSticky);
-  document.addEventListener('DOMContentLoaded', checkSticky);
+  io.observe(sentinel);
+
+  window.addEventListener('scroll', function() {
+    if (!cta || window.innerWidth > 768) return;
+    var gone = nav.classList.contains('is-sticky');
+    var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
+    cta.style.opacity = (gone && !nearBottom) ? '1' : '0';
+    cta.style.pointerEvents = (gone && !nearBottom) ? 'auto' : 'none';
+  }, { passive: true });
 })();
 
 (function(){
