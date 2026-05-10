@@ -11,14 +11,14 @@ function applyLang(lang) {
     var val = el.getAttribute('data-' + lang);
     if (val !== null) el.innerHTML = val;
   });
-  // Desktop toggle: shows the opposite lang
-  var toggle = document.getElementById('lang-toggle');
-  if (toggle) toggle.textContent = lang === 'en' ? 'ES' : 'EN';
-  // Mobile buttons: highlight active
-  var btnEn = document.getElementById('mobile-btn-en');
-  var btnEs = document.getElementById('mobile-btn-es');
-  if (btnEn) btnEn.classList.toggle('active', lang === 'en');
-  if (btnEs) btnEs.classList.toggle('active', lang === 'es');
+  // Mobile single toggle: shows opposite lang
+  var mobileToggle = document.getElementById('lang-toggle-mobile');
+  if (mobileToggle) mobileToggle.textContent = lang === 'en' ? 'ES' : 'EN';
+  // Desktop dual buttons: highlight active
+  var btnDesktopEn = document.getElementById('desktop-btn-en');
+  var btnDesktopEs = document.getElementById('desktop-btn-es');
+  if (btnDesktopEn) btnDesktopEn.classList.toggle('active', lang === 'en');
+  if (btnDesktopEs) btnDesktopEs.classList.toggle('active', lang === 'es');
   document.getElementById('hamburger').setAttribute('aria-label', lang === 'es' ? 'Abrir menú' : 'Toggle menu');
 }
 
