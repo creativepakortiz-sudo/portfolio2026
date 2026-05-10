@@ -310,9 +310,13 @@
       position: sticky; top: 52px; bottom: auto;
       height: 52px; padding: 0 0 0 16px;
       border-bottom: 1px solid var(--border); border-top: none;
-      /* Fade-out on right to hint more items */
-      -webkit-mask-image: linear-gradient(to right, black calc(100% - 40px), transparent 100%);
-      mask-image: linear-gradient(to right, black calc(100% - 40px), transparent 100%);
+      overflow: hidden;
+    }
+    .subnav::after {
+      content: ''; pointer-events: none;
+      position: absolute; top: 0; right: 0; bottom: 0; width: 48px;
+      background: linear-gradient(to right, transparent, rgba(239,240,236,1) 80%);
+      z-index: 2;
     }
     .subnav-icon { display: none; }
     .subnav-links { gap: 8px; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-right: 48px; scrollbar-width: none; }
