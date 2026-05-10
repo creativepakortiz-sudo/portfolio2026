@@ -69,34 +69,31 @@ function switchTab(btn,tabId){document.querySelectorAll('.tab-btn').forEach(b=>b
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Detect when nav-primary becomes sticky at the top
+// Nav-primary: fixed at top when hero scrolls out of view
 (function() {
   var nav = document.getElementById('nav');
+  var hero = document.getElementById('home');
   var cta = document.getElementById('mobileCta');
-  if (!nav) return;
-
-  var sentinel = document.createElement('div');
-  sentinel.style.cssText = 'height:1px;pointer-events:none;';
-  nav.parentNode.insertBefore(sentinel, nav);
+  if (!nav || !hero) return;
 
   var io = new IntersectionObserver(function(entries) {
-    var gone = !entries[0].isIntersecting;
-    nav.classList.toggle('is-sticky', gone);
+    var heroVisible = entries[0].isIntersecting;
+    nav.classList.toggle('is-sticky', !heroVisible);
     if (cta && window.innerWidth <= 768) {
       var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
-      cta.style.opacity = (gone && !nearBottom) ? '1' : '0';
-      cta.style.pointerEvents = (gone && !nearBottom) ? 'auto' : 'none';
+      cta.style.opacity = (!heroVisible && !nearBottom) ? '1' : '0';
+      cta.style.pointerEvents = (!heroVisible && !nearBottom) ? 'auto' : 'none';
     }
-  }, { threshold: 0, rootMargin: '-32px 0px 0px 0px' });
+  }, { threshold: 0 });
 
-  io.observe(sentinel);
+  io.observe(hero);
 
   window.addEventListener('scroll', function() {
     if (!cta || window.innerWidth > 768) return;
-    var gone = nav.classList.contains('is-sticky');
+    var heroVisible = hero.getBoundingClientRect().bottom > 0;
     var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
-    cta.style.opacity = (gone && !nearBottom) ? '1' : '0';
-    cta.style.pointerEvents = (gone && !nearBottom) ? 'auto' : 'none';
+    cta.style.opacity = (!heroVisible && !nearBottom) ? '1' : '0';
+    cta.style.pointerEvents = (!heroVisible && !nearBottom) ? 'auto' : 'none';
   }, { passive: true });
 })();
 
