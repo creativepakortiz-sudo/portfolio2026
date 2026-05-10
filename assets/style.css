@@ -183,12 +183,10 @@ footer p{font-size:13px;color:var(--ink-light)}
 /* ── Case study modal ── */
 .cs-modal{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0);backdrop-filter:blur(0px);display:flex;align-items:center;justify-content:center;pointer-events:none;transition:background .3s,backdrop-filter .3s}
 .cs-modal.open{background:rgba(0,0,0,.55);backdrop-filter:blur(6px);pointer-events:all}
-.cs-modal-wrap{position:relative;width:calc(100% - 48px);max-width:1200px;height:calc(100vh - 48px);max-height:900px;transform:translateY(24px) scale(.98);opacity:0;transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .35s}
-.cs-modal.open .cs-modal-wrap{transform:translateY(0) scale(1);opacity:1}
-.cs-modal-inner{width:100%;height:100%;background:#fff;border-radius:16px;overflow-y:auto;overflow-x:hidden;box-shadow:0 32px 80px rgba(0,0,0,.25);scrollbar-width:none}
-.cs-modal-inner::-webkit-scrollbar{display:none}
-.cs-modal-close{position:absolute;top:14px;right:-48px;z-index:10;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.9);border:1px solid rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#1a1a18;transition:background .2s,transform .15s}
+.cs-modal-inner{position:relative;width:calc(100% - 48px);max-width:1200px;height:calc(100vh - 48px);max-height:900px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.25);transform:translateY(24px) scale(.98);opacity:0;transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .35s}
+.cs-modal.open .cs-modal-inner{transform:translateY(0) scale(1);opacity:1}
+.cs-modal-close{position:absolute;top:16px;right:20px;z-index:10;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.9);border:1px solid rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#1a1a18;transition:background .2s,transform .15s}
 .cs-modal-close:hover{background:#fff;transform:scale(1.1)}
-.cs-modal-close svg{width:12px;height:12px}
-#csFrame{width:100%;height:100%;border:none;display:block;overflow:hidden}
-@media(max-width:600px){.cs-modal{align-items:flex-end}.cs-modal-wrap{width:100%;height:100%;max-height:100%;border-radius:0}.cs-modal-inner{border-radius:0}.cs-modal-close{top:12px;right:12px}}
+.cs-modal-close svg{width:11px;height:11px;flex-shrink:0}
+#csFrame{width:100%;height:100%;border:none;display:block}
+@media(max-width:600px){.cs-modal{align-items:flex-end}.cs-modal-inner{width:100%;height:100%;max-height:100%;border-radius:0}}
