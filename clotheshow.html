@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClotheShow — Case Study · Pako Ortiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #7A9E8E;
+    --sage-light: #DDE8E3;
+    --sage-mid: #A8C4B8;
+    --coral: #D4614A;
+    --coral-light: #F5E0D8;
+    --coral-mid: #E8927F;
+    --ink: #1A1A18;
+    --ink-mid: #4A4A45;
+    --ink-light: #8A8A82;
+    --cream: #EFF0EC;
+    --white: #FFFFFF;
+    --border: rgba(26,26,24,0.09);
+    --border-strong: rgba(26,26,24,0.18);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-pill: 100px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    font-size: 16px; line-height: 1.6;
+    color: var(--ink); background: var(--cream);
+    overflow-x: hidden;
+    scrollbar-width: none;
+  }
+  body::-webkit-scrollbar { display: none; }
+
+  /* ─ SECONDARY NAV ─ */
+  .subnav {
+    display: flex; align-items: center; gap: 0;
+    height: 72px; padding: 0 48px;
+    background: rgba(239,240,236,0.95);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 90;
+    flex-shrink: 0;
+  }
+  .subnav-links { display: flex; align-items: center; gap: 4px; flex: 1; overflow-x: auto; }
+  .subnav-links::-webkit-scrollbar { display: none; }
+  .subnav-links a {
+    font-size: 12px; font-weight: 400; color: var(--ink-light);
+    text-decoration: none; white-space: nowrap;
+    padding: 5px 12px; border-radius: var(--radius-pill);
+    transition: all .2s;
+  }
+  .subnav-links a:hover { color: var(--ink); background: rgba(26,26,24,0.05); }
+  .subnav-links a.active { color: var(--sage); background: var(--sage-light); }
+  .subnav-icon {
+    width: 32px; height: 32px; border-radius: 8px; overflow: hidden;
+    flex-shrink: 0; margin-right: 14px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--ink);
+  }
+  .subnav-icon span {
+    font-family: var(--font-display); font-size: 11px; font-weight: 700;
+    color: var(--white); letter-spacing: -0.5px;
+  }
+  .project-links {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 28px; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.7s 0.55s forwards;
+  }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500; color: var(--ink);
+    text-decoration: none; padding: 9px 18px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    background: var(--white);
+    transition: all .2s;
+  }
+  .project-link:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(122,158,142,.15); }
+  .project-link svg { flex-shrink: 0; }
+
+  /* ─ HERO ─ */
+  .hero {
+    min-height: 100vh;
+    padding: 60px 48px 60px;
+    background: var(--cream);
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .hero-bg-text {
+    position: absolute; top: 50%; left: -10px;
+    transform: translateY(-50%);
+    font-family: var(--font-display);
+    font-size: min(20vw, 260px); font-weight: 700;
+    color: rgba(122,158,142,0.06);
+    letter-spacing: -6px; white-space: nowrap;
+    pointer-events: none; user-select: none; line-height: 1; z-index: 0;
+  }
+  .hero-label {
+    font-size: 11px; font-weight: 500; color: var(--sage);
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 20px; position: relative; z-index: 1;
+    opacity: 0; animation: fadeUp 0.7s 0.1s forwards;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 8vw, 108px);
+    font-weight: 300; line-height: 1.0; letter-spacing: -3px;
+    color: var(--ink); margin-bottom: 24px;
+    position: relative; z-index: 1;
+    opacity: 0; animation: fadeUp 0.7s 0.25s forwards;
+  }
+  .hero-title em { font-style: italic; color: var(--sage); }
+  .hero-title .coral { color: var(--coral); }
+  .hero-sub {
+    font-size: 18px; font-weight: 300; color: var(--ink-mid);
+    max-width: 560px; line-height: 1.75; margin-bottom: 40px;
+    position: relative; z-index: 1;
+    opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
+  }
+  .hero-meta {
+    display: flex; gap: 40px; flex-wrap: wrap;
+    padding-top: 32px;
+    position: relative; z-index: 1;
+    opacity: 0; animation: fadeUp 0.7s 0.7s forwards;
+  }
+  .meta-block label {
+    display: block; font-size: 10px; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--ink-light); margin-bottom: 4px;
+  }
+  .meta-block span { font-size: 14px; color: var(--ink); }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; width: 100%; }
+  .chip {
+    font-size: 11px; color: var(--ink-mid); background: var(--cream);
+    border: 1px solid var(--border); padding: 4px 14px; border-radius: var(--radius-pill);
+  }
+  .chip.sage { color: var(--ink-mid); background: var(--cream); border-color: var(--border); }
+  .chip.coral { color: var(--coral); background: var(--coral-light); border-color: transparent; }
+
+  /* ─ SECTIONS ─ */
+  section { padding: 88px 48px; }
+  .section-label {
+    font-size: 11px; font-weight: 500; color: var(--sage);
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 16px; display: block;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4.5vw, 58px);
+    font-weight: 300; line-height: 1.1; letter-spacing: -1.5px;
+    color: var(--ink); margin-bottom: 48px;
+  }
+  .section-title em { font-style: italic; color: var(--sage); }
+  .body-l {
+    font-size: 17px; font-weight: 300; color: var(--ink-mid);
+    max-width: 640px; line-height: 1.8;
+  }
+  hr.divider { border: none; border-top: 1px solid var(--border); }
+
+  /* ─ METRICS ─ */
+  .metrics-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    border: 1px solid var(--border); border-radius: var(--radius-lg);
+    overflow: hidden; background: var(--border); gap: 1px; margin-top: 48px;
+  }
+  .metric-card { background: var(--white); padding: 36px 32px; text-align: center; }
+  .metric-num {
+    font-family: var(--font-display);
+    font-size: clamp(48px,6vw,76px); font-weight: 300; line-height: 1;
+    color: var(--ink); letter-spacing: -2px;
+  }
+  .metric-num span { color: var(--sage); }
+  .metric-label { font-size: 12px; color: var(--ink-light); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 8px; }
+
+  /* ─ PROBLEM ─ */
+  .problem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+  .story-block { padding: 32px; background: var(--white); border-radius: var(--radius-md); border: 1px solid var(--border); }
+  .story-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--coral); margin-bottom: 10px; display: block; }
+  .story-icon { font-size: 24px; margin-bottom: 12px; }
+  .story-title { font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+  .story-text { font-size: 14px; font-weight: 300; color: var(--ink-mid); line-height: 1.7; }
+
+  /* ─ ECO ─ */
+  .eco-wrap { display: grid; grid-template-columns: 3fr 2fr; gap: 64px; align-items: center; margin-top: 48px; }
+  .eco-nodes { display: flex; flex-direction: column; }
+  .eco-node { display: flex; align-items: flex-start; gap: 18px; padding: 24px 28px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); transition: box-shadow .2s; }
+  .eco-node:hover { box-shadow: 0 8px 32px rgba(26,26,24,.06); }
+  .eco-connector { width: 1px; height: 20px; margin-left: 46px; background: linear-gradient(to bottom, var(--sage-mid), transparent); }
+  .eco-icon { width: 36px; height: 36px; flex-shrink: 0; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .eco-icon.sage { background: var(--sage-light); }
+  .eco-icon.coral { background: var(--coral-light); }
+  .eco-icon.gold { background: #F5E9C0; }
+  .eco-node-text h4 { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .eco-node-text p { font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.6; }
+  .eco-center { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+  .eco-badge-main { width: 140px; height: 140px; border-radius: 32px; background: var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 20px 60px rgba(26,26,24,.18); }
+  .eco-badge-main .logo { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
+  .eco-badge-main .sub { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--sage-mid); }
+  .eco-note { font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.7; max-width: 220px; }
+
+  /* ─ ROL ─ */
+  .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 48px; }
+  .role-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .role-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; font-weight: 300; color: var(--ink-mid); line-height: 1.6; }
+  .role-list li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); margin-top: 6px; }
+  .quote-block { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--sage); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 32px 36px; }
+  .quote-block blockquote { font-family: var(--font-display); font-size: 19px; font-weight: 300; font-style: italic; color: var(--ink); line-height: 1.6; }
+  .quote-block cite { display: block; margin-top: 14px; font-size: 12px; color: var(--ink-light); font-style: normal; }
+
+  /* ─ JOURNEY ─ */
+  .journey-grid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: var(--border); gap: 1px; margin-top: 48px; }
+  .j-step { background: var(--white); padding: 32px 24px; }
+  .j-num { font-family: var(--font-display); font-size: 52px; font-weight: 300; color: var(--sage-light); line-height: 1; margin-bottom: 12px; }
+  .j-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .j-desc { font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.7; }
+
+  /* ─ PHONES ─ */
+  .phones-band { background: var(--white); padding: 88px 48px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .phones-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 48px; }
+  .phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .phone-frame { width: 185px; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 48px rgba(26,26,24,.12), 0 0 0 1px rgba(26,26,24,.06); }
+  .phone-frame img { width: 100%; display: block; }
+  .phone-cap { font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); text-align: center; }
+
+  /* ─ FLOWS ─ */
+  .flow-img-wrap { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; margin-top: 24px; }
+  .flow-img-wrap img { width: 100%; display: block; }
+  .flow-img-cap { padding: 10px 20px; font-size: 12px; color: var(--ink-light); text-align: center; border-top: 1px solid var(--border); background: var(--cream); }
+
+  /* ─ B2B / SCREENS BAND ─ */
+  .screens-band { background: var(--cream); padding: 88px 48px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .screens-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  .screens-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 32px; }
+  .screen-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 20px rgba(26,26,24,.06); }
+  .screen-card img { width: 100%; display: block; }
+  .screen-cap { padding: 10px 14px; font-size: 11px; font-weight: 500; letter-spacing: .5px; text-transform: uppercase; color: var(--ink-light); text-align: center; border-top: 1px solid var(--border); background: var(--cream); }
+  .sub-label { display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-light); margin-bottom: 20px; }
+  .sub-label .dot { width: 4px; height: 16px; border-radius: 2px; background: var(--sage); }
+  .sub-label .dot.coral { background: var(--coral); }
+
+  /* ─ FEATURE CARDS ─ */
+  .feature-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+  .feature-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 32px 28px; position: relative; overflow: hidden; }
+  .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .feature-card.sage::before { background: var(--sage); }
+  .feature-card.coral::before { background: var(--coral); }
+  .feature-card.gold::before { background: #C8A64A; }
+  .feature-icon { font-size: 26px; margin-bottom: 12px; }
+  .feature-card h3 { font-family: var(--font-display); font-size: 18px; font-weight: 300; color: var(--ink); margin-bottom: 8px; }
+  .feature-card p { font-size: 13px; font-weight: 300; color: var(--ink-mid); line-height: 1.7; }
+  .feature-detail { background: var(--cream); border-radius: 8px; padding: 12px 14px; margin-top: 16px; }
+  .feature-detail-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); margin-bottom: 5px; }
+  .feature-detail p { font-size: 12px; color: var(--ink-mid); line-height: 1.6; margin: 0; }
+
+  /* ─ WINWIN ─ */
+  .winwin-box { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 52px 48px; margin-top: 48px; }
+  .winwin-cols { display: grid; grid-template-columns: repeat(3,1fr); gap: 48px; margin-top: 40px; }
+  .winwin-col h3 { font-family: var(--font-display); font-size: 18px; font-weight: 300; color: var(--ink); margin-bottom: 14px; }
+  .winwin-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .winwin-col ul li { font-size: 13px; font-weight: 300; color: var(--ink-mid); display: flex; align-items: flex-start; gap: 8px; }
+  .winwin-col ul li::before { content: '✓'; color: var(--sage); flex-shrink: 0; font-weight: 600; }
+
+  /* ─ DARK BAND ─ */
+  .dark-band { background: var(--ink); border-radius: var(--radius-lg); padding: 52px 48px; position: relative; overflow: hidden; margin-top: 48px; }
+  .dark-band::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; background: rgba(122,158,142,.08); }
+  .dark-band-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; position: relative; z-index: 1; }
+  .dark-band-title { font-family: var(--font-display); font-size: 28px; font-weight: 300; color: var(--white); margin: 12px 0; line-height: 1.3; }
+  .dark-band-title em { font-style: italic; color: var(--sage-mid); }
+  .dark-band-desc { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.6); line-height: 1.75; }
+
+  /* ─ ANIM ─ */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─ ONBOARDING STEPS ─ */
+  .onb-steps { display: grid; grid-template-columns: repeat(5,1fr); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; background: var(--border); gap: 1px; margin-top: 24px; }
+  .onb-step { background: var(--white); padding: 22px 18px; }
+  .onb-step-num { font-family: var(--font-display); font-size: 40px; font-weight: 300; color: var(--sage-light); line-height: 1; margin-bottom: 10px; }
+  .onb-step h4 { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  .onb-step p { font-size: 12px; font-weight: 300; color: var(--ink-mid); line-height: 1.6; }
+
+  /* Mobile header */
+  .mobile-header { display: none; }
+
+  @media (max-width: 900px) {
+    .mobile-header {
+      display: block;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 95;
+      background: rgba(239,240,236,0.95);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    }
+    .mobile-header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 52px; padding: 0 20px;
+    }
+    .mobile-header-title {
+      font-family: var(--font-display); font-size: 15px;
+      font-weight: 400; color: var(--ink); letter-spacing: -.3px;
+    }
+    .subnav {
+      position: sticky; top: 52px; bottom: auto;
+      height: 52px; padding: 0 0 0 16px;
+      border-bottom: 1px solid var(--border); border-top: none;
+      overflow: hidden;
+    }
+    .subnav::after {
+      content: ''; pointer-events: none;
+      position: absolute; top: 0; right: 0; bottom: 0; width: 48px;
+      background: linear-gradient(to right, transparent, rgba(239,240,236,1) 80%);
+      z-index: 2;
+    }
+    .subnav-icon { display: none; }
+    .subnav-links { gap: 8px; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-right: 48px; scrollbar-width: none; }
+    .subnav-links::-webkit-scrollbar { display: none; }
+    .subnav-links a { font-size: 15px; padding: 5px 16px; }
+    .hero { padding: 72px 20px 40px; }
+    section { padding: 60px 20px 80px; }
+    .phones-band, .screens-band { padding: 60px 20px 80px; }
+    .problem-grid, .eco-wrap, .feature-grid, .winwin-cols, .role-grid, .journey-grid, .dark-band-inner { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .onb-steps { grid-template-columns: 1fr 1fr; }
+    .screens-2, .screens-3 { grid-template-columns: 1fr; }
+    .winwin-box { padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MOBILE HEADER -->
+<header class="mobile-header">
+  <div class="mobile-header-inner">
+    <div class="subnav-icon" style="margin-right:10px;width:28px;height:28px;border-radius:6px"><span style="font-size:9px">CS</span></div>
+    <span class="mobile-header-title">ClotheShow — Case Study</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="hero-bg-text">ClotheShow</div>
+  <span class="hero-label" data-i18n data-es="Product Designer · Softtek · 2018" data-en="Product Designer · Softtek · 2018">Product Designer &middot; Softtek &middot; 2018</span>
+  <h1 class="hero-title" data-i18n-html
+    data-es="Moda que se<br><em>decide en el</em><br><span class='coral'>pase.</span>"
+    data-en="Fashion decided<br><em>at the</em><br><span class='coral'>show.</span>">
+    Moda que se<br>
+    <em>decide en el</em><br>
+    <span class="coral">pase.</span>
+  </h1>
+  <p class="hero-sub" data-i18n
+    data-es="Diseño de la app móvil conceptual para Zara Man con la que los responsables de tiendas de todo el mundo valoran y comentan las prendas de las nuevas colecciones en tiempo real, durante los pases de presentación."
+    data-en="Concept design of a mobile app for Zara Man enabling store managers worldwide to rate and comment on garments from new collections in real time, during presentation events.">
+    Diseño de la app móvil conceptual para Zara Man con la que los responsables de tiendas de todo el mundo valoran y comentan las prendas de las nuevas colecciones en tiempo real, durante los pases de presentación.
+  </p>
+  <div class="project-links">
+    <a href="https://73yz3q.axshare.com" class="project-link" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M4 7h6M7 4v6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Prototipo Axure
+    </a>
+  </div>
+  <div style="margin-top:14px;display:flex;flex-direction:column;gap:5px;opacity:0;animation:fadeUp 0.7s 0.65s forwards;">
+    <span style="font-size:12px;color:var(--ink-light);display:flex;align-items:center;gap:6px;">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="3" y="0.5" width="6" height="11" rx="1.5" stroke="currentColor" stroke-width="1.1"/><circle cx="6" cy="9" r="0.6" fill="currentColor"/></svg>
+      <span data-i18n data-es="Visualizar desde un dispositivo móvil" data-en="Best viewed on a mobile device">Visualizar desde un dispositivo móvil</span>
+    </span>
+    <span style="font-size:12px;color:var(--ink-light);display:flex;align-items:center;gap:6px;">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5V3.5a3 3 0 0 1 6 0V5M2 5h8a1 1 0 0 1 1 1v4.5a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+      <span data-i18n data-es="Contraseña: Pakortiz_portfolio" data-en="Password: Pakortiz_portfolio">Contraseña: Pakortiz_portfolio</span>
+    </span>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-block"><label data-i18n data-es="Empresa" data-en="Company">Empresa</label><span>Softtek</span></div>
+    <div class="meta-block"><label data-i18n data-es="Cliente" data-en="Client">Cliente</label><span>Zara Man</span></div>
+    <div class="meta-block"><label data-i18n data-es="Rol" data-en="Role">Rol</label><span>Product Designer</span></div>
+    <div class="meta-block"><label data-i18n data-es="Año" data-en="Year">Año</label><span>2018</span></div>
+    <div class="meta-block"><label data-i18n data-es="Plataforma" data-en="Platform">Plataforma</label><span>iOS · iPhone</span></div>
+    <div class="tag-row">
+      <span class="chip sage">UX/UI Design</span>
+      <span class="chip sage">Mobile App</span>
+      <span class="chip sage">Internal Tool</span>
+      <span class="chip sage">Fashion Tech</span>
+      <span class="chip sage">Concept</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECONDARY NAV -->
+<nav class="subnav">
+  <div class="subnav-icon"><span>CS</span></div>
+  <div class="subnav-links">
+    <a href="#contexto" data-i18n data-es="Contexto" data-en="Context">Contexto</a>
+    <a href="#problema" data-i18n data-es="Problema" data-en="Problem">Problema</a>
+    <a href="#solucion" data-i18n data-es="Solución" data-en="Solution">Solución</a>
+    <a href="#rol" data-i18n data-es="Mi rol" data-en="My role">Mi rol</a>
+    <a href="#acceso" data-i18n data-es="Acceso" data-en="Login">Acceso</a>
+    <a href="#eventos" data-i18n data-es="Eventos" data-en="Events">Eventos</a>
+    <a href="#coleccion" data-i18n data-es="Colección" data-en="Collection">Colección</a>
+    <a href="#resultado" data-i18n data-es="Resultado" data-en="Results">Resultado</a>
+  </div>
+</nav>
+
+<!-- 01 CONTEXTO -->
+<hr class="divider">
+<section id="contexto">
+  <span class="section-label reveal" data-i18n data-es="01 · Contexto" data-en="01 · Context">01 &middot; Contexto</span>
+  <h2 class="section-title reveal" data-i18n-html
+    data-es="Cuando Zara Man<br>presenta una <em>colección.</em>"
+    data-en="When Zara Man<br>presents a <em>collection.</em>">
+    Cuando Zara Man<br>presenta una <em>colección.</em>
+  </h2>
+  <p class="body-l reveal" data-i18n
+    data-es="Varias veces al año, Zara Man convoca en su sede a los responsables de sus tiendas más representativas de cada país para presentar las nuevas colecciones. Cada uno de ellos necesita valorar decenas de prendas y trasladar su impresión al equipo de producto, contribuyendo a definir el surtido final."
+    data-en="Several times a year, Zara Man brings together the managers of its most representative stores from each country at headquarters to present new collections. Each of them needs to rate dozens of garments and relay their impressions to the product team, helping shape the final range.">
+    Varias veces al año, Zara Man convoca en su sede a los responsables de sus tiendas más representativas de cada país para presentar las nuevas colecciones. Cada uno de ellos necesita valorar decenas de prendas y trasladar su impresión al equipo de producto, contribuyendo a definir el surtido final.
+  </p>
+  <div class="metrics-grid reveal">
+    <div class="metric-card">
+      <div class="metric-num">+<span>100</span></div>
+      <div class="metric-label" data-i18n data-es="Prendas por pase" data-en="Garments per show">Prendas por pase</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num" style="font-size:clamp(32px,4vw,56px);letter-spacing:-1px">AW<span>/</span>SS</div>
+      <div class="metric-label" data-i18n data-es="2 colecciones al año" data-en="2 collections per year">2 colecciones al año</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num"><span>∞</span></div>
+      <div class="metric-label" data-i18n data-es="Mercados internacionales" data-en="International markets">Mercados internacionales</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PROBLEMA -->
+<hr class="divider">
+<section id="problema">
+  <span class="section-label reveal" data-i18n data-es="02 · El problema" data-en="02 · The problem">02 &middot; El problema</span>
+  <h2 class="section-title reveal" data-i18n-html
+    data-es="Decisiones de millones<br><em>en papel.</em>"
+    data-en="Million-dollar decisions<br><em>on paper.</em>">
+    Decisiones de millones<br><em>en papel.</em>
+  </h2>
+  <p class="body-l reveal" data-i18n
+    data-es="Sin una herramienta digital, los responsables de tienda recogían sus impresiones de forma analógica y desconectada. El feedback llegaba tarde, era difícil de agregar y no capturaba los matices emocionales de la reacción ante cada prenda."
+    data-en="Without a digital tool, store managers collected their impressions in an analogue, disconnected way. Feedback arrived late, was hard to aggregate and failed to capture the emotional nuances of each garment's reception.">
+    Sin una herramienta digital, los responsables de tienda recogían sus impresiones de forma analógica y desconectada. El feedback llegaba tarde, era difícil de agregar y no capturaba los matices emocionales de la reacción ante cada prenda.
+  </p>
+  <div class="problem-grid">
+    <div class="story-block reveal">
+      <span class="story-icon">📋</span>
+      <span class="story-label" data-i18n data-es="Proceso actual" data-en="Current process">Proceso actual</span>
+      <h3 class="story-title" data-i18n data-es="Feedback en papel" data-en="Paper-based feedback">Feedback en papel</h3>
+      <p class="story-text" data-i18n
+        data-es="Los responsables de tienda tomaban notas manuales durante el pase. La información era difícil de agregar, interpretar y comparar entre mercados."
+        data-en="Store managers took manual notes during shows. Information was hard to aggregate, interpret and compare across markets.">
+        Los responsables de tienda tomaban notas manuales durante el pase. La información era difícil de agregar, interpretar y comparar entre mercados.
+      </p>
+    </div>
+    <div class="story-block reveal">
+      <span class="story-icon">⏱️</span>
+      <span class="story-label" data-i18n data-es="Velocidad" data-en="Speed">Velocidad</span>
+      <h3 class="story-title" data-i18n data-es="Decisiones tardías" data-en="Late decisions">Decisiones tardías</h3>
+      <p class="story-text" data-i18n
+        data-es="El feedback de los responsables de tienda no estaba disponible en tiempo real. Los equipos de producto no podían actuar sobre él durante el propio evento."
+        data-en="Store manager feedback was not available in real time. Product teams could not act on it during the event itself.">
+        El feedback de los responsables de tienda no estaba disponible en tiempo real. Los equipos de producto no podían actuar sobre él durante el propio evento.
+      </p>
+    </div>
+    <div class="story-block reveal">
+      <span class="story-icon">🌍</span>
+      <span class="story-label" data-i18n data-es="Global" data-en="Global">Global</span>
+      <h3 class="story-title" data-i18n data-es="Sin visión de mercado" data-en="No market insight">Sin visión de mercado</h3>
+      <p class="story-text" data-i18n
+        data-es="Imposible cruzar la valoración de una prenda con el país del responsable de tienda, ni ver si una tendencia gustaba más en Asia que en Europa."
+        data-en="Impossible to cross a garment's rating with the store manager's country, or see if a trend resonated more in Asia than in Europe.">
+        Imposible cruzar la valoración de una prenda con el país del responsable de tienda, ni ver si una tendencia gustaba más en Asia que en Europa.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 SOLUCIÓN -->
+<hr class="divider">
+<section id="solucion">
+  <span class="section-label reveal" data-i18n data-es="03 · La solución" data-en="03 · The solution">03 &middot; La solución</span>
+  <h2 class="section-title reveal" data-i18n-html
+    data-es="Una app que convierte<br>la reacción en <em>dato.</em>"
+    data-en="An app that turns<br>reaction into <em>data.</em>">
+    Una app que convierte<br>la reacción en <em>dato.</em>
+  </h2>
+  <p class="body-l reveal" data-i18n
+    data-es="ClotheShow es un concepto de app para Zara Man que permite a los responsables de tienda valorar emocionalmente las prendas, seleccionar colores preferidos, dejar comentarios y consultar el detalle completo de cada pieza durante el pase. Todo en tiempo real."
+    data-en="ClotheShow is a concept app for Zara Man enabling store managers to emotionally rate garments, select preferred colours, leave comments and consult the full detail of each piece during the show — all in real time.">
+    ClotheShow es un concepto de app para Zara Man que permite a los responsables de tienda valorar emocionalmente las prendas, seleccionar colores preferidos, dejar comentarios y consultar el detalle completo de cada pieza durante el pase. Todo en tiempo real.
+  </p>
+  <div class="eco-wrap reveal">
+    <div class="eco-nodes">
+      <div class="eco-node">
+        <div class="eco-icon sage">👔</div>
+        <div class="eco-node-text">
+          <h4 data-i18n data-es="Responsable de tienda" data-en="Store manager">Responsable de tienda</h4>
+          <p data-i18n data-es="Accede al catálogo del pase, valora cada prenda con emojis, elige colores y deja comentarios en su idioma." data-en="Accesses the show catalogue, rates each garment with emojis, selects colours and leaves comments in their language.">Accede al catálogo del pase, valora cada prenda con emojis, elige colores y deja comentarios en su idioma.</p>
+        </div>
+      </div>
+      <div class="eco-connector"></div>
+      <div class="eco-node">
+        <div class="eco-icon coral">📊</div>
+        <div class="eco-node-text">
+          <h4 data-i18n data-es="Equipo de producto Zara Man" data-en="Zara Man product team">Equipo de producto Zara Man</h4>
+          <p data-i18n data-es="Recibe el feedback agregado en tiempo real: qué prendas gustan más, qué mercados las demandan y qué colores prefieren." data-en="Receives aggregated feedback in real time: which garments perform best, which markets demand them and which colours they prefer.">Recibe el feedback agregado en tiempo real: qué prendas gustan más, qué mercados las demandan y qué colores prefieren.</p>
+        </div>
+      </div>
+      <div class="eco-connector"></div>
+      <div class="eco-node">
+        <div class="eco-icon gold">🏭</div>
+        <div class="eco-node-text">
+          <h4 data-i18n data-es="Decisión de colección" data-en="Collection decision">Decisión de colección</h4>
+          <p data-i18n data-es="Los datos informan qué prendas entran en colección, en qué colores y para qué mercados, optimizando el surtido global." data-en="Data informs which garments enter the collection, in which colours and for which markets, optimising the global range.">Los datos informan qué prendas entran en colección, en qué colores y para qué mercados, optimizando el surtido global.</p>
+        </div>
+      </div>
+    </div>
+    <div class="eco-center">
+      <div class="eco-badge-main">
+        <div class="logo">ZARA</div>
+        <div class="sub" style="margin-top:2px;font-size:7px;letter-spacing:1.5px">CLOTHE<span style="letter-spacing:0">S</span>HOW</div>
+      </div>
+      <p class="eco-note" data-i18n
+        data-es="Herramienta interna que digitaliza el feedback de los pases de colección y lo convierte en inteligencia de mercado."
+        data-en="Internal tool that digitalises show feedback and turns it into market intelligence.">
+        Herramienta interna que digitaliza el feedback de los pases de colección y lo convierte en inteligencia de mercado.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ROL -->
+<hr class="divider">
+<section id="rol">
+  <span class="section-label reveal" data-i18n data-es="04 · Mi rol" data-en="04 · My role">04 &middot; Mi rol</span>
+  <h2 class="section-title reveal" data-i18n-html
+    data-es="Product Designer<br><em>end-to-end.</em>"
+    data-en="Product Designer<br><em>end-to-end.</em>">
+    Product Designer<br><em>end-to-end.</em>
+  </h2>
+  <p class="body-l reveal" data-i18n
+    data-es="Diseñé la aplicación completa desde cero: desde la definición del flujo de usuario y la arquitectura de información hasta el prototipo navegable en Axure, pasando por todos los estados de pantalla, microinteracciones y sistema visual."
+    data-en="I designed the complete application from scratch: from user flow definition and information architecture to the navigable Axure prototype, covering all screen states, microinteractions and visual system.">
+    Diseñé la aplicación completa desde cero: desde la definición del flujo de usuario y la arquitectura de información hasta el prototipo navegable en Axure, pasando por todos los estados de pantalla, microinteracciones y sistema visual.
+  </p>
+  <div class="role-grid reveal">
+    <ul class="role-list">
+      <li data-i18n data-es="Definición de la arquitectura de información y flujos principales" data-en="Definition of information architecture and main flows">Definición de la arquitectura de información y flujos principales</li>
+      <li data-i18n data-es="Diseño del sistema de autenticación y acceso por evento" data-en="Design of authentication system and event-based access">Diseño del sistema de autenticación y acceso por evento</li>
+      <li data-i18n data-es="Diseño del catálogo de prendas con navegación por departamentos" data-en="Design of garment catalogue with department navigation">Diseño del catálogo de prendas con navegación por departamentos</li>
+      <li data-i18n data-es="Sistema de valoración emocional con 6 estados de emoji" data-en="Emotional rating system with 6 emoji states">Sistema de valoración emocional con 6 estados de emoji</li>
+      <li data-i18n data-es="Módulo de selección de colores por prenda" data-en="Colour selection module per garment">Módulo de selección de colores por prenda</li>
+      <li data-i18n data-es="Flujo de comentarios y vista de reacciones del equipo" data-en="Comments flow and team reactions view">Flujo de comentarios y vista de reacciones del equipo</li>
+      <li data-i18n data-es="Vista de detalle de prenda con ficha técnica completa" data-en="Garment detail view with complete technical sheet">Vista de detalle de prenda con ficha técnica completa</li>
+      <li data-i18n data-es="Prototipo interactivo navegable en Axure" data-en="Navigable interactive prototype in Axure">Prototipo interactivo navegable en Axure</li>
+    </ul>
+    <div class="quote-block">
+      <blockquote data-i18n
+        data-es="&ldquo;El reto era convertir la emoción espontánea de ver una prenda en un dato estructurado. La solución tenía que ser tan rápida como una reacción instintiva.&rdquo;"
+        data-en="&ldquo;The challenge was turning the spontaneous emotion of seeing a garment into structured data. The solution had to be as fast as an instinctive reaction.&rdquo;">
+        &ldquo;El reto era convertir la emoción espontánea de ver una prenda en un dato estructurado. La solución tenía que ser tan rápida como una reacción instintiva.&rdquo;
+      </blockquote>
+      <cite data-i18n data-es="— Reflexión de diseño, ClotheShow 2018" data-en="— Design reflection, ClotheShow 2018">&mdash; Reflexión de diseño, ClotheShow 2018</cite>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ACCESO -->
+<hr class="divider">
+<div class="phones-band" id="acceso">
+  <div style="max-width:1160px;margin:0 auto">
+    <span class="section-label reveal" data-i18n data-es="05 · Acceso" data-en="05 · Login">05 &middot; Acceso</span>
+    <h2 class="section-title reveal" data-i18n-html
+      data-es="Del email de invitación<br>al <em>pase de colección.</em>"
+      data-en="From invitation email<br>to the <em>collection show.</em>">
+      Del email de invitación<br>al <em>pase de colección.</em>
+    </h2>
+    <p class="body-l reveal" data-i18n
+      data-es="ClotheShow es una herramienta interna de acceso restringido. Los responsables de tienda no la encuentran en el App Store por su cuenta — reciben una invitación directa que les guía desde la descarga hasta su primera sesión."
+      data-en="ClotheShow is a restricted-access internal tool. Store managers don't find it on the App Store themselves — they receive a direct invitation that guides them from download to their first session.">
+      ClotheShow es una herramienta interna de acceso restringido. Los responsables de tienda no la encuentran en el App Store por su cuenta — reciben una invitación directa que les guía desde la descarga hasta su primera sesión.
+    </p>
+
+    <div class="journey-grid reveal" style="margin-top:48px">
+      <div class="j-step">
+        <div class="j-num">01</div>
+        <div class="j-title" data-i18n data-es="Email de invitación" data-en="Invitation email">Email de invitación</div>
+        <div class="j-desc" data-i18n
+          data-es="El responsable de tienda recibe un email corporativo con el enlace de descarga de la app, las credenciales de acceso y la fecha del próximo pase."
+          data-en="The store manager receives a corporate email with the app download link, access credentials and the date of the next show.">
+          El responsable de tienda recibe un email corporativo con el enlace de descarga de la app, las credenciales de acceso y la fecha del próximo pase.
+        </div>
+      </div>
+      <div class="j-step">
+        <div class="j-num">02</div>
+        <div class="j-title" data-i18n data-es="Descarga de la app" data-en="App download">Descarga de la app</div>
+        <div class="j-desc" data-i18n
+          data-es="Accede al App Store desde el enlace del email y descarga ClotheShow. La app solo está disponible para usuarios con invitación activa."
+          data-en="Accesses the App Store from the email link and downloads ClotheShow. The app is only available to users with an active invitation.">
+          Accede al App Store desde el enlace del email y descarga ClotheShow. La app solo está disponible para usuarios con invitación activa.
+        </div>
+      </div>
+      <div class="j-step">
+        <div class="j-num">03</div>
+        <div class="j-title" data-i18n data-es="Login corporativo" data-en="Corporate login">Login corporativo</div>
+        <div class="j-desc" data-i18n
+          data-es="Accede con sus credenciales de empresa — el mismo usuario y contraseña que usa en el resto de herramientas internas de Inditex. Sin crear cuentas nuevas."
+          data-en="Signs in with corporate credentials — the same username and password used across all other Inditex internal tools. No new account creation needed.">
+          Accede con sus credenciales de empresa — el mismo usuario y contraseña que usa en el resto de herramientas internas de Inditex. Sin crear cuentas nuevas.
+        </div>
+      </div>
+      <div class="j-step">
+        <div class="j-num">04</div>
+        <div class="j-title" data-i18n data-es="Listo para el pase" data-en="Ready for the show">Listo para el pase</div>
+        <div class="j-desc" data-i18n
+          data-es="Accede al home con el próximo evento, la cuenta atrás y el historial de pases anteriores. Todo preparado para el día del evento."
+          data-en="Lands on the home screen with the next event, the countdown and previous show history. Everything ready for show day.">
+          Accede al home con el próximo evento, la cuenta atrás y el historial de pases anteriores. Todo preparado para el día del evento.
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:64px">
+      <h3 class="section-title reveal" style="font-size:clamp(1.4rem,3vw,2rem)" data-i18n-html
+        data-es="El login:<br><em>simple y corporativo.</em>"
+        data-en="The login:<br><em>simple and corporate.</em>">
+        El login:<br><em>simple y corporativo.</em>
+      </h3>
+      <p class="body-l reveal" data-i18n
+        data-es="El formulario de acceso sigue la estética minimalista de Zara Man: tipografía negra sobre fondo blanco, sin ornamentos. Los estados de validación son sutiles pero claros — el campo activo se ilumina en azul claro con check de confirmación, y el CTA se activa solo cuando ambos campos están completos."
+        data-en="The login form follows Zara Man's minimalist aesthetic: black type on white, no ornaments. Validation states are subtle but clear — the active field lights up in pale blue with a confirmation check, and the CTA only activates when both fields are complete.">
+        El formulario de acceso sigue la estética minimalista de Zara Man: tipografía negra sobre fondo blanco, sin ornamentos. Los estados de validación son sutiles pero claros — el campo activo se ilumina en azul claro con check de confirmación, y el CTA se activa solo cuando ambos campos están completos.
+      </p>
+    </div>
+
+    <div style="margin-top:48px">
+      <div class="sub-label reveal"><span class="dot"></span>
+        <span data-i18n data-es="3 estados del formulario de acceso" data-en="3 login form states">3 estados del formulario de acceso</span>
+      </div>
+      <div class="phones-row reveal">
+        <div class="phone-wrap">
+          <div class="phone-frame"><img src="assets/clotheshow_01.png" alt="Login vacío"></div>
+          <div class="phone-cap" data-i18n data-es="Estado vacío" data-en="Empty state">Estado vacío</div>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone-frame"><img src="assets/clotheshow_02.png" alt="Email validado"></div>
+          <div class="phone-cap" data-i18n data-es="Email validado" data-en="Email validated">Email validado</div>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone-frame"><img src="assets/clotheshow_03.png" alt="Formulario completo"></div>
+          <div class="phone-cap" data-i18n data-es="Listo para acceder" data-en="Ready to sign in">Listo para acceder</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 06 EVENTOS -->
+<hr class="divider">
+<section id="eventos">
+  <div style="max-width:1160px;margin:0 auto">
+    <span class="section-label reveal" data-i18n data-es="06 · Eventos" data-en="06 · Events">06 &middot; Eventos</span>
+    <h2 class="section-title reveal" data-i18n-html
+      data-es="El pase que viene<br>y los que <em>ya pasaron.</em>"
+      data-en="The upcoming show<br>and the ones <em>already done.</em>">
+      El pase que viene<br>y los que <em>ya pasaron.</em>
+    </h2>
+    <p class="body-l reveal" data-i18n
+      data-es="La pantalla de inicio presenta el próximo evento con su cuenta atrás en tiempo real, creando anticipación. Los eventos pasados — Berlín, Londres, Roma — están accesibles para consulta histórica. La ciudad actúa como metáfora de la colección."
+      data-en="The home screen presents the next event with a real-time countdown, building anticipation. Past events — Berlin, London, Rome — are accessible for historical reference. The city acts as a metaphor for the collection.">
+      La pantalla de inicio presenta el próximo evento con su cuenta atrás en tiempo real, creando anticipación. Los eventos pasados — Berlín, Londres, Roma — están accesibles para consulta histórica. La ciudad actúa como metáfora de la colección.
+    </p>
+
+    <div style="margin-top:48px">
+      <div class="sub-label reveal"><span class="dot"></span>
+        <span data-i18n data-es="Home de eventos + Cuenta atrás + Acceso al pase" data-en="Events home + Countdown + Show access">Home de eventos + Cuenta atrás + Acceso al pase</span>
+      </div>
+      <div class="phones-row reveal">
+        <div class="phone-wrap">
+          <div class="phone-frame"><img src="assets/clotheshow_04.png" alt="Home eventos"></div>
+          <div class="phone-cap" data-i18n data-es="Home · Próximo evento" data-en="Home · Next event">Home · Próximo evento</div>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone-frame"><img src="assets/clotheshow_05.png" alt="Cuenta atrás activa"></div>
+          <div class="phone-cap" data-i18n data-es="Cuenta atrás activa" data-en="Live countdown">Cuenta atrás activa</div>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone-frame"><img src="assets/clotheshow_06.png" alt="Bienvenida AW18"></div>
+          <div class="phone-cap" data-i18n data-es="Bienvenida · AW18" data-en="Welcome · AW18">Bienvenida · AW18</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:52px">
+      <div class="journey-grid reveal">
+        <div class="j-step">
+          <div class="j-num">01</div>
+          <div class="j-title" data-i18n data-es="Próximo evento" data-en="Next event">Próximo evento</div>
+          <div class="j-desc" data-i18n data-es="Hero con imagen editorial, ciudad, fecha y cuenta atrás en días, horas, minutos y segundos." data-en="Hero with editorial image, city, date and countdown in days, hours, minutes and seconds.">Hero con imagen editorial, ciudad, fecha y cuenta atrás en días, horas, minutos y segundos.</div>
+        </div>
+        <div class="j-step">
+          <div class="j-num">02</div>
+          <div class="j-title" data-i18n data-es="Eventos pasados" data-en="Past events">Eventos pasados</div>
+          <div class="j-desc" data-i18n data-es="Lista de pases anteriores accesibles: Berlín, Londres, Roma. El historial queda siempre disponible." data-en="List of previous accessible shows: Berlin, London, Rome. History is always available.">Lista de pases anteriores accesibles: Berlín, Londres, Roma. El historial queda siempre disponible.</div>
+        </div>
+        <div class="j-step">
+          <div class="j-num">03</div>
+          <div class="j-title" data-i18n data-es="Acceso al pase" data-en="Show access">Acceso al pase</div>
+          <div class="j-desc" data-i18n data-es="Modal de bienvenida con briefing de la sesión: valorar, seleccionar colores, dejar impresión global y subir imágenes de tendencias." data-en="Welcome modal with session briefing: rate garments, select colours, leave overall impression and upload trend images.">Modal de bienvenida con briefing de la sesión: valorar, seleccionar colores, dejar impresión global y subir imágenes de tendencias.</div>
+        </div>
+        <div class="j-step">
+          <div class="j-num">04</div>
+          <div class="j-title" data-i18n data-es="Catálogo activo" data-en="Active catalogue">Catálogo activo</div>
+          <div class="j-desc" data-i18n data-es="Al confirmar el briefing, el responsable de tienda accede al catálogo de prendas organizado por departamentos y listo para valorar." data-en="On confirming the briefing, the store manager accesses the garment catalogue organised by department and ready to rate.">Al confirmar el briefing, el responsable de tienda accede al catálogo de prendas organizado por departamentos y listo para valorar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 COLECCIÓN -->
+<hr class="divider">
+<div class="screens-band" id="coleccion">
+  <div style="max-width:1160px;margin:0 auto">
+    <span class="section-label reveal" data-i18n data-es="07 · Colección" data-en="07 · Collection">07 &middot; Colección</span>
+    <h2 class="section-title reveal" data-i18n-html
+      data-es="Cada prenda,<br>una <em>reacción.</em>"
+      data-en="Every garment,<br>a <em>reaction.</em>">
+      Cada prenda,<br>una <em>reacción.</em>
+    </h2>
+    <p class="body-l reveal" data-i18n
+      data-es="El catálogo organiza las prendas por departamentos (Circular, Bags, Accessories, Denim, Knitwear…). Para cada prenda el responsable de tienda puede deslizar entre fotos, valorar con un emoji y comentar. Todo desde la misma tarjeta, sin cambiar de pantalla."
+      data-en="The catalogue organises garments by department (Circular, Bags, Accessories, Denim, Knitwear…). For each garment the buyer can swipe through photos, rate with an emoji and comment — all from the same card, without changing screen.">
+      El catálogo organiza las prendas por departamentos (Circular, Bags, Accessories, Denim, Knitwear…). Para cada prenda el responsable de tienda puede deslizar entre fotos, valorar con un emoji y comentar. Todo desde la misma tarjeta, sin cambiar de pantalla.
+    </p>
+
+    <div style="margin-top:52px">
+      <div class="sub-label reveal"><span class="dot"></span>
+        <span data-i18n data-es="Catálogo por departamentos + Navegación" data-en="Department catalogue + Navigation">Catálogo por departamentos + Navegación</span>
+      </div>
+      <div class="screens-2 reveal">
+        <div class="screen-card"><img src="assets/clotheshow_07.png" alt="Catálogo Circular"><div class="screen-cap" data-i18n data-es="Catálogo · Dept. Circular" data-en="Catalogue · Circular dept.">Catálogo · Dept. Circular</div></div>
+        <div class="screen-card"><img src="assets/clotheshow_08.png" alt="Menú departamentos"><div class="screen-cap" data-i18n data-es="Menú de departamentos" data-en="Department menu">Menú de departamentos</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:52px">
+      <div class="sub-label reveal"><span class="dot coral"></span>
+        <span data-i18n data-es="Sistema de valoración emocional · en acción" data-en="Emotional rating system · in action">Sistema de valoración emocional · en acción</span>
+      </div>
+      <div class="reveal" style="margin-top:16px;display:flex;justify-content:center;">
+        <div style="width:280px;border-radius:28px;overflow:hidden;box-shadow:0 20px 48px rgba(26,26,24,.14), 0 0 0 1px rgba(26,26,24,.06);">
+          <video
+            src="assets/clotheshow_demo.mp4"
+            autoplay loop muted playsinline
+            style="width:100%;display:block;">
+          </video>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-light);margin-top:14px;"
+        data-i18n
+        data-es="Valoración de prenda · flujo completo"
+        data-en="Garment rating · full flow">
+        Valoración de prenda · flujo completo
+      </p>
+    </div>
+
+    <div style="margin-top:52px">
+      <div class="sub-label reveal"><span class="dot coral"></span>
+        <span data-i18n data-es="Estados de pantalla" data-en="Screen states">Estados de pantalla</span>
+      </div>
+      <div class="screens-3 reveal">
+        <div class="screen-card"><img src="assets/clotheshow_10.png" alt="Selector emoji"><div class="screen-cap" data-i18n data-es="Selector de emoji · 6 estados" data-en="Emoji selector · 6 states">Selector de emoji · 6 estados</div></div>
+        <div class="screen-card"><img src="assets/clotheshow_11.png" alt="Reacción guardada"><div class="screen-cap" data-i18n data-es="Reacción guardada · &quot;Me encanta&quot;" data-en="Saved reaction · &quot;Love it&quot;">Reacción guardada · "Me encanta"</div></div>
+        <div class="screen-card"><img src="assets/clotheshow_09.png" alt="Detalle prenda"><div class="screen-cap" data-i18n data-es="Detalle de prenda" data-en="Garment detail">Detalle de prenda</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:52px">
+      <div class="sub-label reveal"><span class="dot"></span>
+        <span data-i18n data-es="Selección de colores + Comentarios" data-en="Colour selection + Comments">Selección de colores + Comentarios</span>
+      </div>
+      <div class="screens-3 reveal">
+        <div class="screen-card"><img src="assets/clotheshow_12.png" alt="Básica con selector"><div class="screen-cap" data-i18n data-es="Prenda básica · selector de colores" data-en="Basic garment · colour selector">Prenda básica · selector de colores</div></div>
+        <div class="screen-card"><img src="assets/clotheshow_13.png" alt="Modal colores"><div class="screen-cap" data-i18n data-es="Modal · Seleccionar colores" data-en="Modal · Select colours">Modal · Seleccionar colores</div></div>
+        <div class="screen-card"><img src="assets/clotheshow_14.png" alt="Colores seleccionados"><div class="screen-cap" data-i18n data-es="Colores seleccionados confirmados" data-en="Selected colours confirmed">Colores seleccionados confirmados</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:52px">
+      <div class="sub-label reveal"><span class="dot coral"></span>
+        <span data-i18n data-es="Detalle de prenda expandido + Comentarios del equipo" data-en="Expanded garment detail + Team comments">Detalle de prenda expandido + Comentarios del equipo</span>
+      </div>
+      <div class="screens-3 reveal">
+        <div class="screen-card"><img src="assets/clotheshow_15.png" alt="Detalle completo"><div class="screen-cap" data-i18n data-es="Detalle expandido · Ficha técnica" data-en="Expanded detail · Technical sheet">Detalle expandido · Ficha técnica</div></div>
+        <div class="screen-card"><img src="assets/clotheshow_16.png" alt="Valorar en detalle"><div class="screen-cap" data-i18n data-es="Valorar desde el detalle" data-en="Rate from detail view">Valorar desde el detalle</div></div>
+        <div class="screen-card"><img src="assets/clotheshow_19.png" alt="Comentarios equipo"><div class="screen-cap" data-i18n data-es="Comentarios del equipo global" data-en="Global team comments">Comentarios del equipo global</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:52px">
+      <div class="sub-label reveal"><span class="dot"></span>
+        <span data-i18n data-es="Escribir un comentario" data-en="Writing a comment">Escribir un comentario</span>
+      </div>
+      <div class="screens-2 reveal">
+        <div class="screen-card"><img src="assets/clotheshow_17.png" alt="Colores disponibles"><div class="screen-cap" data-i18n data-es="Paleta de colores disponibles" data-en="Available colour palette">Paleta de colores disponibles</div></div>
+        <div class="screen-card"><img src="assets/clotheshow_18.png" alt="Escribir comentario"><div class="screen-cap" data-i18n data-es="Pantalla de comentario" data-en="Comment screen">Pantalla de comentario</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:60px">
+      <div class="feature-grid reveal">
+        <div class="feature-card sage">
+          <div class="feature-icon">😍</div>
+          <h3 data-i18n data-es="6 estados emocionales" data-en="6 emotional states">6 estados emocionales</h3>
+          <p data-i18n data-es="El sistema de valoración con emojis captura la reacción instintiva del responsable de tienda: de &ldquo;Me encanta&rdquo; a &ldquo;No me convence&rdquo;." data-en="The emoji rating system captures the store manager's instinctive reaction: from &ldquo;Love it&rdquo; to &ldquo;Not convinced&rdquo;.">El sistema de valoración con emojis captura la reacción instintiva del responsable de tienda: de "Me encanta" a "No me convence".</p>
+          <div class="feature-detail">
+            <div class="feature-detail-label" data-i18n data-es="Interacción" data-en="Interaction">Interacción</div>
+            <p data-i18n data-es="Deslizar para ver las 6 opciones. La seleccionada queda fijada como reacción principal en la tarjeta." data-en="Swipe to view all 6 options. The selected one is pinned as the main reaction on the card.">Deslizar para ver las 6 opciones. La seleccionada queda fijada como reacción principal en la tarjeta.</p>
+          </div>
+        </div>
+        <div class="feature-card coral">
+          <div class="feature-icon">🎨</div>
+          <h3 data-i18n data-es="Selección de colores" data-en="Colour selection">Selección de colores</h3>
+          <p data-i18n data-es="Para prendas básicas, el responsable de tienda indica qué colores le gustaría ver en colección. Un modal limpio con muestras de color y confirmación." data-en="For basic garments, the store manager indicates which colours they'd like to see in the collection. A clean modal with colour swatches and confirmation.">Para prendas básicas, el responsable de tienda indica qué colores le gustaría ver en colección. Un modal limpio con muestras de color y confirmación.</p>
+          <div class="feature-detail">
+            <div class="feature-detail-label" data-i18n data-es="Contexto" data-en="Context">Contexto</div>
+            <p data-i18n data-es="Solo disponible en prendas marcadas como &ldquo;Basics&rdquo;, donde la elección de color es estratégica." data-en="Only available on garments flagged as &ldquo;Basics&rdquo;, where colour choice is strategic.">Solo disponible en prendas marcadas como "Basics", donde la elección de color es estratégica.</p>
+          </div>
+        </div>
+        <div class="feature-card gold">
+          <div class="feature-icon">💬</div>
+          <h3 data-i18n data-es="Comentarios de equipo" data-en="Team comments">Comentarios de equipo</h3>
+          <p data-i18n data-es="Cada prenda tiene su hilo de comentarios. Los responsables de tienda ven las reacciones de sus colegas de otros países, generando conversación interna." data-en="Each garment has its own comment thread. Store managers see reactions from colleagues in other countries, generating internal conversation.">Cada prenda tiene su hilo de comentarios. Los responsables de tienda ven las reacciones de sus colegas de otros países, generando conversación interna.</p>
+          <div class="feature-detail">
+            <div class="feature-detail-label" data-i18n data-es="Visibilidad" data-en="Visibility">Visibilidad</div>
+            <p data-i18n data-es="Los comentarios son visibles para todos los responsables de tienda del pase, fomentando el consenso global." data-en="Comments are visible to all store managers at the show, fostering global consensus.">Los comentarios son visibles para todos los responsables de tienda del pase, fomentando el consenso global.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dark-band reveal" style="margin-top:60px">
+      <div class="dark-band-inner">
+        <div>
+          <span class="section-label" style="color:var(--sage-mid)" data-i18n data-es="Decisión de diseño clave" data-en="Key design decision">Decisión de diseño clave</span>
+          <div class="dark-band-title" data-i18n-html
+            data-es="De la emoción<br>al <em>ranking automático.</em>"
+            data-en="From emotion<br>to <em>automatic ranking.</em>">
+            De la emoción<br>al <em>ranking automático.</em>
+          </div>
+          <p class="dark-band-desc" data-i18n
+            data-es="Cada emoji tiene un peso numérico asignado: de 5 puntos (&ldquo;Me encanta&rdquo;) a 0 (&ldquo;No me convence&rdquo;). Al agregar las valoraciones de todos los responsables de tienda, cada prenda obtiene una nota media automática que genera un ranking en tiempo real — sin que nadie tenga que calcularlo."
+            data-en="Each emoji carries an assigned numerical weight: from 5 points (&ldquo;Love it&rdquo;) to 0 (&ldquo;Not convinced&rdquo;). By aggregating all store managers' ratings, each garment gets an automatic average score that generates a real-time ranking — with no manual calculation required.">
+            Cada emoji tiene un peso numérico asignado: de 5 puntos ("Me encanta") a 0 ("No me convence"). Al agregar las valoraciones de todos los responsables de tienda, cada prenda obtiene una nota media automática que genera un ranking en tiempo real — sin que nadie tenga que calcularlo.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:center;gap:16px">
+          <div style="display:flex;align-items:center;gap:14px">
+            <span style="width:36px;height:36px;background:rgba(255,255,255,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">😍</span>
+            <div>
+              <span style="font-size:14px;font-weight:500;color:#fff;display:block" data-i18n data-es="Emoción instintiva → dato cuantitativo" data-en="Instinctive emotion → quantitative data">Emoción instintiva → dato cuantitativo</span>
+              <span style="font-size:12px;color:rgba(255,255,255,.5)" data-i18n data-es="6 emojis con peso numérico del 0 al 5" data-en="6 emojis with numerical weight from 0 to 5">6 emojis con peso numérico del 0 al 5</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px">
+            <span style="width:36px;height:36px;background:rgba(255,255,255,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">📊</span>
+            <div>
+              <span style="font-size:14px;font-weight:500;color:#fff;display:block" data-i18n data-es="Nota media por prenda" data-en="Average score per garment">Nota media por prenda</span>
+              <span style="font-size:12px;color:rgba(255,255,255,.5)" data-i18n data-es="Calculada en tiempo real al agregar todos los votos" data-en="Calculated in real time as all votes are aggregated">Calculada en tiempo real al agregar todos los votos</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px">
+            <span style="width:36px;height:36px;background:rgba(255,255,255,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">🏆</span>
+            <div>
+              <span style="font-size:14px;font-weight:500;color:#fff;display:block" data-i18n data-es="Ranking automático de colección" data-en="Automatic collection ranking">Ranking automático de colección</span>
+              <span style="font-size:12px;color:rgba(255,255,255,.5)" data-i18n data-es="Las prendas más valoradas emergen sin criterio editorial" data-en="Top-rated garments surface without editorial bias">Las prendas más valoradas emergen sin criterio editorial</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 08 RESULTADO -->
+<hr class="divider">
+<section id="resultado" style="padding-bottom:120px">
+  <span class="section-label reveal" data-i18n data-es="08 · Resultado" data-en="08 · Results">08 &middot; Resultado</span>
+  <h2 class="section-title reveal" data-i18n-html
+    data-es="Del instinto<br>a la <em>inteligencia.</em>"
+    data-en="From instinct<br>to <em>intelligence.</em>">
+    Del instinto<br>a la <em>inteligencia.</em>
+  </h2>
+  <p class="body-l reveal" data-i18n
+    data-es="ClotheShow transforma la forma en que Zara Man recoge el conocimiento de los responsables de sus tiendas más representativas. Lo que antes era subjetivo, tardío y difícil de agregar pasa a ser un dato estructurado, disponible en tiempo real y accionable durante el propio evento."
+    data-en="ClotheShow transforms the way Zara Man captures knowledge from its most representative store managers. What was previously subjective, delayed and hard to aggregate becomes structured data, available in real time and actionable during the event itself.">
+    ClotheShow transforma la forma en que Zara Man recoge el conocimiento de los responsables de sus tiendas más representativas. Lo que antes era subjetivo, tardío y difícil de agregar pasa a ser un dato estructurado, disponible en tiempo real y accionable durante el propio evento.
+  </p>
+  <div class="winwin-box reveal">
+    <h2 class="section-title" style="font-size:clamp(24px,3vw,36px);margin-bottom:8px" data-i18n-html
+      data-es="Tres partes,<br><em>un solo flujo.</em>"
+      data-en="Three parties,<br><em>one single flow.</em>">
+      Tres partes,<br><em>un solo flujo.</em>
+    </h2>
+    <div class="winwin-cols">
+      <div class="winwin-col">
+        <h3 data-i18n data-es="👔 Responsable de tienda" data-en="👔 Store manager">👔 Responsable de tienda</h3>
+        <ul>
+          <li data-i18n data-es="Valora prendas en segundos con emojis" data-en="Rates garments in seconds with emojis">Valora prendas en segundos con emojis</li>
+          <li data-i18n data-es="Selecciona colores sin formularios complejos" data-en="Selects colours without complex forms">Selecciona colores sin formularios complejos</li>
+          <li data-i18n data-es="Consulta el detalle técnico completo de cada prenda" data-en="Consults the full technical detail of each garment">Consulta el detalle técnico completo de cada prenda</li>
+          <li data-i18n data-es="Ve las reacciones del equipo global en tiempo real" data-en="Sees global team reactions in real time">Ve las reacciones del equipo global en tiempo real</li>
+          <li data-i18n data-es="Navega el catálogo por departamentos" data-en="Browses the catalogue by department">Navega el catálogo por departamentos</li>
+        </ul>
+      </div>
+      <div class="winwin-col">
+        <h3 data-i18n data-es="🏢 Equipo Zara Man" data-en="🏢 Zara Man team">🏢 Equipo Zara Man</h3>
+        <ul>
+          <li data-i18n data-es="Feedback agregado disponible al momento" data-en="Aggregated feedback available instantly">Feedback agregado disponible al momento</li>
+          <li data-i18n data-es="Datos emocionales estructurados por prenda" data-en="Structured emotional data per garment">Datos emocionales estructurados por prenda</li>
+          <li data-i18n data-es="Visión de preferencia de color por mercado" data-en="Colour preference insight by market">Visión de preferencia de color por mercado</li>
+          <li data-i18n data-es="Comentarios cualitativos del equipo internacional" data-en="Qualitative comments from international team">Comentarios cualitativos del equipo internacional</li>
+          <li data-i18n data-es="Decisiones de colección informadas por datos reales" data-en="Collection decisions informed by real data">Decisiones de colección informadas por datos reales</li>
+        </ul>
+      </div>
+      <div class="winwin-col">
+        <h3 data-i18n data-es="🌍 Colección global" data-en="🌍 Global collection">🌍 Colección global</h3>
+        <ul>
+          <li data-i18n data-es="Surtido optimizado por mercado real" data-en="Range optimised by real market">Surtido optimizado por mercado real</li>
+          <li data-i18n data-es="Menos riesgo en la selección de colores" data-en="Less risk in colour selection">Menos riesgo en la selección de colores</li>
+          <li data-i18n data-es="Tendencias detectadas durante el propio pase" data-en="Trends detected during the show itself">Tendencias detectadas durante el propio pase</li>
+          <li data-i18n data-es="Consenso global sobre las piezas clave" data-en="Global consensus on key pieces">Consenso global sobre las piezas clave</li>
+          <li data-i18n data-es="Proceso de compra más ágil y fundamentado" data-en="More agile and evidence-based buying process">Proceso de compra más ágil y fundamentado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ── i18n ──────────────────────────────────────────────────────────────────
+  var currentLang = localStorage.getItem('lang') || 'es';
+
+  function applyLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var val = el.getAttribute('data-' + lang);
+      if (val !== null) el.textContent = val;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var val = el.getAttribute('data-' + lang);
+      if (val !== null) el.innerHTML = val;
+    });
+  }
+
+  // Hero height
+  function fitHero() {
+    var hero = document.querySelector('.hero');
+    var subnav = document.querySelector('.subnav');
+    var mobileHeader = document.querySelector('.mobile-header');
+    var isMobile = window.innerWidth <= 900;
+    if (!hero || !subnav) return;
+    if (isMobile && mobileHeader) {
+      hero.style.minHeight = (window.innerHeight - mobileHeader.offsetHeight - subnav.offsetHeight) + 'px';
+    } else {
+      hero.style.minHeight = (window.innerHeight - subnav.offsetHeight) + 'px';
+    }
+  }
+  fitHero();
+  window.addEventListener('resize', fitHero);
+
+  document.addEventListener('DOMContentLoaded', function() { applyLang(currentLang); fitHero(); });
+
+  // ── Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Active subnav link on scroll
+  const navLinks = document.querySelectorAll('.subnav-links a');
+  const navSections = ['contexto','problema','solucion','rol','acceso','eventos','coleccion','resultado']
+    .map(id => document.getElementById(id)).filter(Boolean);
+
+  var lastActive = null;
+
+  function setActive(id) {
+    if (id === lastActive) return;
+    lastActive = id;
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    var activeLink = document.querySelector('.subnav-links a[href="#' + id + '"]');
+    var subnavLinks = document.querySelector('.subnav-links');
+    if (activeLink && subnavLinks) {
+      var linkLeft = activeLink.offsetLeft;
+      var linkWidth = activeLink.offsetWidth;
+      var containerWidth = subnavLinks.offsetWidth;
+      var scrollTarget = linkLeft - (containerWidth / 2) + (linkWidth / 2);
+      subnavLinks.scrollTo({ left: scrollTarget, behavior: 'smooth' });
+    }
+  }
+
+  window.addEventListener('scroll', function() {
+    const subnav = document.querySelector('.subnav');
+    const offset = subnav ? subnav.getBoundingClientRect().bottom : 80;
+    let current = navSections[0].id;
+    navSections.forEach(function(sec) {
+      if (sec.getBoundingClientRect().top <= offset + 20) current = sec.id;
+    });
+    setActive(current);
+  }, { passive: true });
+</script>
+</body>
+</html>
