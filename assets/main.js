@@ -45,7 +45,7 @@ window.addEventListener('scroll',()=>{const n=document.getElementById('nav');con
 
 // Mobile nav top-row hide on scroll, show after 3s idle or on scroll up
 (function(){
-  var topRow=document.querySelector('.nav-top-row');
+  var topRow=document.querySelector('.nav-mobile-top');
   if(!topRow)return;
   var lastY=window.scrollY;
   var hideTimer=null;
