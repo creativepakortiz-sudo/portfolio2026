@@ -102,12 +102,11 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   }, { passive: true });
 })();
 
-// Position nav-primary: overlap hero by (nav height + 64px)
+// Position nav-primary: overlap only 64px into the bottom of the hero
 function positionNav() {
   var nav = document.getElementById('nav');
   if (!nav || nav.classList.contains('is-sticky')) return;
-  var h = nav.offsetHeight;
-  nav.style.marginTop = '-' + (h + 64) + 'px';
+  nav.style.marginTop = '-64px';
 }
 document.addEventListener('DOMContentLoaded', positionNav);
 window.addEventListener('resize', positionNav);
