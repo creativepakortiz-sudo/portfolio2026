@@ -69,28 +69,23 @@ function switchTab(btn,tabId){document.querySelectorAll('.tab-btn').forEach(b=>b
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Nav shadow + sticky class + mobile CTA visibility on scroll
+// Nav sticky detection: add is-sticky when nav-primary reaches top of viewport
 window.addEventListener('scroll', function() {
   var nav = document.getElementById('nav');
-  var navIdentity = document.getElementById('navIdentity');
   var cta = document.getElementById('mobileCta');
   var isMobile = window.innerWidth <= 768;
+  if (!nav) return;
 
-  if (nav) {
-    // nav-primary becomes sticky via CSS (position:sticky, top:12px)
-    // add is-sticky class once nav-identity has scrolled out of view
-    var identityBottom = navIdentity ? navIdentity.getBoundingClientRect().bottom : 0;
-    var isSticky = identityBottom <= 0;
-    nav.classList.toggle('is-sticky', isSticky);
+  var navRect = nav.getBoundingClientRect();
+  var isSticky = navRect.top <= 0;
+  nav.classList.toggle('is-sticky', isSticky);
 
-    // Mobile CTA: show only when nav-primary is sticky
-    if (cta && isMobile) {
-      var distFromBottom = document.body.scrollHeight - window.scrollY - window.innerHeight;
-      var show = isSticky && distFromBottom > 200;
-      cta.classList.toggle('visible', show);
-      cta.style.opacity = show ? '1' : '0';
-      cta.style.pointerEvents = show ? 'auto' : 'none';
-    }
+  // Mobile CTA: show only when nav is sticky and not near bottom
+  if (cta && isMobile) {
+    var distFromBottom = document.body.scrollHeight - window.scrollY - window.innerHeight;
+    var show = isSticky && distFromBottom > 200;
+    cta.style.opacity = show ? '1' : '0';
+    cta.style.pointerEvents = show ? 'auto' : 'none';
   }
 }, { passive: true });
 
