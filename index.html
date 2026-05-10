@@ -18,21 +18,25 @@
 <body>
 
 <nav id="nav">
-  <a href="#" class="nav-logo" data-i18n data-en="Hi, I'm Pako Ortiz" data-es="Hola, soy Pako Ortiz">Hi, I'm Pako Ortiz</a>
+  <!-- Top row: logo + lang (slides up on scroll in mobile) -->
+  <div class="nav-top-row">
+    <a href="#" class="nav-logo" data-i18n data-en="Hi, I'm Pako Ortiz" data-es="Hola, soy Pako Ortiz">Hi, I'm Pako Ortiz</a>
+    <div class="nav-right">
+      <a href="#contact" class="nav-cta" style="border-radius:8px" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
+      <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()">EN</button>
+    </div>
+    <!-- Mobile: lang toggle inline -->
+    <div class="nav-mobile-lang">
+      <button id="mobile-btn-en" onclick="toggleLang('en')">EN</button>
+      <button id="mobile-btn-es" onclick="toggleLang('es')">ES</button>
+    </div>
+  </div>
+  <!-- Desktop: centered links -->
   <ul class="nav-links">
     <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
     <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
     <li><a href="#skills" data-i18n data-en="Skills" data-es="Habilidades">Skills</a></li>
   </ul>
-  <div class="nav-right">
-    <a href="#contact" class="nav-cta" style="border-radius:8px" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
-    <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()">EN</button>
-  </div>
-  <!-- Mobile: lang toggle inline -->
-  <div class="nav-mobile-lang">
-    <button id="mobile-btn-en" onclick="toggleLang('en')">EN</button>
-    <button id="mobile-btn-es" onclick="toggleLang('es')">ES</button>
-  </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" style="display:none">
     <span></span><span></span><span></span>
   </button>
@@ -43,6 +47,10 @@
     <li><a href="#skills" data-i18n data-en="Skills" data-es="Habilidades">Skills</a></li>
   </ul>
 </nav>
+
+<div class="mobile-cta-sticky" id="mobileCta">
+  <a href="#contact" class="nav-cta" style="border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.15);min-height:48px;font-size:15px;padding:14px 36px" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
+</div>
 
 
 <section class="hero" id="home">
