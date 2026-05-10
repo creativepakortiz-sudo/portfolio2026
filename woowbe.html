@@ -34,20 +34,18 @@
     font-size: 16px; line-height: 1.6;
     color: var(--ink); background: var(--cream);
     overflow-x: hidden;
-    padding-bottom: 52px;
     scrollbar-width: none;
   }
   body::-webkit-scrollbar { display: none; }
 
   /* ─ SECONDARY NAV ─ */
-  
+  .subnav {
     display: flex; align-items: center; gap: 0;
-    height: 52px; padding: 0 48px;
-    background: rgba(239,240,236,0.92);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid var(--border);
-    border-bottom: none;
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+    height: 72px; padding: 0 48px;
+    background: rgba(239,240,236,0.95);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 90;
     flex-shrink: 0;
   }
 
@@ -62,8 +60,9 @@
   .subnav-links a:hover { color: var(--ink); background: rgba(26,26,24,0.05); }
   .subnav-links a.active { color: var(--sage); background: var(--sage-light); }
   .subnav-icon {
-    width: 28px; height: 28px; border-radius: 7px; overflow: hidden;
-    flex-shrink: 0; margin-right: 10px;
+    width: 32px; height: 32px; border-radius: 8px; overflow: hidden;
+    flex-shrink: 0; margin-right: 14px;
+    display: flex; align-items: center; justify-content: center;
   }
   .subnav-icon img { width: 100%; height: 100%; display: block; object-fit: cover; }
   .project-links {
@@ -83,7 +82,7 @@
   .project-link svg { flex-shrink: 0; }
 
   .hero {
-    min-height: calc(100vh - 52px);
+    min-height: 100vh;
     padding: 60px 48px 60px;
     background: var(--cream);
     position: relative; overflow: hidden;
@@ -134,10 +133,10 @@
   .meta-block span { font-size: 14px; color: var(--ink); }
   .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; width: 100%; }
   .chip {
-    font-size: 11px; color: var(--ink-mid); background: var(--white);
+    font-size: 11px; color: var(--ink-mid); background: var(--cream);
     border: 1px solid var(--border); padding: 4px 14px; border-radius: var(--radius-pill);
   }
-  .chip.sage { color: var(--sage); background: var(--sage-light); border-color: transparent; }
+  .chip.sage { color: var(--ink-mid); background: var(--cream); border-color: var(--border); }
   .chip.coral { color: var(--coral); background: var(--coral-light); border-color: transparent; }
 
   /* ─ SECTIONS ─ */
@@ -283,22 +282,14 @@
   .dark-band-title em { font-style: italic; color: var(--sage-mid); }
   .dark-band-desc { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.6); line-height: 1.75; }
 
-  /* ─ FOOTER ─ */
-  footer { background: var(--ink); color: var(--white); padding: 52px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-  .foot-name { font-family: var(--font-display); font-size: 22px; font-weight: 300; color: var(--white); }
-  .foot-name em { font-style: italic; color: var(--sage-mid); }
-  .foot-sub { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 4px; }
-  .foot-back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--white); text-decoration: none; border: 1px solid rgba(255,255,255,.2); padding: 10px 22px; border-radius: var(--radius-pill); transition: all .2s; }
-  .foot-back:hover { border-color: var(--sage-mid); color: var(--sage-mid); }
-
   /* ─ ANIM ─ */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 900px) {
-    .subnav { padding: 0 20px; }
-    .hero { min-height: calc(100vh - 52px); padding: 32px 20px 40px; }
+    .subnav { padding: 0 20px; height: 64px; }
+    .hero { padding: 32px 20px 40px; }
     section { padding: 60px 20px; }
 
     .phones-band, .b2b-band { padding: 60px 20px; }
@@ -307,13 +298,10 @@
     .onb-steps { grid-template-columns: 1fr 1fr; }
     .screens-2, .screens-3 { grid-template-columns: 1fr; }
     .winwin-box { padding: 32px 20px; }
-    footer { padding: 36px 20px; }
   }
 </style>
 </head>
 <body>
-
-<!-- HERO WRAPPER: ocupa 100dvh menos el nav flotante -->
 
 <!-- HERO -->
 <div class="hero" id="home">
@@ -355,7 +343,7 @@
   </div>
 </div>
 
-<!-- SECONDARY NAV -->
+<!-- SECONDARY NAV — sticky top al hacer scroll -->
 <nav class="subnav">
   <div class="subnav-icon"><img src="assets/img_woowbe_01.webp" alt="Woowbe"></div>
   <div class="subnav-links">
@@ -368,10 +356,6 @@
     <a href="#resultado" data-i18n data-es="Resultado" data-en="Results">Resultado</a>
   </div>
 </nav>
-
-
-
-<!-- 01 CONTEXTO -->
 <hr class="divider">
 <section id="contexto">
   <span class="section-label reveal" data-i18n data-es="01 · Contexto" data-en="01 · Context">01 &middot; Contexto</span>
@@ -573,7 +557,7 @@
 
 <!-- 07 RESULTADO -->
 <hr class="divider">
-<section id="resultado">
+<section id="resultado" style="padding-bottom: 120px;">
   <span class="section-label reveal" data-i18n data-es="07 · Resultado" data-en="07 · Results">07 &middot; Resultado</span>
   <h2 class="section-title reveal" data-i18n-html data-es="Todos ganan<br>con <em>Woowbe.</em>" data-en="Everyone wins<br>with <em>Woowbe.</em>">Todos ganan<br>con <em>Woowbe.</em></h2>
   <p class="body-l reveal" data-i18n data-es="La propuesta es única porque el modelo de negocio está alineado con el éxito de todos sus participantes. No hay ganador sin que los demás también ganen." data-en="The proposition is unique because the business model is aligned with the success of all its participants. There is no winner unless everyone wins.">La propuesta es única porque el modelo de negocio está alineado con el éxito de todos sus participantes. No hay ganador sin que los demás también ganen." data-en="The proposition is unique because the business model is aligned with the success of all its participants. There is no winner unless everyone wins.">La propuesta es única porque el modelo de negocio está alineado con el éxito de todos sus participantes. No hay ganador sin que los demás también ganen.</p>
@@ -586,11 +570,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div><div class="foot-name">Pako Ortiz &mdash; <em>Portfolio</em></div><div class="foot-sub" data-i18n data-es="Lead Product Designer · Madrid" data-en="Lead Product Designer · Madrid">Lead Product Designer &middot; Madrid</div></div>
-  <a href="index.html" class="foot-back" data-i18n data-es="← Volver al portfolio" data-en="← Back to portfolio">← Volver al portfolio</a>
-</footer>
 
 <script>
   // ── i18n ──────────────────────────────────────────────────────────────────
@@ -608,7 +587,16 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', function() { applyLang(currentLang); });
+  // Hero height: viewport menos el alto de la subnav
+  function fitHero() {
+    var hero = document.querySelector('.hero');
+    var subnav = document.querySelector('.subnav');
+    if (hero && subnav) hero.style.minHeight = (window.innerHeight - subnav.offsetHeight) + 'px';
+  }
+  fitHero();
+  window.addEventListener('resize', fitHero);
+
+  document.addEventListener('DOMContentLoaded', function() { applyLang(currentLang); fitHero(); });
 
   // ── Reveal on scroll
   const io = new IntersectionObserver((entries) => {
@@ -617,18 +605,25 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   // Active subnav link on scroll
-  const sections = document.querySelectorAll('[id]');
-  const links = document.querySelectorAll('.subnav-links a');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        links.forEach(l => l.classList.remove('active'));
-        const match = document.querySelector(`.subnav-links a[href="#${e.target.id}"]`);
-        if (match) match.classList.add('active');
-      }
+  const navLinks = document.querySelectorAll('.subnav-links a');
+  const navSections = ['contexto','problema','solucion','rol','b2c','b2b','resultado']
+    .map(id => document.getElementById(id)).filter(Boolean);
+
+  function setActive(id) {
+    navLinks.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + id);
     });
-  }, { threshold: 0.4 });
-  sections.forEach(s => observer.observe(s));
+  }
+
+  window.addEventListener('scroll', function() {
+    const subnav = document.querySelector('.subnav');
+    const offset = subnav ? subnav.getBoundingClientRect().bottom : 80;
+    let current = navSections[0].id;
+    navSections.forEach(function(sec) {
+      if (sec.getBoundingClientRect().top <= offset + 20) current = sec.id;
+    });
+    setActive(current);
+  }, { passive: true });
 </script>
 </body>
 </html>
