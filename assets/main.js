@@ -72,9 +72,16 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 (function() {
   var nav = document.getElementById('nav');
   var identity = document.getElementById('navIdentity');
+  var cta = document.getElementById('mobileCta');
   if (!nav || !identity) return;
   function update() {
-    nav.classList.toggle('is-sticky', window.scrollY >= identity.offsetHeight);
+    var identityGone = window.scrollY >= identity.offsetHeight;
+    nav.classList.toggle('is-sticky', identityGone);
+    if (cta && window.innerWidth <= 768) {
+      var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
+      cta.style.opacity = (identityGone && !nearBottom) ? '1' : '0';
+      cta.style.pointerEvents = (identityGone && !nearBottom) ? 'auto' : 'none';
+    }
   }
   window.addEventListener('scroll', update, { passive: true });
   update();

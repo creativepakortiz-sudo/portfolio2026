@@ -21,12 +21,14 @@ body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--ink
 .nav-mobile-lang{display:none}
 .nav-mobile-links{display:none}
 .nav-logo-mobile{display:none}
+/* ── Viewport wrap: nav-identity + nav-primary + hero = exactly 100vh ── */
+.viewport-wrap{display:flex;flex-direction:column;height:100vh;background:var(--cream)}
 section{padding:100px max(48px, calc(50% - 592px))}
 .section-label{font-size:11px;font-weight:500;color:var(--sage);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;display:block}
 .section-title{font-family:var(--font-display);font-size:clamp(36px,5vw,64px);font-weight:300;line-height:1.1;letter-spacing:-2px;color:var(--ink);margin-bottom:48px}
 .section-title em{font-style:italic;color:var(--sage)}
 .about .section-title em{color:#D4614A}
-.hero{height:100vh;min-height:600px;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--side) 80px;position:relative;overflow:hidden;background:var(--cream)}
+.hero{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--side) 80px;position:relative;overflow:hidden;background:var(--cream)}
 .hero-bg-text{position:absolute;bottom:0;right:0;font-family:var(--font-display);font-size:min(22vw,280px);font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:-8px;white-space:nowrap;pointer-events:none;user-select:none;line-height:0.75;z-index:0}
 .hero-intro{font-size:14px;font-weight:400;color:var(--sage);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fadeUp .8s .2s forwards;position:relative;z-index:1}
 .hero-headline{font-family:var(--font-display);font-size:clamp(52px,8vw,110px);font-weight:300;line-height:1.0;letter-spacing:-3px;color:var(--ink);margin-bottom:24px;opacity:0;animation:fadeUp .8s .4s forwards;position:relative;z-index:1}
@@ -146,8 +148,12 @@ footer p{font-size:13px;color:var(--ink-light)}
 .nav-lang-desktop .lang-slider{position:absolute;top:3px;left:3px;height:calc(100% - 6px);border-radius:var(--radius-pill);background:var(--white);box-shadow:0 1px 4px rgba(0,0,0,.1);transition:transform .45s cubic-bezier(.34,1.56,.64,1),width .45s cubic-bezier(.34,1.56,.64,1);pointer-events:none;z-index:0}
 .nav-lang-desktop button{font-family:var(--font-body);font-size:12px;font-weight:500;color:#2F3732;background:none;border:none;cursor:pointer;padding:6px 14px;border-radius:var(--radius-pill);line-height:1;position:relative;z-index:1;transition:color .25s;white-space:nowrap}
 .nav-lang-desktop button.active{color:var(--ink);font-weight:600}
+.mobile-cta-sticky{display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:98;width:50vw;opacity:0;transition:opacity .3s;pointer-events:none}
+.mobile-cta-sticky a{display:flex;width:100%;justify-content:center}
+@media(max-width:768px){.mobile-cta-sticky{display:block}}
 @media(max-width:768px){
   /* nav-identity: fluye con el scroll */
+  .viewport-wrap{height:100svh}
   .nav-identity{display:flex;padding:0 24px;margin-bottom:8px}
   /* nav-primary mobile: sticky top:8px, margen lateral 8px */
   .nav-primary{position:sticky;top:8px;margin:0 8px;border-radius:12px;padding:12px 20px;box-shadow:0 4px 16px rgba(0,0,0,.04)}
@@ -167,7 +173,7 @@ footer p{font-size:13px;color:var(--ink-light)}
   .nav-mobile-links a:hover::after{transform:scaleX(1)}
   /* Hero */
   section{padding:56px 24px}
-  .hero{padding:48px 24px 0;height:100svh;min-height:560px;overflow:hidden;position:relative}
+  .hero{padding:48px 24px 0;min-height:0;overflow:hidden;position:relative}
   .hero-bg-text{font-size:28vw;right:0;bottom:0;line-height:0.75}
   .hero-headline{font-size:clamp(44px,12vw,64px);letter-spacing:-2px}
   .hero-intro{font-size:13px}
