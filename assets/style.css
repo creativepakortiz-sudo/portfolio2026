@@ -137,7 +137,7 @@ footer p{font-size:13px;color:var(--ink-light)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 /* ── Lang toggles ── */
 /* Desktop: pill with two buttons */
-.nav-lang-desktop{display:flex;align-items:center;background:#DBDEDC;border-radius:var(--radius-pill);padding:3px;gap:2px}
+.nav-lang-desktop{display:flex;align-items:center;background:#DDE8E3;border-radius:var(--radius-pill);padding:3px;gap:2px}
 .nav-lang-desktop button{font-family:var(--font-body);font-size:12px;font-weight:500;color:#2F3732;background:none;border:none;cursor:pointer;padding:6px 14px;border-radius:var(--radius-pill);transition:background .2s,color .2s;line-height:1}
 .nav-lang-desktop button.active{color:var(--ink);font-weight:600;background:var(--white);box-shadow:0 1px 4px rgba(0,0,0,.08)}
 /* Mobile: single toggle button */
