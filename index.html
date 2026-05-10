@@ -17,20 +17,30 @@
 </head>
 <body>
 
-<!-- NAV IDENTITY: logo + lang — flows with scroll (desktop + mobile) -->
-<header class="nav-identity" id="navIdentity">
-  <a href="#" class="nav-logo" data-i18n data-en="Hi, I'm Pako Ortiz" data-es="Hola, soy Pako Ortiz">Hi, I'm Pako Ortiz</a>
-  <div class="nav-lang-desktop">
-    <span class="lang-slider" id="langSlider"></span>
-    <button id="desktop-btn-en" onclick="toggleLang('en')">EN</button>
-    <button id="desktop-btn-es" onclick="toggleLang('es')">ES</button>
+<!-- ── SITE HEADER: always fixed at top, two rows ── -->
+<header class="site-header" id="siteHeader">
+  <!-- Row 1: logo + lang (desktop & mobile) -->
+  <div class="nav-identity" id="navIdentity">
+    <a href="#" class="nav-logo" data-i18n data-en="Hi, I'm Pako Ortiz" data-es="Hola, soy Pako Ortiz">Hi, I'm Pako Ortiz</a>
+    <div class="nav-lang-desktop">
+      <span class="lang-slider" id="langSlider"></span>
+      <button id="desktop-btn-en" onclick="toggleLang('en')">EN</button>
+      <button id="desktop-btn-es" onclick="toggleLang('es')">ES</button>
+    </div>
   </div>
+  <!-- Row 2: nav links + CTA (desktop) / nav links only (mobile) -->
+  <nav class="nav-primary" id="nav">
+    <ul class="nav-links">
+      <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
+      <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
+      <li><a href="#skills" data-i18n data-en="Skills" data-es="Habilidades">Skills</a></li>
+    </ul>
+    <div style="flex:1"></div>
+    <div class="nav-right">
+      <a href="#contact" class="nav-cta" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
+    </div>
+  </nav>
 </header>
-
-
-<div class="mobile-cta-sticky" id="mobileCta">
-  <a href="#contact" class="nav-cta" style="border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.15);min-height:48px;font-size:15px;padding:14px 36px" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
-</div>
 
 <section class="hero" id="home">
   <div class="hero-bg-text" aria-hidden="true">Design</div>
@@ -46,26 +56,6 @@
     <div class="hero-stat-divider"></div>
     <div class="hero-stat"><span class="hero-stat-num">8</span><span class="hero-stat-label" data-i18n data-en="Companies" data-es="Empresas">Companies</span></div>
   </div>
-  <!-- NAV PRIMARY: absolute inside hero, sticks at top on scroll -->
-  <nav class="nav-primary" id="nav">
-    <ul class="nav-links">
-      <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
-      <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
-      <li><a href="#skills" data-i18n data-en="Skills" data-es="Habilidades">Skills</a></li>
-    </ul>
-    <div style="flex:1"></div>
-    <div class="nav-right">
-      <a href="#contact" class="nav-cta" style="border-radius:8px" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
-    </div>
-    <ul class="nav-mobile-links">
-      <li><a href="#about" data-i18n data-en="About" data-es="Sobre mí">About</a></li>
-      <li><a href="#projects" data-i18n data-en="Projects" data-es="Proyectos">Projects</a></li>
-      <li><a href="#skills" data-i18n data-en="Skills" data-es="Habilidades">Skills</a></li>
-    </ul>
-    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" style="display:none">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
 </section>
 
 <section class="about" id="about">
