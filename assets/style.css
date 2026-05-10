@@ -1,12 +1,12 @@
 :root{--side:max(48px, calc(50% - 592px));--ease-spring:cubic-bezier(.34,1.56,.64,1);--ease-out-smooth:cubic-bezier(.22,1,.36,1);--ease-in-out:cubic-bezier(.65,0,.35,1);--dur-fast:.2s;--dur-mid:.35s;--dur-slow:.5s;--sage:#7A9E8E;--sage-light:#DDE8E3;--coral:#D4614A;--coral-light:#F5E0D8;--salmon:#F2C4B8;--ink:#1A1A18;--ink-mid:#4A4A45;--ink-light:#8A8A82;--cream:#EFF0EC;--white:#FFFFFF;--border:rgba(26,26,24,0.09);--border-strong:rgba(26,26,24,0.18);--radius-sm:6px;--radius-md:12px;--radius-lg:20px;--radius-pill:100px;--font-display:'Fraunces',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--ink);background:var(--cream);overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--ink);background:var(--cream)}
 /* ── NAV IDENTITY (logo + lang, flows with scroll) ── */
 .nav-identity{display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 var(--side);background:transparent}
 .nav-logo{font-family:var(--font-display);font-size:15px;font-weight:400;color:var(--ink);text-decoration:none;letter-spacing:-.3px;flex-shrink:0}
 /* ── NAV PRIMARY (at bottom of hero, sticks at top on scroll) ── */
-.nav-primary{display:flex;align-items:center;justify-content:flex-start;padding:14px var(--side);background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(26,26,24,0.1);border-radius:12px;box-shadow:none;transition:box-shadow .3s,border-radius .3s;margin:32px 0;position:sticky;top:0;z-index:100}
+.nav-primary{display:flex;align-items:center;justify-content:flex-start;padding:14px 28px;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(26,26,24,0.1);border-radius:12px;box-shadow:none;transition:box-shadow .3s,border-radius .3s;margin:0 var(--side);position:sticky;top:32px;z-index:100}
 .nav-primary.is-sticky{box-shadow:0 8px 32px rgba(0,0,0,.08)}
 .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
 .nav-links a{font-size:14px;color:var(--ink-mid);text-decoration:none;position:relative;transition:color var(--dur-mid) var(--ease-out-smooth)}
@@ -26,7 +26,7 @@ section{padding:100px max(48px, calc(50% - 592px))}
 .section-title{font-family:var(--font-display);font-size:clamp(36px,5vw,64px);font-weight:300;line-height:1.1;letter-spacing:-2px;color:var(--ink);margin-bottom:48px}
 .section-title em{font-style:italic;color:var(--sage)}
 .about .section-title em{color:#D4614A}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px var(--side) 0;position:relative;overflow:visible;background:var(--cream)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px var(--side) 80px;position:relative;overflow:hidden;background:var(--cream)}
 .hero-bg-text{position:absolute;bottom:-0.15em;right:-20px;font-family:var(--font-display);font-size:min(22vw,280px);font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:-8px;white-space:nowrap;pointer-events:none;user-select:none;line-height:1;z-index:0}
 .hero-intro{font-size:14px;font-weight:400;color:var(--sage);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fadeUp .8s .2s forwards;position:relative;z-index:1}
 .hero-headline{font-family:var(--font-display);font-size:clamp(52px,8vw,110px);font-weight:300;line-height:1.0;letter-spacing:-3px;color:var(--ink);margin-bottom:24px;opacity:0;animation:fadeUp .8s .4s forwards;position:relative;z-index:1}
@@ -153,8 +153,8 @@ footer p{font-size:13px;color:var(--ink-light)}
   /* nav-identity visible en mobile, fluye con el scroll */
   .nav-identity{display:flex;padding:0 24px}
   /* nav-primary: sin margen, sin border-radius, section links */
-  .nav-primary{margin:0 0 32px 0;border-radius:12px;padding:14px 24px;flex-wrap:wrap;overflow:hidden}
-  .nav-primary.is-sticky{margin:0;border-radius:0;border-left:none;border-right:none;padding:14px 24px}
+  .nav-primary{margin:0;border-radius:0;padding:14px 24px;flex-wrap:wrap;overflow:hidden;top:0}
+  .nav-primary.is-sticky{box-shadow:0 8px 32px rgba(0,0,0,.08)}
   .nav-links{display:none}
   .nav-right{display:none}
   .nav-hamburger{display:none}

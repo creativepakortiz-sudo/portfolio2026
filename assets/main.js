@@ -69,39 +69,35 @@ function switchTab(btn,tabId){document.querySelectorAll('.tab-btn').forEach(b=>b
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Detect when nav-primary becomes sticky using IntersectionObserver
+// Detect when nav-primary becomes sticky
 (function() {
   var nav = document.getElementById('nav');
   var cta = document.getElementById('mobileCta');
   if (!nav) return;
 
-  // Sentinel: invisible element placed just above the nav inside the hero
+  // Sentinel placed just before the nav in the DOM
   var sentinel = document.createElement('div');
-  sentinel.style.cssText = 'position:absolute;height:1px;width:100%;pointer-events:none;';
-  nav.parentElement.insertBefore(sentinel, nav);
+  sentinel.style.cssText = 'height:1px;margin-bottom:-1px;pointer-events:none;';
+  nav.parentNode.insertBefore(sentinel, nav);
 
-  var observer = new IntersectionObserver(function(entries) {
-    var isSticky = !entries[0].isIntersecting;
-    nav.classList.toggle('is-sticky', isSticky);
-
+  var io = new IntersectionObserver(function(entries) {
+    var gone = !entries[0].isIntersecting;
+    nav.classList.toggle('is-sticky', gone);
     if (cta && window.innerWidth <= 768) {
-      var distFromBottom = document.body.scrollHeight - window.scrollY - window.innerHeight;
-      var show = isSticky && distFromBottom > 200;
-      cta.style.opacity = show ? '1' : '0';
-      cta.style.pointerEvents = show ? 'auto' : 'none';
+      var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
+      cta.style.opacity = (gone && !nearBottom) ? '1' : '0';
+      cta.style.pointerEvents = (gone && !nearBottom) ? 'auto' : 'none';
     }
-  }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
+  }, { threshold: 0, rootMargin: '-32px 0px 0px 0px' });
 
-  observer.observe(sentinel);
+  io.observe(sentinel);
 
-  // Also update CTA on scroll for the distFromBottom check
   window.addEventListener('scroll', function() {
     if (!cta || window.innerWidth > 768) return;
-    var isSticky = nav.classList.contains('is-sticky');
-    var distFromBottom = document.body.scrollHeight - window.scrollY - window.innerHeight;
-    var show = isSticky && distFromBottom > 200;
-    cta.style.opacity = show ? '1' : '0';
-    cta.style.pointerEvents = show ? 'auto' : 'none';
+    var gone = nav.classList.contains('is-sticky');
+    var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
+    cta.style.opacity = (gone && !nearBottom) ? '1' : '0';
+    cta.style.pointerEvents = (gone && !nearBottom) ? 'auto' : 'none';
   }, { passive: true });
 })();
 
