@@ -17,6 +17,8 @@
 </head>
 <body>
 
+<div class="viewport-wrap">
+
 <!-- NAV IDENTITY: logo + lang — flows with scroll -->
 <header class="nav-identity" id="navIdentity">
   <a href="#" class="nav-logo" data-i18n data-en="Hi, I'm Pako Ortiz" data-es="Hola, soy Pako Ortiz">Hi, I'm Pako Ortiz</a>
@@ -26,6 +28,10 @@
     <button id="desktop-btn-es" onclick="toggleLang('es')">ES</button>
   </div>
 </header>
+
+<div class="mobile-cta-sticky" id="mobileCta">
+  <a href="#contact" class="nav-cta" style="border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.15);min-height:48px;font-size:15px;padding:14px 36px" data-i18n data-en="Contact me" data-es="Contacto">Contact me</a>
+</div>
 
 <!-- NAV PRIMARY: flows with content, sticks at top once nav-identity scrolls out -->
 <nav class="nav-primary" id="nav">
@@ -60,6 +66,8 @@
     <div class="hero-stat"><span class="hero-stat-num">8</span><span class="hero-stat-label" data-i18n data-en="Companies" data-es="Empresas">Companies</span></div>
   </div>
 </section>
+
+</div><!-- /viewport-wrap -->
 
 <section class="about" id="about">
   <span class="section-label" data-i18n data-en="About me" data-es="Sobre mí">About me</span>
