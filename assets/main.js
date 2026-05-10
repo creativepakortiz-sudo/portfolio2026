@@ -69,48 +69,34 @@ function switchTab(btn,tabId){document.querySelectorAll('.tab-btn').forEach(b=>b
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Detect when nav-primary becomes sticky
+// Detect when nav-primary transitions from bottom-sticky to top-sticky
 (function() {
   var nav = document.getElementById('nav');
   var cta = document.getElementById('mobileCta');
   if (!nav) return;
 
-  // Sentinel placed just before the nav in the DOM
-  var sentinel = document.createElement('div');
-  sentinel.style.cssText = 'height:1px;margin-bottom:-1px;pointer-events:none;';
-  nav.parentNode.insertBefore(sentinel, nav);
-
-  var io = new IntersectionObserver(function(entries) {
-    var gone = !entries[0].isIntersecting;
+  // Use scroll position to detect: when nav's natural position would be above top:32px
+  function checkSticky() {
+    var navRect = nav.getBoundingClientRect();
+    // Nav is top-sticky when it would naturally be above the viewport top
+    var isMobile = window.innerWidth <= 768;
+    var stickyTop = isMobile ? 12 : 32;
+    var gone = navRect.top <= stickyTop && nav.classList.contains('is-sticky') ||
+               window.scrollY > (nav.offsetTop - stickyTop);
     nav.classList.toggle('is-sticky', gone);
-    if (!gone) { positionNav(); } // restore negative margin when un-sticking
-    if (cta && window.innerWidth <= 768) {
+
+    if (cta && isMobile) {
       var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
       cta.style.opacity = (gone && !nearBottom) ? '1' : '0';
       cta.style.pointerEvents = (gone && !nearBottom) ? 'auto' : 'none';
     }
-  }, { threshold: 0, rootMargin: '-32px 0px 0px 0px' });
+  }
 
-  io.observe(sentinel);
-
-  window.addEventListener('scroll', function() {
-    if (!cta || window.innerWidth > 768) return;
-    var gone = nav.classList.contains('is-sticky');
-    var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
-    cta.style.opacity = (gone && !nearBottom) ? '1' : '0';
-    cta.style.pointerEvents = (gone && !nearBottom) ? 'auto' : 'none';
-  }, { passive: true });
+  window.addEventListener('scroll', checkSticky, { passive: true });
+  window.addEventListener('resize', checkSticky);
+  document.addEventListener('DOMContentLoaded', checkSticky);
 })();
 
-// Position nav-primary: overlap only 64px into the bottom of the hero
-function positionNav() {
-  var nav = document.getElementById('nav');
-  if (!nav || nav.classList.contains('is-sticky')) return;
-  nav.style.marginTop = '-64px';
-  // Preserve lateral margins set by CSS (don't touch marginLeft/marginRight)
-}
-document.addEventListener('DOMContentLoaded', positionNav);
-window.addEventListener('resize', positionNav);
 (function(){
   var topRow=document.getElementById('navIdentity');
   if(!topRow)return;
