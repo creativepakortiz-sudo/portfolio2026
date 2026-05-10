@@ -43,6 +43,34 @@ window.addEventListener('scroll',()=>{const n=document.getElementById('nav');con
   const cta=document.getElementById('mobileCta');if(cta){const distFromBottom=document.body.scrollHeight-window.scrollY-window.innerHeight;cta.style.opacity=distFromBottom<200?'0':'1';cta.style.pointerEvents=distFromBottom<200?'none':'auto';}
 });
 
+// Mobile nav top-row hide on scroll, show after 3s idle or on scroll up
+(function(){
+  var topRow=document.querySelector('.nav-top-row');
+  if(!topRow)return;
+  var lastY=window.scrollY;
+  var hideTimer=null;
+  var isMobile=function(){return window.innerWidth<=768;};
+
+  function showTopRow(){topRow.classList.remove('hidden');}
+  function hideTopRow(){topRow.classList.add('hidden');}
+  function resetTimer(){
+    clearTimeout(hideTimer);
+    hideTimer=setTimeout(showTopRow,3000);
+  }
+
+  window.addEventListener('scroll',function(){
+    if(!isMobile())return;
+    var y=window.scrollY;
+    if(y<=10){showTopRow();clearTimeout(hideTimer);lastY=y;return;}
+    if(y<lastY){// scroll up
+      showTopRow();clearTimeout(hideTimer);
+    }else if(y>lastY){// scroll down
+      hideTopRow();resetTimer();
+    }
+    lastY=y;
+  },{passive:true});
+})();
+
 // Hamburger menu
 const hamburger=document.getElementById('hamburger');
 const mobileMenu=document.getElementById('mobileMenu');
