@@ -653,10 +653,22 @@
   const navSections = ['contexto','problema','solucion','rol','b2c','b2b','resultado']
     .map(id => document.getElementById(id)).filter(Boolean);
 
+  var lastActive = null;
+
   function setActive(id) {
-    navLinks.forEach(l => {
-      l.classList.toggle('active', l.getAttribute('href') === '#' + id);
-    });
+    if (id === lastActive) return;
+    lastActive = id;
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    // Scroll the active tab into view within the subnav
+    var activeLink = document.querySelector('.subnav-links a[href="#' + id + '"]');
+    var subnavLinks = document.querySelector('.subnav-links');
+    if (activeLink && subnavLinks) {
+      var linkLeft = activeLink.offsetLeft;
+      var linkWidth = activeLink.offsetWidth;
+      var containerWidth = subnavLinks.offsetWidth;
+      var scrollTarget = linkLeft - (containerWidth / 2) + (linkWidth / 2);
+      subnavLinks.scrollTo({ left: scrollTarget, behavior: 'smooth' });
+    }
   }
 
   window.addEventListener('scroll', function() {
