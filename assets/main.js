@@ -109,7 +109,7 @@ function positionNav() {
   var h = nav.offsetHeight;
   nav.style.marginTop = '-' + (h + 64) + 'px';
 }
-window.addEventListener('DOMContentLoaded', positionNav);
+document.addEventListener('DOMContentLoaded', positionNav);
 window.addEventListener('resize', positionNav);
 (function(){
   var topRow=document.getElementById('navIdentity');

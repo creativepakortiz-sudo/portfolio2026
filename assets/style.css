@@ -154,7 +154,7 @@ footer p{font-size:13px;color:var(--ink-light)}
   .nav-identity{display:flex;padding:0 24px}
   /* nav-primary: sin margen, sin border-radius, section links */
   .nav-primary{margin:-116px 0 0;border-radius:0;padding:14px 24px;flex-wrap:wrap;overflow:hidden;top:0}
-  .nav-primary.is-sticky{box-shadow:0 8px 32px rgba(0,0,0,.08)}
+  .nav-primary.is-sticky{box-shadow:0 8px 32px rgba(0,0,0,.08);margin-left:8px;margin-right:8px;border-radius:12px}
   .nav-links{display:none}
   .nav-right{display:none}
   .nav-hamburger{display:none}
