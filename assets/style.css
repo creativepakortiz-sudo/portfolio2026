@@ -173,8 +173,8 @@ footer p{font-size:13px;color:var(--ink-light)}
   .mobile-cta-sticky.visible{display:block}
   /* Hero */
   section{padding:56px 24px}
-  .hero{padding:120px 24px 0;min-height:100svh}
-  .hero-bg-text{font-size:28vw;right:-10px;bottom:-0.16em}
+  .hero{padding:120px 24px 64px;min-height:100svh;overflow:hidden}
+  .hero-bg-text{font-size:28vw;right:0;bottom:-0.16em}
   .hero-headline{font-size:clamp(44px,12vw,64px);letter-spacing:-2px}
   .hero-intro{font-size:13px}
   .hero-sub{font-size:16px}
