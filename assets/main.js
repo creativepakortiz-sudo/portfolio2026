@@ -69,36 +69,47 @@ function switchTab(btn,tabId){document.querySelectorAll('.tab-btn').forEach(b=>b
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Nav shadow on scroll
-window.addEventListener('scroll',()=>{const n=document.getElementById('nav');const hero=document.getElementById('home');const heroMid=hero?(hero.offsetTop+hero.offsetHeight/2):window.innerHeight/2;n.style.boxShadow=window.scrollY>heroMid?'0 8px 32px rgba(0,0,0,.08)':'none';
-  // Hide sticky CTA when 200px from bottom of page
-  const cta=document.getElementById('mobileCta');if(cta){const distFromBottom=document.body.scrollHeight-window.scrollY-window.innerHeight;cta.style.opacity=distFromBottom<200?'0':'1';cta.style.pointerEvents=distFromBottom<200?'none':'auto';}
-});
+// Nav shadow + sticky class + mobile CTA visibility on scroll
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('nav');
+  var navIdentity = document.getElementById('navIdentity');
+  var cta = document.getElementById('mobileCta');
+  var isMobile = window.innerWidth <= 768;
 
-// Mobile nav top-row hide on scroll, show after 3s idle or on scroll up
+  if (nav) {
+    // nav-primary becomes sticky via CSS (position:sticky, top:12px)
+    // add is-sticky class once nav-identity has scrolled out of view
+    var identityBottom = navIdentity ? navIdentity.getBoundingClientRect().bottom : 0;
+    var isSticky = identityBottom <= 0;
+    nav.classList.toggle('is-sticky', isSticky);
+
+    // Mobile CTA: show only when nav-primary is sticky
+    if (cta && isMobile) {
+      var distFromBottom = document.body.scrollHeight - window.scrollY - window.innerHeight;
+      var show = isSticky && distFromBottom > 200;
+      cta.classList.toggle('visible', show);
+      cta.style.opacity = show ? '1' : '0';
+      cta.style.pointerEvents = show ? 'auto' : 'none';
+    }
+  }
+}, { passive: true });
+
+// Mobile nav top-row (nav-identity) hide on scroll, show after 3s idle or on scroll up
 (function(){
-  var topRow=document.querySelector('.nav-mobile-top');
+  var topRow=document.getElementById('navIdentity');
   if(!topRow)return;
   var lastY=window.scrollY;
   var hideTimer=null;
   var isMobile=function(){return window.innerWidth<=768;};
-
-  function showTopRow(){topRow.classList.remove('hidden');}
-  function hideTopRow(){topRow.classList.add('hidden');}
-  function resetTimer(){
-    clearTimeout(hideTimer);
-    hideTimer=setTimeout(showTopRow,3000);
-  }
-
+  function showTopRow(){topRow.style.opacity='1';topRow.style.pointerEvents='';}
+  function hideTopRow(){topRow.style.opacity='0';topRow.style.pointerEvents='none';}
+  function resetTimer(){clearTimeout(hideTimer);hideTimer=setTimeout(showTopRow,3000);}
   window.addEventListener('scroll',function(){
     if(!isMobile())return;
     var y=window.scrollY;
     if(y<=10){showTopRow();clearTimeout(hideTimer);lastY=y;return;}
-    if(y<lastY){// scroll up
-      showTopRow();clearTimeout(hideTimer);
-    }else if(y>lastY){// scroll down
-      hideTopRow();resetTimer();
-    }
+    if(y<lastY){showTopRow();clearTimeout(hideTimer);}
+    else if(y>lastY){hideTopRow();resetTimer();}
     lastY=y;
   },{passive:true});
 })();

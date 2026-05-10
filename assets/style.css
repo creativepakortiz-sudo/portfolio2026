@@ -2,9 +2,13 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--ink);background:var(--cream);overflow-x:hidden}
-nav{position:fixed;top:16px;left:max(24px, calc(50% - 616px));right:max(12px, calc(50% - 628px));z-index:100;display:flex;align-items:center;justify-content:flex-start;padding:14px 24px;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(26,26,24,0.1);border-radius:12px;box-shadow:none;transition:box-shadow .3s}
+/* ── NAV IDENTITY (logo + lang, flows with scroll) ── */
+.nav-identity{display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 max(24px,calc(50% - 616px));background:transparent}
 .nav-logo{font-family:var(--font-display);font-size:15px;font-weight:400;color:var(--ink);text-decoration:none;letter-spacing:-.3px;flex-shrink:0}
-.nav-links{display:flex;align-items:center;gap:32px;list-style:none;margin-left:48px}
+/* ── NAV PRIMARY (sections + CTA, sticky) ── */
+.nav-primary{display:flex;align-items:center;justify-content:flex-start;padding:14px max(24px,calc(50% - 616px));background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(26,26,24,0.1);border-radius:12px;box-shadow:none;transition:box-shadow .3s,border-radius .3s;margin:0 max(24px,calc(50% - 628px));position:sticky;top:12px;z-index:100}
+.nav-primary.is-sticky{box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
 .nav-links a{font-size:14px;color:var(--ink-mid);text-decoration:none;position:relative;transition:color var(--dur-mid) var(--ease-out-smooth)}
 .nav-links a:not(.nav-cta)::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1.5px;background:var(--sage);transform:scaleX(0);transition:transform .4s var(--ease-spring);transform-origin:left}
 .nav-links a:not(.nav-cta):hover{color:var(--ink)}
@@ -142,25 +146,18 @@ footer p{font-size:13px;color:var(--ink-light)}
 .nav-lang-desktop .lang-slider{position:absolute;top:3px;left:3px;height:calc(100% - 6px);border-radius:var(--radius-pill);background:var(--white);box-shadow:0 1px 4px rgba(0,0,0,.1);transition:transform .45s cubic-bezier(.34,1.56,.64,1),width .45s cubic-bezier(.34,1.56,.64,1);pointer-events:none;z-index:0}
 .nav-lang-desktop button{font-family:var(--font-body);font-size:12px;font-weight:500;color:#2F3732;background:none;border:none;cursor:pointer;padding:6px 14px;border-radius:var(--radius-pill);line-height:1;position:relative;z-index:1;transition:color .25s;white-space:nowrap}
 .nav-lang-desktop button.active{color:var(--ink);font-weight:600}
-/* Mobile: single toggle button */
-.nav-mobile-lang-single{display:none;font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--ink-mid);background:#F3F7F4;border:1.5px solid #B8D0C6;cursor:pointer;padding:5px 10px;border-radius:var(--radius-pill);letter-spacing:.8px;transition:transform .1s,background .1s}
-/* ── Mobile nav ── */
-.mobile-cta-sticky{display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:98;width:50vw;opacity:1;transition:opacity .3s;pointer-events:auto}
-.mobile-cta-sticky a{display:flex;width:100%;justify-content:center}
-@media(max-width:768px){.mobile-cta-sticky{display:block}}
+@media(max-width:768px){.mobile-cta-sticky{display:none}}
 @media(max-width:768px){
-  nav{padding:0 20px;top:12px;left:16px;right:16px;flex-wrap:wrap;overflow:hidden}
-  .nav-logo{display:none}
+  /* nav-identity visible en mobile, fluye con el scroll */
+  .nav-identity{display:flex;padding:0 20px}
+  /* nav-primary: sin margen, sin border-radius, solo section links */
+  .nav-primary{margin:0;border-radius:0;border-left:none;border-right:none;border-top:none;top:0;padding:0 20px;flex-wrap:wrap;overflow:hidden}
   .nav-links{display:none}
   .nav-right{display:none}
   .nav-hamburger{display:none}
-  .nav-lang-desktop{display:none}
-  /* Top row: logo + dual lang selector */
-  .nav-mobile-top{display:flex;align-items:center;justify-content:space-between;width:100%;height:48px;overflow:hidden;transition:max-height .3s ease,opacity .3s ease;max-height:48px;opacity:1}
-  .nav-mobile-top .nav-logo-mobile{display:block!important;font-family:var(--font-display);font-size:15px;font-weight:400;color:var(--ink);text-decoration:none;letter-spacing:-.3px}
-  .nav-mobile-top .nav-lang-desktop{display:flex}
-  .nav-mobile-top.hidden{max-height:0;opacity:0;pointer-events:none}
-  /* Bottom row: section links — same 48px height */
+  .nav-lang-desktop{display:flex}
+  .nav-mobile-top{display:none}
+  /* Section links row */
   .nav-mobile-links{display:flex;align-items:center;list-style:none;padding:0;margin:0;width:100%;height:48px;gap:0}
   .nav-mobile-links a{font-size:15px;color:var(--ink-mid);text-decoration:none;padding-right:24px;position:relative;transition:color .2s;line-height:1}
   .nav-mobile-links li:first-child a{padding-left:0}
@@ -169,9 +166,11 @@ footer p{font-size:13px;color:var(--ink-light)}
   .nav-mobile-links li:last-child a::after{right:0}
   .nav-mobile-links a:hover{color:var(--ink)}
   .nav-mobile-links a:hover::after{transform:scaleX(1)}
-  /* Hero: more top air */
+  /* CTA sticky — aparece solo cuando nav-primary está sticky */
+  .mobile-cta-sticky.visible{display:block}
+  /* Hero */
   section{padding:56px 24px}
-  .hero{padding:160px 24px 100px;min-height:100svh}
+  .hero{padding:120px 24px 100px;min-height:100svh}
   .hero-bg-text{font-size:28vw;right:-10px;bottom:-0.16em}
   .hero-headline{font-size:clamp(44px,12vw,64px);letter-spacing:-2px}
   .hero-intro{font-size:13px}
