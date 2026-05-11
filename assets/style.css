@@ -193,6 +193,7 @@ footer p{font-size:13px;color:var(--ink-light)}
   .tabs-wrapper .tab-nav{position:sticky;top:92px;z-index:50;background:var(--white);padding-bottom:4px;box-shadow:0 -100px 0 100px var(--white);margin-top:-100px}
   .tab-content{padding-top:16px}
   .about-text{position:relative;z-index:60}
+  .about-text p:last-child{margin-bottom:64px}
   footer{flex-direction:column;gap:8px;text-align:center;padding:24px 24px}
 }
 /* ── Case study button ── */
