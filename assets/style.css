@@ -171,7 +171,7 @@ footer p{font-size:13px;color:var(--ink-light)}
   .nav-mobile-links a:hover::after{transform:scaleX(1)}
   /* Hero */
   section{padding:56px 24px}
-  .hero{padding:48px 24px 0;height:110svh;min-height:660px;overflow:hidden;position:relative}
+  .hero{padding:48px 24px 160px;height:100svh;min-height:560px;overflow:hidden;position:relative}
   .hero-bg-text{font-size:28vw;right:0;bottom:0;line-height:0.75}
   .hero-headline{font-size:clamp(44px,12vw,64px);letter-spacing:-2px}
   .hero-intro{font-size:13px}
