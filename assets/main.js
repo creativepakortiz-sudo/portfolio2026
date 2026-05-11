@@ -75,7 +75,7 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   var cta = document.getElementById('mobileCta');
   if (!nav || !identity) return;
   function update() {
-    var identityGone = window.scrollY >= identity.offsetHeight;
+    var identityGone = window.scrollY >= identity.offsetHeight + 200;
     nav.classList.toggle('is-sticky', identityGone);
     if (cta && window.innerWidth <= 768) {
       var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
