@@ -87,7 +87,59 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   update();
 })();
 
-// ── Case study modal ──────────────────────────────────────────────────────
+// ── Glitch word cycle on hero-bg-text ─────────────────────────────────────
+(function() {
+  var el = document.querySelector('.hero-bg-text');
+  if (!el) return;
+
+  var words = ['Design', 'Product', 'Interaction', 'Creative', 'Brand'];
+  var current = 0;
+  var timer = null;
+  var visible = false;
+  var HOLD = 2800;   // ms each word stays visible
+  var GLITCH = 560;  // ms glitch animation duration
+
+  function nextWord() {
+    if (!visible) return;
+    // glitch out
+    el.classList.remove('glitch-in');
+    el.classList.add('glitch-out');
+    setTimeout(function() {
+      if (!visible) return;
+      // swap word
+      current = (current + 1) % words.length;
+      el.textContent = words[current];
+      // glitch in
+      el.classList.remove('glitch-out');
+      el.classList.add('glitch-in');
+      setTimeout(function() {
+        el.classList.remove('glitch-in');
+        // hold then go again
+        if (visible) timer = setTimeout(nextWord, HOLD);
+      }, GLITCH);
+    }, GLITCH);
+  }
+
+  function start() {
+    if (timer) return;
+    timer = setTimeout(nextWord, HOLD);
+  }
+
+  function stop() {
+    clearTimeout(timer);
+    timer = null;
+    el.classList.remove('glitch-out', 'glitch-in');
+  }
+
+  var io = new IntersectionObserver(function(entries) {
+    visible = entries[0].isIntersecting;
+    if (visible) { start(); } else { stop(); }
+  }, { threshold: 0.1 });
+
+  io.observe(el);
+})();
+
+
 function openCaseStudy(url) {
   var modal = document.getElementById('csModal');
   var frame = document.getElementById('csFrame');
