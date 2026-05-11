@@ -230,6 +230,9 @@ footer p{font-size:13px;color:var(--ink-light)}
 .case-study-btn{display:inline-flex;align-items:center;gap:8px;margin-top:32px;padding:10px 20px;font-family:inherit;font-size:14px;font-weight:400;color:var(--sage);background:none;border:1px solid var(--sage);border-radius:8px;cursor:pointer;text-decoration:none;transition:background var(--dur-mid) var(--ease-out-smooth),color var(--dur-mid) var(--ease-out-smooth),transform var(--dur-mid) var(--ease-spring),box-shadow var(--dur-mid) var(--ease-out-smooth);width:fit-content;align-self:flex-start}
 .case-study-btn:hover{background:var(--sage);color:var(--white);transform:translateY(-2px);box-shadow:0 8px 24px rgba(122,158,142,.25)}
 .case-study-btn:disabled,.case-study-btn[disabled]{color:var(--ink-light);border-color:var(--border);cursor:not-allowed;pointer-events:none}
+@media(hover:hover){
+  .project-card--linked:hover .case-study-btn{background:var(--sage);color:var(--white);transform:translateY(-2px);box-shadow:0 8px 24px rgba(122,158,142,.25)}
+}
 
 /* ── Case study modal ── */
 .cs-modal{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0);backdrop-filter:blur(0px);display:flex;align-items:center;justify-content:center;pointer-events:none;transition:background .3s,backdrop-filter .3s}
