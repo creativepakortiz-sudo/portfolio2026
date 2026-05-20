@@ -146,6 +146,7 @@ section{padding:100px max(48px, calc(50% - 592px))}
 .eci-squad-info .squad-name{font-size:15px;font-weight:500;color:var(--white);display:block}
 .eci-squad-info .squad-desc{font-size:13px;color:rgba(255,255,255,.5)}
 .coming-soon-badge{display:inline-block;font-size:11px;font-weight:500;color:var(--sage);background:rgba(122,158,142,.15);padding:4px 12px;border-radius:var(--radius-pill);margin-top:20px}
+.cs-link-btn{display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:8px 18px;border-radius:var(--radius-pill);border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:var(--white);font-size:13px;font-weight:500;cursor:pointer;transition:background .2s,border-color .2s;backdrop-filter:blur(4px)}.cs-link-btn:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4)}
 .skills-section{background:var(--white)}
 .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
 .skill-card{padding:32px;background:var(--cream);border-radius:var(--radius-md);border:1px solid var(--border)}
