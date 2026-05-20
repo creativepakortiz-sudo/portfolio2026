@@ -138,11 +138,11 @@
   .meta-block span { font-size: 14px; color: var(--ink); }
   .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; width: 100%; }
   .chip {
-    font-size: 13px; color: var(--ink-mid); background: transparent;
-    border: 1px solid var(--border-strong); padding: 7px 18px; border-radius: var(--radius-pill);
+    font-size: 11px; color: var(--ink-mid); background: var(--cream);
+    border: 1px solid var(--border); padding: 4px 14px; border-radius: var(--radius-pill);
   }
-  .chip.sage { color: var(--ink-mid); background: transparent; border-color: var(--border-strong); }
-  .chip.gold { color: var(--ink-mid); background: transparent; border-color: var(--border-strong); }
+  .chip.sage { color: var(--ink-mid); background: var(--cream); border-color: var(--border); }
+  .chip.gold { color: var(--ink-mid); background: var(--cream); border-color: var(--border); }
 
   /* ─ SECTIONS ─ */
   section { padding: 88px 48px; }
@@ -607,21 +607,23 @@
 
 <!-- 06 PANTALLAS MOBILE -->
 <div class="phones-band" id="pantallas">
-  <div style="padding: 0 0 0 0;">
-    <span class="section-label reveal" data-i18n data-es="06 · Pantallas · Mobile" data-en="06 · Screens · Mobile">06 &middot; Pantallas &middot; Mobile</span>
-    <h2 class="section-title reveal" style="margin-bottom:8px" data-i18n-html
-      data-es="El flujo completo<br>en <em>mobile.</em>"
-      data-en="The complete flow<br>on <em>mobile.</em>">
-      El flujo completo<br>en <em>mobile.</em>
-    </h2>
-    <p class="body-l reveal" data-i18n
-      data-es="Pantallas del flujo de acceso y registro en dispositivo móvil, mostrando los estados principales: entrada de email, selección de idioma, verificación, datos de registro y confirmación."
-      data-en="Screens of the access and registration flow on mobile device, showing the main states: email entry, language selection, verification, registration data and confirmation.">
-      Pantallas del flujo de acceso y registro en dispositivo móvil, mostrando los estados principales: entrada de email, selección de idioma, verificación, datos de registro y confirmación.
-    </p>
-  </div>
+  <span class="section-label reveal" data-i18n data-es="06 · Pantallas · Mobile" data-en="06 · Screens · Mobile">06 &middot; Pantallas &middot; Mobile</span>
+  <h2 class="section-title reveal" style="margin-bottom:8px" data-i18n-html
+    data-es="El flujo completo<br>en <em>mobile.</em>"
+    data-en="The complete flow<br>on <em>mobile.</em>">
+    El flujo completo<br>en <em>mobile.</em>
+  </h2>
+  <p class="body-l reveal" style="margin-bottom:40px" data-i18n
+    data-es="Pantallas del flujo de acceso y registro en dispositivo móvil, organizadas por los dos caminos posibles tras introducir el email."
+    data-en="Screens of the access and registration flow on mobile device, organised by the two possible paths after entering the email.">
+    Pantallas del flujo de acceso y registro en dispositivo móvil, organizadas por los dos caminos posibles tras introducir el email.
+  </p>
 
-  <!-- Row 1: Email entry flow -->
+  <!-- Access flow -->
+  <div class="sub-label reveal">
+    <span class="dot"></span>
+    <span data-i18n data-es="Flujo de acceso — Email y contraseña" data-en="Access flow — Email and password">Flujo de acceso — Email y contraseña</span>
+  </div>
   <div class="phones-row reveal">
     <div class="phone-wrap">
       <div class="phone-frame">
@@ -637,44 +639,25 @@
     </div>
     <div class="phone-wrap">
       <div class="phone-frame">
-        <img src="assets/eci_m_03_email_typed.png" alt="Email typed" onerror="this.style.background='#e8ede9';this.style.minHeight='340px';this.alt=''">
-      </div>
-      <span class="phone-cap" data-i18n data-es="Email introducido" data-en="Email typed">Email introducido</span>
-    </div>
-    <div class="phone-wrap">
-      <div class="phone-frame">
-        <img src="assets/eci_m_04_password.png" alt="Password screen" onerror="this.style.background='#e8ede9';this.style.minHeight='340px';this.alt=''">
-      </div>
-      <span class="phone-cap" data-i18n data-es="Contraseña (login)" data-en="Password (login)">Contraseña (login)</span>
-    </div>
-    <div class="phone-wrap">
-      <div class="phone-frame">
         <img src="assets/eci_m_05_password_filled.png" alt="Password filled" onerror="this.style.background='#e8ede9';this.style.minHeight='340px';this.alt=''">
       </div>
       <span class="phone-cap" data-i18n data-es="Contraseña introducida" data-en="Password filled">Contraseña introducida</span>
     </div>
   </div>
 
-  <!-- Row 2: Verification & registration -->
-  <div class="phones-row reveal" style="margin-top:32px">
-    <div class="phone-wrap">
-      <div class="phone-frame">
-        <img src="assets/eci_m_06_verify_empty.png" alt="Verification code empty" onerror="this.style.background='#e8ede9';this.style.minHeight='340px';this.alt=''">
-      </div>
-      <span class="phone-cap" data-i18n data-es="Verificación — vacío" data-en="Verification — empty">Verificación — vacío</span>
-    </div>
+  <!-- Registration flow -->
+  <div class="sub-label reveal" style="margin-top:48px">
+    <span class="dot gold"></span>
+    <span data-i18n data-es="Flujo de registro — Verificación y datos" data-en="Registration flow — Verification and data">Flujo de registro — Verificación y datos</span>
+  </div>
+  <div class="phones-row reveal">
     <div class="phone-wrap">
       <div class="phone-frame">
         <img src="assets/eci_m_07_verify_filled.png" alt="Verification code filled" onerror="this.style.background='#e8ede9';this.style.minHeight='340px';this.alt=''">
       </div>
       <span class="phone-cap" data-i18n data-es="Verificación — código" data-en="Verification — code">Verificación — código</span>
     </div>
-    <div class="phone-wrap">
-      <div class="phone-frame">
-        <img src="assets/eci_m_08_verify_resend.png" alt="Resend code" onerror="this.style.background='#e8ede9';this.style.minHeight='340px';this.alt=''">
-      </div>
-      <span class="phone-cap" data-i18n data-es="Reenviar código" data-en="Resend code">Reenviar código</span>
-    </div>
+
     <div class="phone-wrap">
       <div class="phone-frame">
         <img src="assets/eci_m_09_register_form.png" alt="Registration form" onerror="this.style.background='#e8ede9';this.style.minHeight='340px';this.alt=''">
