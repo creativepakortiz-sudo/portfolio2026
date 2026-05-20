@@ -178,15 +178,27 @@
   <div class="eci-banner reveal">
     <div class="eci-banner-inner">
       <div>
-        <span class="eci-label" data-i18n data-en="Currently · Since Oct 2023" data-es="Actualmente · Desde oct 2023">Currently · Since Oct 2023</span>
+        <div class="eci-header-row">
+          <span class="eci-label" data-i18n data-en="Currently · Since Oct 2023" data-es="Actualmente · Desde oct 2023">Currently · Since Oct 2023</span>
+          <img src="assets/eci-logo.svg" alt="El Corte Inglés" class="eci-logo" onerror="this.style.display='none'">
+        </div>
         <h3 class="eci-title" data-i18n-html data-en="El Corte Inglés — <em>Designing at scale</em>" data-es="El Corte Inglés — <em>Diseñando a escala</em>">El Corte Inglés — <em>Designing at scale</em></h3>
         <p class="eci-desc" data-i18n data-en="Working as a Product Designer within the product design team, embedded in cross-functional squads alongside product managers, engineers, and data analysts. Collaborating in a full agile environment (Scrum) on one of the biggest e-commerce platforms in Spain." data-es="Trabajando como Product Designer dentro del equipo de diseño de producto, integrado en squads multidisciplinares junto a product managers, ingenieros y analistas de datos. Colaborando en un entorno ágil (Scrum) en una de las mayores plataformas de e-commerce de España.">Working as a Product Designer within the product design team, embedded in cross-functional squads alongside product managers, engineers, and data analysts. Collaborating in a full agile environment (Scrum) on one of the biggest e-commerce platforms in Spain.</p>
-        <span class="coming-soon-badge" data-i18n data-en="Case studies coming soon" data-es="Casos de estudio próximamente">Case studies coming soon</span>
-      </div>
-      <div class="eci-squads">
-        <div class="eci-squad-item"><div class="eci-squad-icon">🔍</div><div class="eci-squad-info"><span class="squad-name" data-i18n data-en="Search Squad" data-es="Squad de Búsqueda">Search Squad</span><span class="squad-desc" data-i18n data-en="Improving search relevance & user findability" data-es="Mejorando la relevancia de búsqueda y la localización">Improving search relevance & user findability</span></div></div>
-        <div class="eci-squad-item"><div class="eci-squad-icon">🛒</div><div class="eci-squad-info"><span class="squad-name" data-i18n data-en="Shopping Squad" data-es="Squad de Compra">Shopping Squad</span><span class="squad-desc" data-i18n data-en="Optimizing the purchasing experience" data-es="Optimizando la experiencia de compra">Optimizing the purchasing experience</span></div></div>
-      </div>
+        <div class="eci-squads">
+          <div class="eci-squad-item">
+            <div class="eci-squad-icon">🔍</div>
+            <div class="eci-squad-info"><span class="squad-name-row"><span class="squad-name" data-i18n data-en="Search Squad" data-es="Squad de Búsqueda">Search Squad</span><span class="squad-coming-soon" data-i18n data-en="Coming soon" data-es="Próximamente">Coming soon</span></span><span class="squad-desc" data-i18n data-en="Improving search relevance & user findability" data-es="Mejorando la relevancia de búsqueda y la localización">Improving search relevance & user findability</span></div>
+          </div>
+          <div class="eci-squad-item">
+            <div class="eci-squad-icon">🛒</div>
+            <div class="eci-squad-info"><span class="squad-name-row"><span class="squad-name" data-i18n data-en="Shopping Squad" data-es="Squad de Compra">Shopping Squad</span><span class="squad-coming-soon" data-i18n data-en="Coming soon" data-es="Próximamente">Coming soon</span></span><span class="squad-desc" data-i18n data-en="Optimizing the purchasing experience" data-es="Optimizando la experiencia de compra">Optimizing the purchasing experience</span></div>
+          </div>
+          <div class="eci-squad-item">
+            <div class="eci-squad-icon">👤</div>
+            <div class="eci-squad-info"><span class="squad-name" data-i18n data-en="Customer Squad" data-es="Squad de Cliente">Customer Squad</span><span class="squad-desc" data-i18n data-en="Login, registration & account experience" data-es="Login, registro y experiencia de cuenta">Login, registration & account experience</span></div>
+            <button class="squad-cs-btn" onclick="openCaseStudy('eci-login.html')" data-i18n data-en="Ver case study" data-es="Ver case study">Ver case study</button>
+          </div>
+        </div>
     </div>
   </div>
   <div class="project-card reveal project-card--linked" onclick="openCaseStudy('woowbe.html')" style="cursor:pointer">
