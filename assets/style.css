@@ -225,7 +225,7 @@ footer p{font-size:13px;color:var(--ink-light)}
   .eci-banner-inner{grid-template-columns:1fr;gap:28px}
   .eci-squad-item{flex-wrap:wrap;align-items:flex-start}
   .eci-squad-item .eci-squad-info{flex:1 1 0;min-width:0}
-  .squad-cs-btn{order:3;margin-top:8px;margin-left:56px;width:fit-content;flex-basis:100%}
+  .squad-cs-btn{order:3;margin-top:8px;margin-left:56px;width:auto;flex:0 0 auto;display:block}
   .skills-grid{grid-template-columns:1fr;gap:16px}
   /* Sticky tab-nav on mobile */
   .tabs-wrapper{position:relative;margin-top:32px}
