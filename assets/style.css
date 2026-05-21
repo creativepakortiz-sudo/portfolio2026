@@ -142,13 +142,14 @@ section{padding:100px max(48px, calc(50% - 592px))}
 .eci-desc{font-size:15px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.7}
 .eci-header-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
 .eci-logo{height:28px;width:auto;opacity:.65;filter:brightness(0) invert(1)}
-.eci-squads{display:flex;flex-direction:column;gap:16px;justify-content:center}
-.eci-squad-item{display:flex;align-items:center;gap:16px}
-.eci-squad-icon{width:40px;height:40px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(255,255,255,.08);flex-shrink:0}
-.eci-squad-info{flex:1;min-width:0;display:flex;flex-wrap:wrap;align-items:center;column-gap:8px}
-.squad-name-row{display:flex;align-items:center;gap:8px;margin-bottom:2px;flex:1 1 100%}
+.eci-squads{display:flex;flex-direction:column;gap:20px;justify-content:center}
+.eci-squad-item{display:flex;align-items:flex-start;gap:16px}
+.eci-squad-icon{width:40px;height:40px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(255,255,255,.08);flex-shrink:0;margin-top:2px}
+.eci-squad-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.squad-name-row{display:flex;align-items:center;gap:8px}
 .eci-squad-info .squad-name{font-size:15px;font-weight:500;color:var(--white)}
-.eci-squad-info .squad-desc{font-size:13px;color:rgba(255,255,255,.5);display:block;flex:1 1 auto}
+.eci-squad-info .squad-desc{font-size:13px;color:rgba(255,255,255,.5)}
+.squad-cs-btn{align-self:flex-start;margin-top:8px;padding:6px 14px;border-radius:var(--radius-pill);border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:var(--white);font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;transition:background .2s,border-color .2s}.squad-cs-btn:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.5)}
 .squad-coming-soon{font-size:10px;font-weight:500;color:rgba(255,255,255,.35);background:rgba(255,255,255,.07);padding:2px 8px;border-radius:var(--radius-pill);white-space:nowrap;flex-shrink:0}
 .squad-cs-btn{flex-shrink:0;padding:6px 14px;border-radius:var(--radius-pill);border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:var(--white);font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;transition:background .2s,border-color .2s}.squad-cs-btn:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.5)}
 .coming-soon-badge{display:inline-block;font-size:11px;font-weight:500;color:var(--sage);background:rgba(122,158,142,.15);padding:4px 12px;border-radius:var(--radius-pill);margin-top:20px}
@@ -224,8 +225,6 @@ footer p{font-size:13px;color:var(--ink-light)}
   .eci-banner{padding:32px 24px}
   .eci-banner-inner{grid-template-columns:1fr;gap:28px}
   .eci-squad-item{flex-wrap:wrap}
-  .eci-squad-info .squad-desc{flex:1 1 100%}
-  .squad-cs-btn{margin-top:10px;width:fit-content}
   .skills-grid{grid-template-columns:1fr;gap:16px}
   /* Sticky tab-nav on mobile */
   .tabs-wrapper{position:relative;margin-top:32px}
