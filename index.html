@@ -324,5 +324,17 @@
 
 
 <script src="assets/main.js" defer></script>
+<script>
+// Hide cs-modal-close when iframe lightbox is open
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.type === 'imgLightbox') {
+    var btn = document.querySelector('.cs-modal-close');
+    if (btn) {
+      btn.style.opacity = e.data.open ? '0' : '';
+      btn.style.pointerEvents = e.data.open ? 'none' : '';
+    }
+  }
+});
+</script>
 </body>
 </html>
