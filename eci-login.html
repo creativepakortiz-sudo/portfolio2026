@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ECI Login & Registro — Case Study · Pako Ortiz</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
 <style>
   :root {
     --sage: #1A5C3A;
@@ -349,6 +348,14 @@
     .brands-grid { grid-template-columns: repeat(2,1fr); }
     .winwin-box { padding: 32px 20px; }
   }
+  /* ── Image lightbox ── */
+  .img-lightbox { position: fixed; inset: 0; z-index: 600; background: rgba(0,0,0,0); backdrop-filter: blur(0px); display: flex; align-items: center; justify-content: center; pointer-events: none; transition: background .3s, backdrop-filter .3s; }
+  .img-lightbox.open { background: rgba(0,0,0,.7); backdrop-filter: blur(8px); pointer-events: all; }
+  .img-lightbox-inner { position: relative; max-width: calc(100vw - 48px); max-height: calc(100vh - 80px); transform: scale(.94); opacity: 0; transition: transform var(--dur-slow) var(--ease-spring), opacity var(--dur-mid) var(--ease-out-smooth); }
+  .img-lightbox.open .img-lightbox-inner { transform: scale(1); opacity: 1; }
+  .img-lightbox-inner img { display: block; max-width: 100%; max-height: calc(100vh - 80px); border-radius: 12px; box-shadow: 0 32px 80px rgba(0,0,0,.4); }
+  .img-lightbox-close { position: absolute; top: -14px; right: -14px; width: 32px; height: 32px; border-radius: 50%; background: #fff; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #1a1a18; box-shadow: 0 4px 16px rgba(0,0,0,.2); transition: transform var(--dur-mid) var(--ease-spring); }
+  .img-lightbox-close:hover { transform: scale(1.15) rotate(90deg); }
 </style>
 </head>
 <body>
