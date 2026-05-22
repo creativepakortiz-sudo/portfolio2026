@@ -251,14 +251,6 @@
   .screen-card .img-wrap:hover .img-zoom-btn { opacity: 1; transform: translateY(0); }
   .screen-card .img-zoom-btn:hover { background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.12); }
   .screen-card .img-zoom-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
-  /* ── Image lightbox ── */
-  .img-lightbox { position: fixed; inset: 0; z-index: 600; background: rgba(0,0,0,0); backdrop-filter: blur(0px); display: flex; align-items: center; justify-content: center; pointer-events: none; transition: background .3s, backdrop-filter .3s; }
-  .img-lightbox.open { background: rgba(0,0,0,.7); backdrop-filter: blur(8px); pointer-events: all; }
-  .img-lightbox-inner { position: relative; max-width: calc(100vw - 48px); max-height: calc(100vh - 80px); transform: scale(.94); opacity: 0; transition: transform var(--dur-slow) var(--ease-spring), opacity var(--dur-mid) var(--ease-out-smooth); }
-  .img-lightbox.open .img-lightbox-inner { transform: scale(1); opacity: 1; }
-  .img-lightbox-inner img { display: block; max-width: 100%; max-height: calc(100vh - 80px); border-radius: 12px; box-shadow: 0 32px 80px rgba(0,0,0,.4); }
-  .img-lightbox-close { position: absolute; top: -14px; right: -14px; width: 32px; height: 32px; border-radius: 50%; background: #fff; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #1a1a18; box-shadow: 0 4px 16px rgba(0,0,0,.2); transition: transform var(--dur-mid) var(--ease-spring); }
-  .img-lightbox-close:hover { transform: scale(1.15) rotate(90deg); }
   .screen-cap { font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); text-align: center; }
   .sub-label { display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-light); margin-bottom: 20px; }
   .sub-label .dot { width: 4px; height: 16px; border-radius: 2px; background: var(--sage); }
