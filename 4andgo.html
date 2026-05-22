@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4andGo — Showcase · Pako Ortiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #7A9E8E;
+    --sage-light: #DDE8E3;
+    --sage-mid: #A8C4B8;
+    --coral: #D4614A;
+    --coral-light: #F5E0D8;
+    --ink: #1A1A18;
+    --ink-mid: #4A4A45;
+    --ink-light: #8A8A82;
+    --cream: #EFF0EC;
+    --white: #FFFFFF;
+    --border: rgba(26,26,24,0.09);
+    --border-strong: rgba(26,26,24,0.18);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-pill: 100px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --bbva: #004B9A;
+    --bbva-light: #E0EAF6;
+    --ser: #009EDE;
+    --ser-light: #E0F4FC;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    font-size: 16px; line-height: 1.6;
+    color: var(--ink); background: var(--cream);
+    overflow-x: hidden; scrollbar-width: none;
+  }
+  body::-webkit-scrollbar { display: none; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 60px 48px;
+    background: var(--cream); position: relative;
+    overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .hero-bg-text {
+    position: absolute; top: 50%; left: -10px; transform: translateY(-50%);
+    font-family: var(--font-display); font-size: min(20vw, 260px);
+    font-weight: 700; color: rgba(122,158,142,0.06);
+    letter-spacing: -6px; white-space: nowrap;
+    pointer-events: none; user-select: none; line-height: 1; z-index: 0;
+  }
+  .hero-label {
+    font-size: 11px; font-weight: 500; color: var(--sage);
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 20px; position: relative; z-index: 1;
+    opacity: 0; animation: fadeUp 0.7s 0.1s forwards;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 8vw, 108px);
+    font-weight: 300; line-height: 1.0; letter-spacing: -3px;
+    color: var(--ink); margin-bottom: 24px;
+    position: relative; z-index: 1;
+    opacity: 0; animation: fadeUp 0.7s 0.25s forwards;
+  }
+  .hero-title em { font-style: italic; color: var(--sage); }
+  .hero-sub {
+    font-size: 18px; font-weight: 300; color: var(--ink-mid);
+    max-width: 560px; line-height: 1.75; margin-bottom: 40px;
+    position: relative; z-index: 1;
+    opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
+  }
+  .hero-meta {
+    display: flex; gap: 40px; flex-wrap: wrap;
+    padding-top: 32px; border-top: 1px solid var(--border);
+    position: relative; z-index: 1;
+    opacity: 0; animation: fadeUp 0.7s 0.55s forwards;
+  }
+  .meta-block label {
+    display: block; font-size: 10px; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--ink-light); margin-bottom: 4px;
+  }
+  .meta-block span { font-size: 14px; color: var(--ink); }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; width: 100%; }
+  .chip {
+    font-size: 11px; color: var(--ink-mid); background: var(--cream);
+    border: 1px solid var(--border); padding: 4px 14px; border-radius: var(--radius-pill);
+  }
+
+  /* ── SUBNAV ── */
+  .subnav {
+    display: flex; align-items: center;
+    height: 72px; padding: 0 48px;
+    background: rgba(239,240,236,0.95);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 90;
+  }
+  .subnav-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    flex-shrink: 0; margin-right: 14px;
+    overflow: hidden; display: flex; align-items: center; justify-content: center;
+  }
+  .subnav-icon img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .subnav-links { display: flex; align-items: center; gap: 4px; flex: 1; overflow-x: auto; }
+  .subnav-links::-webkit-scrollbar { display: none; }
+  .subnav-links a {
+    font-size: 12px; font-weight: 400; color: var(--ink-light);
+    text-decoration: none; white-space: nowrap;
+    padding: 5px 12px; border-radius: var(--radius-pill);
+    transition: all .2s;
+  }
+  .subnav-links a:hover { color: var(--ink); background: rgba(26,26,24,0.05); }
+  .subnav-links a.active { color: var(--sage); background: var(--sage-light); }
+
+  /* ── SECTIONS ── */
+  section { padding: 88px 48px; }
+  hr.divider { border: none; border-top: 1px solid var(--border); }
+  .section-label {
+    font-size: 11px; font-weight: 500; color: var(--sage);
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 16px; display: block;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4.5vw, 58px);
+    font-weight: 300; line-height: 1.1; letter-spacing: -1.5px;
+    color: var(--ink); margin-bottom: 48px;
+  }
+  .section-title em { font-style: italic; color: var(--sage); }
+  .body-l {
+    font-size: 17px; font-weight: 300; color: var(--ink-mid);
+    max-width: 640px; line-height: 1.8;
+  }
+
+  /* ── PROJECT BLOCK ── */
+  .project-block { padding: 88px 48px; border-bottom: 1px solid var(--border); }
+  .project-block:last-child { border-bottom: none; }
+  .project-block--alt { background: var(--white); }
+
+  .project-header {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+    align-items: start; margin-bottom: 64px;
+  }
+  .project-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .project-type-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .project-type-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--ink-light);
+  }
+  .project-name {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 68px);
+    font-weight: 300; line-height: 1.0; letter-spacing: -2px;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .project-name em { font-style: italic; }
+  .project-subtitle {
+    font-size: 14px; font-weight: 400; color: var(--ink-light);
+    margin-bottom: 28px; letter-spacing: 0.2px;
+  }
+  .project-desc {
+    font-size: 16px; font-weight: 300; color: var(--ink-mid);
+    line-height: 1.8; max-width: 520px;
+  }
+  .project-meta-col { display: flex; flex-direction: column; gap: 24px; padding-top: 8px; }
+  .meta-pair { display: flex; flex-direction: column; gap: 4px; }
+  .meta-pair label {
+    font-size: 10px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--ink-light);
+  }
+  .meta-pair span { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+  /* ── CHIPS — single style for all projects ── */
+  .project-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .pchip {
+    font-size: 11px; padding: 4px 14px; border-radius: var(--radius-pill);
+    border: 1px solid var(--border); color: var(--ink-mid); background: transparent;
+  }
+
+  /* ── GALLERY ── */
+  .gallery-web { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .gallery-web-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .gallery-phones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .gallery-phones-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .screen-web {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-md); overflow: hidden;
+    box-shadow: 0 4px 20px rgba(26,26,24,.06);
+  }
+  .screen-web img { width: 100%; display: block; }
+  .screen-web-cap {
+    padding: 10px 16px; font-size: 11px; font-weight: 500;
+    letter-spacing: .5px; text-transform: uppercase;
+    color: var(--ink-light); text-align: center;
+    border-top: 1px solid var(--border); background: var(--cream);
+  }
+  .screen-phone { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .screen-phone-frame {
+    border-radius: 28px; overflow: hidden;
+    box-shadow: 0 20px 48px rgba(26,26,24,.12), 0 0 0 1px rgba(26,26,24,.06);
+    width: 100%;
+  }
+  .screen-phone-frame img { width: 100%; display: block; }
+  .screen-phone-cap {
+    font-size: 10px; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--ink-light); text-align: center;
+  }
+  .video-wrap {
+    border-radius: 28px; overflow: hidden;
+    box-shadow: 0 20px 48px rgba(26,26,24,.12), 0 0 0 1px rgba(26,26,24,.06);
+    width: 100%; aspect-ratio: 9/16; background: var(--ink);
+  }
+  .video-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-section { margin-top: 48px; }
+  .gallery-section-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--ink-light);
+    margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+  }
+  .gallery-section-label::before {
+    content: ''; width: 4px; height: 16px; border-radius: 2px;
+    background: var(--sage); flex-shrink: 0;
+  }
+
+  /* ── INTRO ── */
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+  /* ── PROJECT LINKS ── */
+  .project-links {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 32px; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.7s 0.55s forwards;
+  }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500; color: var(--ink);
+    text-decoration: none; padding: 9px 18px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    background: var(--white);
+    transition: all .2s;
+  }
+  .project-link:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(122,158,142,.15); }
+  .project-link svg { flex-shrink: 0; }
+
+  /* ── ANIM ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  .mobile-header { display: none; }
+
+  @media (max-width: 900px) {
+    .mobile-header {
+      display: block; position: fixed; top: 0; left: 0; right: 0; z-index: 95;
+      background: rgba(239,240,236,0.95);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    }
+    .mobile-header-inner {
+      display: flex; align-items: center; height: 52px; padding: 0 20px; gap: 12px;
+    }
+    .mobile-header-icon {
+      width: 28px; height: 28px; border-radius: 6px; overflow: hidden; flex-shrink: 0;
+    }
+    .mobile-header-icon img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .mobile-header-title {
+      font-family: var(--font-display); font-size: 15px;
+      font-weight: 400; color: var(--ink); letter-spacing: -.3px;
+    }
+    .subnav {
+      position: sticky; top: 52px; height: 52px;
+      padding: 0 0 0 16px; border-bottom: 1px solid var(--border); overflow: hidden;
+    }
+    .subnav::after {
+      content: ''; pointer-events: none;
+      position: absolute; top: 0; right: 0; bottom: 0; width: 48px;
+      background: linear-gradient(to right, transparent, rgba(239,240,236,1) 80%); z-index: 2;
+    }
+    .subnav-icon { display: none; }
+    .subnav-links { gap: 8px; overflow-x: auto; flex-wrap: nowrap; padding-right: 48px; }
+    .subnav-links a { font-size: 15px; padding: 5px 16px; }
+    .hero { padding: 72px 20px 40px; }
+    section, .project-block { padding: 60px 20px 80px; }
+    .project-header { grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
+    .project-meta-col { flex-direction: row; flex-wrap: wrap; gap: 20px; }
+    .intro-grid { grid-template-columns: 1fr; gap: 40px; }
+    .gallery-web { grid-template-columns: 1fr; }
+    .gallery-web-2 { grid-template-columns: 1fr; }
+    .gallery-phones { grid-template-columns: 1fr 1fr; }
+    .gallery-phones-3 { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MOBILE HEADER -->
+<header class="mobile-header">
+  <div class="mobile-header-inner">
+    <div class="mobile-header-icon">
+      <img src="assets/4andgo/4andgo-logo.png" alt="4andGo">
+    </div>
+    <span class="mobile-header-title">4andGo — Showcase</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="hero-bg-text" aria-hidden="true">4andGo</div>
+  <span class="hero-label" data-i18n data-es="UX/UI Designer · 4andGo · 2015–2017" data-en="UX/UI Designer · 4andGo · 2015–2017">UX/UI Designer &middot; 4andGo &middot; 2015–2017</span>
+  <h1 class="hero-title" data-i18n-html
+    data-es="Diseño de apps<br>para <em>grandes marcas.</em>"
+    data-en="App design<br>for <em>big brands.</em>">
+    Diseño de apps<br>para <em>grandes marcas.</em>
+  </h1>
+  <p class="hero-sub" data-i18n
+    data-es="Entre 2015 y 2017 trabajé como UX/UI Designer en 4andGo, un estudio de desarrollo de apps madrileño. Mi trabajo se centró en el diseño de aplicaciones nativas para iOS y Android para clientes como PRISA Radio, Guía del Ocio, El Español y BBVA."
+    data-en="Between 2015 and 2017 I worked as a UX/UI Designer at 4andGo, a Madrid-based app development studio. My work focused on designing native iOS and Android applications for clients including PRISA Radio, Guía del Ocio, El Español and BBVA.">
+    Entre 2015 y 2017 trabajé como UX/UI Designer en 4andGo, un estudio de desarrollo de apps madrileño. Mi trabajo se centró en el diseño de aplicaciones nativas para iOS y Android para clientes como PRISA Radio, Guía del Ocio, El Español y BBVA.
+  </p>
+  <div class="project-links">
+    <a href="https://4andgo.com/#portfolio" class="project-link" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 1c-1.5 1.8-2 3.6-2 6s.5 4.2 2 6M7 1c1.5 1.8 2 3.6 2 6s-.5 4.2-2 6M1 7h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      4andgo.com
+    </a>
+  </div>
+  <div class="hero-meta">
+    <div class="meta-block">
+      <label data-i18n data-es="Empresa" data-en="Company">Empresa</label>
+      <span>4andGo</span>
+    </div>
+    <div class="meta-block">
+      <label data-i18n data-es="Rol" data-en="Role">Rol</label>
+      <span>UX/UI Designer</span>
+    </div>
+    <div class="meta-block">
+      <label data-i18n data-es="Período" data-en="Period">Período</label>
+      <span>Jul 2015 – Nov 2017</span>
+    </div>
+    <div class="meta-block">
+      <label data-i18n data-es="Plataformas" data-en="Platforms">Plataformas</label>
+      <span data-i18n data-es="iOS · Android · Web Responsive" data-en="iOS · Android · Responsive Web">iOS · Android · Web Responsive</span>
+    </div>
+    <div class="tag-row">
+      <span class="chip">UX/UI Design</span>
+      <span class="chip">iOS</span>
+      <span class="chip">Android</span>
+      <span class="chip" data-i18n data-es="Web Responsive" data-en="Responsive Web">Web Responsive</span>
+      <span class="chip">Art Direction</span>
+      <span class="chip">Axure</span>
+      <span class="chip" data-i18n data-es="Interacción" data-en="Interaction">Interacción</span>
+    </div>
+  </div>
+</div>
+
+<!-- SUBNAV — sticky after hero scrolls out -->
+<nav class="subnav">
+  <div class="subnav-icon">
+    <img src="assets/4andgo/4andgo-logo.png" alt="4andGo">
+  </div>
+  <div class="subnav-links">
+    <a href="#intro" data-i18n data-es="El estudio" data-en="The studio">El estudio</a>
+    <a href="#ser" data-i18n data-es="Cadena SER" data-en="Cadena SER">Cadena SER</a>
+    <a href="#elesp" data-i18n data-es="El Español" data-en="El Español">El Español</a>
+    <a href="#gdocio" data-i18n data-es="Guía del Ocio" data-en="Guía del Ocio">Guía del Ocio</a>
+    <a href="#bbva-os" data-i18n data-es="BBVA Open Space" data-en="BBVA Open Space">BBVA Open Space</a>
+    <a href="#bbva-summit" data-i18n data-es="Open Summit" data-en="Open Summit">Open Summit</a>
+  </div>
+</nav>
+
+<!-- INTRO -->
+<hr class="divider">
+<section id="intro">
+  <span class="section-label reveal" data-i18n data-es="El estudio" data-en="The studio">El estudio</span>
+  <div class="intro-grid">
+    <div>
+      <h2 class="section-title reveal" data-i18n-html
+        data-es="Apps nativas.<br><em>Grandes clientes.</em>"
+        data-en="Native apps.<br><em>Big clients.">
+        Apps nativas.<br><em>Grandes clientes.</em>
+      </h2>
+      <p class="body-l reveal" data-i18n
+        data-es="4andGo era un estudio madrileño especializado en el desarrollo de aplicaciones móviles para grandes marcas. Durante los dos años que trabajé allí, me dediqué fundamentalmente al diseño de apps nativas para iOS y Android, desde la arquitectura de la información hasta la interfaz final. El trabajo en los proyectos de BBVA fue algo puntual, y representó una extensión hacia el diseño web responsive fuera de la especialidad principal del estudio."
+        data-en="4andGo was a Madrid-based studio specialising in mobile app development for major brands. During the two years I worked there, I focused primarily on designing native apps for iOS and Android, from information architecture to final UI. The BBVA web projects were a one-off, representing an extension into responsive web design outside the studio's main speciality.">
+        4andGo era un estudio madrileño especializado en el desarrollo de aplicaciones móviles para grandes marcas. Durante los dos años que trabajé allí, me dediqué fundamentalmente al diseño de apps nativas para iOS y Android, desde la arquitectura de la información hasta la interfaz final. El trabajo en los proyectos de BBVA fue algo puntual, y representó una extensión hacia el diseño web responsive fuera de la especialidad principal del estudio.
+      </p>
+    </div>
+    <div class="reveal" style="transition-delay:.1s; display:flex; flex-direction:column; gap:16px; padding-top:8px">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px 32px">
+        <div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--ink-light);margin-bottom:12px" data-i18n data-es="Clientes destacados" data-en="Key clients">Clientes destacados</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span class="chip">PRISA Radio</span>
+          <span class="chip">El Español</span>
+          <span class="chip">Guía del Ocio</span>
+          <span class="chip">BBVA</span>
+        </div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px 32px">
+        <div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--ink-light);margin-bottom:12px" data-i18n data-es="Plataformas" data-en="Platforms">Plataformas</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span class="chip">iOS</span>
+          <span class="chip">Android</span>
+          <span class="chip" data-i18n data-es="Web Responsive" data-en="Responsive Web">Web Responsive</span>
+        </div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:28px 32px">
+        <div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--ink-light);margin-bottom:12px" data-i18n data-es="Período" data-en="Period">Período</div>
+        <div style="font-family:var(--font-display);font-size:clamp(22px,3vw,36px);font-weight:300;letter-spacing:-1px;color:var(--ink)">Jul 2015<span style="color:var(--sage)"> – </span>Nov 2017</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     01 CADENA SER
+══════════════════════════════════════════════ -->
+<hr class="divider">
+<div class="project-block" id="ser">
+  <div class="project-header reveal">
+    <div>
+      <div class="project-eyebrow">
+        <div class="project-type-dot" style="background:#009EDE"></div>
+        <span class="project-type-label" data-i18n data-es="App iOS · 2016–2017" data-en="iOS App · 2016–2017">App iOS · 2016–2017</span>
+      </div>
+      <h2 class="project-name">Cadena<br><em>SER</em></h2>
+      <p class="project-subtitle">PRISA Radio</p>
+      <p class="project-desc" data-i18n
+        data-es="PRISA Radio, grupo propietario de Cadena SER y otras emisoras, era uno de los clientes principales del estudio. Diseñé la app de Cadena SER, que combinaba radio en directo, podcast a la carta y contenido editorial. La experiencia abarcaba desde la portada con el programa en emisión hasta el reproductor de audio con playlists de audios relacionados. Entre los retos más relevantes: el selector de emisora local con historial, el modo coche (interfaz simplificada para uso al volante), la parrilla de programación con navegación por fecha tipo calendario, y el sistema de exploración por categorías, programas y hashtags."
+        data-en="PRISA Radio, the group that owns Cadena SER and other stations, was one of the studio's main clients. I designed the Cadena SER app, combining live radio, on-demand podcasts and editorial content. The experience covered everything from the home screen showing the current programme to the audio player with related audio playlists. Key challenges included: the local station selector with history, car mode (a simplified interface for use while driving), the programme schedule with calendar-style date navigation, and a discovery system by categories, programmes and hashtags.">
+        PRISA Radio, grupo propietario de Cadena SER y otras emisoras, era uno de los clientes principales del estudio. Diseñé la app de Cadena SER, que combinaba radio en directo, podcast a la carta y contenido editorial. La experiencia abarcaba desde la portada con el programa en emisión hasta el reproductor de audio con playlists de audios relacionados. Entre los retos más relevantes: el selector de emisora local con historial, el modo coche (interfaz simplificada para uso al volante), la parrilla de programación con navegación por fecha tipo calendario, y el sistema de exploración por categorías, programas y hashtags.
+      </p>
+      <div class="project-chips">
+        <span class="pchip">iOS</span>
+        <span class="pchip">Radio App</span>
+        <span class="pchip" data-i18n data-es="Modo coche" data-en="Car mode">Modo coche</span>
+        <span class="pchip" data-i18n data-es="Reproductor audio" data-en="Audio player">Reproductor audio</span>
+        <span class="pchip">Podcast</span>
+        <span class="pchip" data-i18n data-es="Parrilla" data-en="Programme guide">Parrilla</span>
+        <span class="pchip" data-i18n data-es="Búsqueda" data-en="Search">Búsqueda</span>
+      </div>
+    </div>
+    <div class="project-meta-col">
+      <div class="meta-pair">
+        <label data-i18n data-es="Cliente" data-en="Client">Cliente</label>
+        <span>PRISA Radio</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Tipo" data-en="Type">Tipo</label>
+        <span>App iOS</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Mi rol" data-en="My role">Mi rol</label>
+        <span>UX/UI Designer</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Destacado" data-en="Highlight">Destacado</label>
+        <span data-i18n data-es="Modo coche · Reproductor · Parrilla" data-en="Car mode · Player · Programme guide">Modo coche · Reproductor · Parrilla</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section reveal" style="transition-delay:.1s">
+    <div class="gallery-section-label" data-i18n data-es="Onboarding · Portada · Directo" data-en="Onboarding · Home · Live">Onboarding · Portada · Directo</div>
+    <div class="gallery-phones">
+      <div class="screen-phone">
+        <div class="video-wrap">
+          <video src="assets/4andgo/ser_onboarding.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="screen-phone-cap" data-i18n data-es="Onboarding" data-en="Onboarding">Onboarding</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/ser_home-02.jpg" alt="Cadena SER — Home"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Portada" data-en="Home">Portada</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/ser_select-04.jpg" alt="Cadena SER — Selector directo"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Selector de directo" data-en="Live selector">Selector de directo</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/ser_coche-05.jpg" alt="Cadena SER — Modo coche"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Modo coche" data-en="Car mode">Modo coche</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section reveal" style="transition-delay:.15s">
+    <div class="gallery-section-label" data-i18n data-es="Reproductor · Parrilla · A la carta" data-en="Player · Programme · On demand">Reproductor · Parrilla · A la carta</div>
+    <div class="gallery-phones-3">
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/ser_player-07.jpg" alt="Cadena SER — Player"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Reproductor podcast" data-en="Podcast player">Reproductor podcast</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/ser_parrilla-11.jpg" alt="Cadena SER — Parrilla"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Parrilla de programación" data-en="Programme guide">Parrilla de programación</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/ser_alacarta-19.jpg" alt="Cadena SER — A la carta"></div>
+        <div class="screen-phone-cap" data-i18n data-es="A la carta" data-en="On demand">A la carta</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     02 EL ESPAÑOL
+══════════════════════════════════════════════ -->
+<hr class="divider">
+<div class="project-block project-block--alt" id="elesp">
+  <div class="project-header reveal">
+    <div>
+      <div class="project-eyebrow">
+        <div class="project-type-dot" style="background:#1A1A1A"></div>
+        <span class="project-type-label" data-i18n data-es="App iOS · 2016" data-en="iOS App · 2016">App iOS · 2016</span>
+      </div>
+      <h2 class="project-name">El<br><em>Español</em></h2>
+      <p class="project-subtitle" data-i18n data-es="El Español · Medio digital nativo" data-en="El Español · Native digital media">El Español · Medio digital nativo</p>
+      <p class="project-desc" data-i18n
+        data-es="El Español es un medio digital nativo nacido en 2015. Diseñé la nueva versión de su app incluyendo un onboarding de actualización que comunicaba los cambios de versión a los usuarios existentes. La app articulaba cuatro experiencias diferenciadas: la web en tiempo real, El Río (últimas noticias en formato card oscuro), La Edición (periódico digital descargable con hemeroteca organizada por calendario) y Zona Ñ. El trabajo incluyó el flujo de búsqueda de ediciones por fecha y la gestión de ediciones descargadas."
+        data-en="El Español is a native digital newspaper born in 2015. I designed the new version of their app including an update onboarding that communicated version changes to existing users. The app articulated four distinct experiences: the live web, El Río (breaking news in a dark card format), La Edición (a downloadable digital newspaper with a calendar-organised archive) and Zona Ñ. The work included the edition search flow by date and management of downloaded editions.">
+        El Español es un medio digital nativo nacido en 2015. Diseñé la nueva versión de su app incluyendo un onboarding de actualización que comunicaba los cambios de versión a los usuarios existentes. La app articulaba cuatro experiencias diferenciadas: la web en tiempo real, El Río (últimas noticias en formato card oscuro), La Edición (periódico digital descargable con hemeroteca organizada por calendario) y Zona Ñ. El trabajo incluyó el flujo de búsqueda de ediciones por fecha y la gestión de ediciones descargadas.
+      </p>
+      <div class="project-chips">
+        <span class="pchip">iOS</span>
+        <span class="pchip" data-i18n data-es="App de noticias" data-en="News app">App de noticias</span>
+        <span class="pchip" data-i18n data-es="4 secciones" data-en="4 sections">4 secciones</span>
+        <span class="pchip" data-i18n data-es="Hemeroteca" data-en="Archive">Hemeroteca</span>
+        <span class="pchip">Onboarding</span>
+        <span class="pchip" data-i18n data-es="Tipografía" data-en="Typography">Tipografía</span>
+      </div>
+    </div>
+    <div class="project-meta-col">
+      <div class="meta-pair">
+        <label data-i18n data-es="Cliente" data-en="Client">Cliente</label>
+        <span>El Español</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Tipo" data-en="Type">Tipo</label>
+        <span>App iOS</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Mi rol" data-en="My role">Mi rol</label>
+        <span>UX/UI Designer</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Destacado" data-en="Highlight">Destacado</label>
+        <span data-i18n data-es="Arquitectura multi-sección · Hemeroteca" data-en="Multi-section architecture · Archive">Arquitectura multi-sección · Hemeroteca</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section reveal" style="transition-delay:.1s">
+    <div class="gallery-section-label" data-i18n data-es="Onboarding · Web · Artículo" data-en="Onboarding · Web · Article">Onboarding · Web · Artículo</div>
+    <div class="gallery-phones-3">
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/elesp_ob-02.jpg" alt="El Español — Onboarding"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Onboarding de actualización" data-en="Update onboarding">Onboarding de actualización</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/elesp_home-03.jpg" alt="El Español — Home"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Portada · Sección web" data-en="Home · Web section">Portada · Sección web</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/elesp_article-05.jpg" alt="El Español — Artículo"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Vista artículo" data-en="Article view">Vista artículo</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section reveal" style="transition-delay:.15s">
+    <div class="gallery-section-label" data-i18n data-es="El Río · La Edición · Hemeroteca" data-en="El Río · La Edición · Archive">El Río · La Edición · Hemeroteca</div>
+    <div class="gallery-phones-3">
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/elesp_rio-11.jpg" alt="El Español — El Río"></div>
+        <div class="screen-phone-cap">El Río</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/elesp_edition-10.jpg" alt="El Español — La Edición"></div>
+        <div class="screen-phone-cap">La Edición</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/elesp_hemeroteca-08.jpg" alt="El Español — Hemeroteca"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Hemeroteca" data-en="Archive">Hemeroteca</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     03 GUÍA DEL OCIO
+══════════════════════════════════════════════ -->
+<hr class="divider">
+<div class="project-block" id="gdocio">
+  <div class="project-header reveal">
+    <div>
+      <div class="project-eyebrow">
+        <div class="project-type-dot" style="background:#1A1A1A"></div>
+        <span class="project-type-label" data-i18n data-es="App iOS · Android · 2015–2016" data-en="iOS · Android App · 2015–2016">App iOS · Android · 2015–2016</span>
+      </div>
+      <h2 class="project-name">Guía<br><em>del Ocio</em></h2>
+      <p class="project-subtitle" data-i18n data-es="Guía del Ocio · Planes de ocio urbano" data-en="Guía del Ocio · Urban leisure plans">Guía del Ocio · Planes de ocio urbano</p>
+      <p class="project-desc" data-i18n
+        data-es="Guía del Ocio es una de las plataformas de ocio urbano de referencia en España. Diseñé la nueva versión de su app nativa, con especial atención al onboarding: un flujo de tres pasos que gestionaba la solicitud de permisos de ubicación y notificaciones con microcopy claro y estados de confirmación y rechazo bien resueltos. La app incluía exploración por categorías, doble vista lista/mapa con filtros activos, búsqueda en tiempo real con sugerencias y páginas de detalle completas con horarios, precios y compra de entradas."
+        data-en="Guía del Ocio is one of Spain's leading urban leisure platforms. I designed the new version of their native app, with particular attention to the onboarding: a three-step flow managing location and notification permission requests with clear microcopy and well-resolved confirmation and rejection states. The app included category exploration, dual list/map view with active filters, real-time search with suggestions and complete detail pages with schedules, prices and ticket purchase.">
+        Guía del Ocio es una de las plataformas de ocio urbano de referencia en España. Diseñé la nueva versión de su app nativa, con especial atención al onboarding: un flujo de tres pasos que gestionaba la solicitud de permisos de ubicación y notificaciones con microcopy claro y estados de confirmación y rechazo bien resueltos. La app incluía exploración por categorías, doble vista lista/mapa con filtros activos, búsqueda en tiempo real con sugerencias y páginas de detalle completas con horarios, precios y compra de entradas.
+      </p>
+      <div class="project-chips">
+        <span class="pchip">iOS · Android</span>
+        <span class="pchip">Onboarding</span>
+        <span class="pchip" data-i18n data-es="Permisos del sistema" data-en="System permissions">Permisos del sistema</span>
+        <span class="pchip" data-i18n data-es="Vista mapa y lista" data-en="Map and list view">Vista mapa y lista</span>
+        <span class="pchip" data-i18n data-es="Búsqueda" data-en="Search">Búsqueda</span>
+        <span class="pchip" data-i18n data-es="Estados vacíos" data-en="Empty states">Estados vacíos</span>
+      </div>
+    </div>
+    <div class="project-meta-col">
+      <div class="meta-pair">
+        <label data-i18n data-es="Cliente" data-en="Client">Cliente</label>
+        <span>Guía del Ocio</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Tipo" data-en="Type">Tipo</label>
+        <span>App iOS · Android</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Mi rol" data-en="My role">Mi rol</label>
+        <span>UX/UI Designer</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Destacado" data-en="Highlight">Destacado</label>
+        <span data-i18n data-es="Onboarding · Permisos · Estados vacíos" data-en="Onboarding · Permissions · Empty states">Onboarding · Permisos · Estados vacíos</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section reveal" style="transition-delay:.1s">
+    <div class="gallery-section-label" data-i18n data-es="Onboarding — Solicitud de permisos" data-en="Onboarding — Permission requests">Onboarding — Solicitud de permisos</div>
+    <div class="gallery-phones-3">
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/gdocio_ob1-02.jpg" alt="Guía del Ocio — Onboarding Buscar"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Buscar · Categorías" data-en="Search · Categories">Buscar · Categorías</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/gdocio_ob2-03.jpg" alt="Guía del Ocio — Permiso ubicación"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Planear · Permiso ubicación" data-en="Plan · Location permission">Planear · Permiso ubicación</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/gdocio_ob4-06.jpg" alt="Guía del Ocio — Permiso notificaciones"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Disfrutar · Notificaciones" data-en="Enjoy · Notifications">Disfrutar · Notificaciones</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section reveal" style="transition-delay:.15s">
+    <div class="gallery-section-label" data-i18n data-es="Exploración · Mapa · Detalle" data-en="Exploration · Map · Detail">Exploración · Mapa · Detalle</div>
+    <div class="gallery-phones">
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/gdocio_home-09.jpg" alt="Guía del Ocio — Home"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Home · Categorías" data-en="Home · Categories">Home · Categorías</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/gdocio_list-13.jpg" alt="Guía del Ocio — Lista"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Vista lista" data-en="List view">Vista lista</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/gdocio_map-14.jpg" alt="Guía del Ocio — Mapa"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Vista mapa" data-en="Map view">Vista mapa</div>
+      </div>
+      <div class="screen-phone">
+        <div class="screen-phone-frame"><img src="assets/4andgo/gdocio_detail-22.jpg" alt="Guía del Ocio — Detalle"></div>
+        <div class="screen-phone-cap" data-i18n data-es="Detalle de plan" data-en="Plan detail">Detalle de plan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     04 BBVA OPEN SPACE
+══════════════════════════════════════════════ -->
+<hr class="divider">
+<div class="project-block project-block--alt" id="bbva-os">
+  <div class="project-header reveal">
+    <div>
+      <div class="project-eyebrow">
+        <div class="project-type-dot" style="background:#004B9A"></div>
+        <span class="project-type-label" data-i18n data-es="Web Responsive · 2016–2017" data-en="Responsive Web · 2016–2017">Web Responsive · 2016–2017</span>
+      </div>
+      <h2 class="project-name">BBVA<br><em>Open Space</em></h2>
+      <p class="project-subtitle">BBVA · Innovation Hub</p>
+      <p class="project-desc" data-i18n
+        data-es="BBVA Open Space era la plataforma online de los Centros de Innovación de BBVA, diseñada para conectar emprendedores con la comunidad del banco. Diseñé el site responsive en tres breakpoints cubriendo la home institucional, el listado y detalle de eventos —con modales de inscripción y compartición social— y la sección de comunidad por ciudades. El énfasis estuvo en resolver la transición entre breakpoints manteniendo la identidad visual BBVA intacta en cada contexto."
+        data-en="BBVA Open Space was the online platform for BBVA's Innovation Centres, designed to connect entrepreneurs with the bank's community. I designed the responsive site across three breakpoints covering the institutional home, event listing and detail pages — with registration modals and social sharing — and the community section by city. The focus was on resolving breakpoint transitions while keeping the BBVA visual identity intact at every screen size.">
+        BBVA Open Space era la plataforma online de los Centros de Innovación de BBVA, diseñada para conectar emprendedores con la comunidad del banco. Diseñé el site responsive en tres breakpoints cubriendo la home institucional, el listado y detalle de eventos —con modales de inscripción y compartición social— y la sección de comunidad por ciudades. El énfasis estuvo en resolver la transición entre breakpoints manteniendo la identidad visual BBVA intacta en cada contexto.
+      </p>
+      <div class="project-chips">
+        <span class="pchip" data-i18n data-es="Web Responsive" data-en="Responsive Web">Web Responsive</span>
+        <span class="pchip" data-i18n data-es="3 Breakpoints" data-en="3 Breakpoints">3 Breakpoints</span>
+        <span class="pchip">UX/UI Design</span>
+        <span class="pchip" data-i18n data-es="Detalle de evento" data-en="Event detail">Detalle de evento</span>
+        <span class="pchip" data-i18n data-es="Flujos con modal" data-en="Modal flows">Flujos con modal</span>
+      </div>
+    </div>
+    <div class="project-meta-col">
+      <div class="meta-pair">
+        <label data-i18n data-es="Cliente" data-en="Client">Cliente</label>
+        <span>BBVA</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Tipo" data-en="Type">Tipo</label>
+        <span data-i18n data-es="Web Responsive" data-en="Responsive Web">Web Responsive</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Mi rol" data-en="My role">Mi rol</label>
+        <span>UX/UI Designer</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Plataformas" data-en="Platforms">Plataformas</label>
+        <span>Desktop · Tablet · Mobile</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section reveal" style="transition-delay:.1s">
+    <div class="gallery-section-label" data-i18n data-es="Desktop · Tablet · Mobile" data-en="Desktop · Tablet · Mobile">Desktop · Tablet · Mobile</div>
+    <div class="gallery-web">
+      <div class="screen-web">
+        <img src="assets/4andgo/bbva_os-01.jpg" alt="BBVA Open Space — Desktop">
+        <div class="screen-web-cap">Desktop</div>
+      </div>
+      <div class="screen-web">
+        <img src="assets/4andgo/bbva_os-02.jpg" alt="BBVA Open Space — Tablet">
+        <div class="screen-web-cap">Tablet</div>
+      </div>
+      <div class="screen-web">
+        <img src="assets/4andgo/bbva_os-03.jpg" alt="BBVA Open Space — Mobile">
+        <div class="screen-web-cap">Mobile</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section reveal" style="transition-delay:.15s">
+    <div class="gallery-section-label" data-i18n data-es="Home completa · Madrid · México · Colombia" data-en="Full home · Madrid · Mexico · Colombia">Home completa · Madrid · México · Colombia</div>
+    <div class="gallery-web-2">
+      <div class="screen-web">
+        <img src="assets/4andgo/bbva_os-04.jpg" alt="BBVA Open Space — Mobile scroll">
+        <div class="screen-web-cap" data-i18n data-es="Mobile — Scroll completo" data-en="Mobile — Full scroll">Mobile — Scroll completo</div>
+      </div>
+      <div class="screen-web">
+        <img src="assets/4andgo/bbva_os-01.jpg" alt="BBVA Open Space — Comunidad">
+        <div class="screen-web-cap" data-i18n data-es="Comunidad Open Space" data-en="Open Space Community">Comunidad Open Space</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     05 BBVA OPEN SUMMIT 2017
+══════════════════════════════════════════════ -->
+<hr class="divider">
+<div class="project-block" id="bbva-summit">
+  <div class="project-header reveal">
+    <div>
+      <div class="project-eyebrow">
+        <div class="project-type-dot" style="background:#004B9A"></div>
+        <span class="project-type-label" data-i18n data-es="Web Responsive · 2017" data-en="Responsive Web · 2017">Web Responsive · 2017</span>
+      </div>
+      <h2 class="project-name">BBVA<br><em>Open Summit</em></h2>
+      <p class="project-subtitle">BBVA Open Innovation · Matadero Madrid · 18 Oct 2017</p>
+      <p class="project-desc" data-i18n
+        data-es="El BBVA Open Summit fue el evento anual de innovación abierta del banco, celebrado en el Matadero de Madrid bajo el concepto 'Innovation: When Data Meets Design'. Diseñé el site de presentación del evento en tres breakpoints, con una identidad visual propia —fondos oscuros, formas orgánicas azules y tipografía bold— diferenciada de la línea habitual de BBVA. El site incluía un countdown en tiempo real, un programa multi-día filtrable por espacios y temáticas, perfiles de speakers y CTA de inscripción."
+        data-en="The BBVA Open Summit was the bank's annual open innovation event, held at the Matadero de Madrid under the concept 'Innovation: When Data Meets Design'. I designed the event's presentation site across three breakpoints, with its own visual identity — dark backgrounds, organic blue shapes and bold typography — distinct from BBVA's usual brand line. The site included a real-time countdown, a multi-day programme filterable by spaces and themes, speaker profiles and a registration CTA.">
+        El BBVA Open Summit fue el evento anual de innovación abierta del banco, celebrado en el Matadero de Madrid bajo el concepto 'Innovation: When Data Meets Design'. Diseñé el site de presentación del evento en tres breakpoints, con una identidad visual propia —fondos oscuros, formas orgánicas azules y tipografía bold— diferenciada de la línea habitual de BBVA. El site incluía un countdown en tiempo real, un programa multi-día filtrable por espacios y temáticas, perfiles de speakers y CTA de inscripción.
+      </p>
+      <div class="project-chips">
+        <span class="pchip" data-i18n data-es="Web Responsive" data-en="Responsive Web">Web Responsive</span>
+        <span class="pchip" data-i18n data-es="Microsite de evento" data-en="Event microsite">Microsite de evento</span>
+        <span class="pchip">Countdown</span>
+        <span class="pchip" data-i18n data-es="Programa multi-día" data-en="Multi-day programme">Programa multi-día</span>
+        <span class="pchip" data-i18n data-es="Art Direction" data-en="Art Direction">Art Direction</span>
+      </div>
+    </div>
+    <div class="project-meta-col">
+      <div class="meta-pair">
+        <label data-i18n data-es="Cliente" data-en="Client">Cliente</label>
+        <span>BBVA Open Innovation</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Tipo" data-en="Type">Tipo</label>
+        <span data-i18n data-es="Web Responsive · Microsite" data-en="Responsive Web · Microsite">Web Responsive · Microsite</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Mi rol" data-en="My role">Mi rol</label>
+        <span>UX/UI Designer</span>
+      </div>
+      <div class="meta-pair">
+        <label data-i18n data-es="Plataformas" data-en="Platforms">Plataformas</label>
+        <span>Desktop · Tablet · Mobile</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section reveal" style="transition-delay:.1s">
+    <div class="gallery-section-label" data-i18n data-es="Desktop · Tablet · Mobile" data-en="Desktop · Tablet · Mobile">Desktop · Tablet · Mobile</div>
+    <div class="gallery-web">
+      <div class="screen-web">
+        <img src="assets/4andgo/bbva_sum_d-01.jpg" alt="BBVA Open Summit — Desktop">
+        <div class="screen-web-cap">Desktop</div>
+      </div>
+      <div class="screen-web">
+        <img src="assets/4andgo/bbva_sum_t-06.jpg" alt="BBVA Open Summit — Tablet">
+        <div class="screen-web-cap">Tablet</div>
+      </div>
+      <div class="screen-web">
+        <img src="assets/4andgo/bbva_sum_m1-04.jpg" alt="BBVA Open Summit — Mobile">
+        <div class="screen-web-cap">Mobile</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-section reveal" style="transition-delay:.15s">
+    <div class="gallery-section-label" data-i18n data-es="Programa multi-día" data-en="Multi-day programme">Programa multi-día</div>
+    <div class="gallery-web-2">
+      <div class="screen-web">
+        <img src="assets/4andgo/bbva_sum_prog-16.jpg" alt="BBVA Open Summit — Programa">
+        <div class="screen-web-cap" data-i18n data-es="Programa — Filtrado por día y espacio" data-en="Programme — Filtered by day and space">Programa — Filtrado por día y espacio</div>
+      </div>
+      <div class="screen-web">
+        <img src="assets/4andgo/bbva_sum_m1-04.jpg" alt="BBVA Open Summit — Mobile menú">
+        <div class="screen-web-cap" data-i18n data-es="Mobile — Menú de navegación" data-en="Mobile — Navigation menu">Mobile — Menú de navegación</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var currentLang = localStorage.getItem('lang') || 'en';
+
+  function applyLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var val = el.getAttribute('data-' + lang);
+      if (val !== null) el.textContent = val;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var val = el.getAttribute('data-' + lang);
+      if (val !== null) el.innerHTML = val;
+    });
+  }
+
+  function fitHero() {
+    var hero = document.querySelector('.hero');
+    var subnav = document.querySelector('.subnav');
+    var mobileHeader = document.querySelector('.mobile-header');
+    var isMobile = window.innerWidth <= 900;
+    if (!hero || !subnav) return;
+    if (isMobile && mobileHeader) {
+      hero.style.minHeight = (window.innerHeight - mobileHeader.offsetHeight - subnav.offsetHeight) + 'px';
+    } else {
+      hero.style.minHeight = (window.innerHeight - subnav.offsetHeight) + 'px';
+    }
+  }
+  fitHero();
+  window.addEventListener('resize', fitHero);
+
+  document.addEventListener('DOMContentLoaded', function() {
+    applyLang(currentLang);
+    fitHero();
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const navLinks = document.querySelectorAll('.subnav-links a');
+  const sections = ['intro','ser','elesp','gdocio','bbva-os','bbva-summit']
+    .map(id => document.getElementById(id)).filter(Boolean);
+  let lastActive = null;
+
+  function setActive(id) {
+    if (id === lastActive) return;
+    lastActive = id;
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    var activeLink = document.querySelector('.subnav-links a[href="#' + id + '"]');
+    var subnavLinks = document.querySelector('.subnav-links');
+    if (activeLink && subnavLinks) {
+      var scrollTarget = activeLink.offsetLeft - (subnavLinks.offsetWidth / 2) + (activeLink.offsetWidth / 2);
+      subnavLinks.scrollTo({ left: scrollTarget, behavior: 'smooth' });
+    }
+  }
+
+  window.addEventListener('scroll', function() {
+    var subnav = document.querySelector('.subnav');
+    var offset = subnav ? subnav.getBoundingClientRect().bottom : 80;
+    var current = sections[0] ? sections[0].id : 'intro';
+    sections.forEach(function(sec) {
+      if (sec.getBoundingClientRect().top <= offset + 30) current = sec.id;
+    });
+    setActive(current);
+  }, { passive: true });
+</script>
+</body>
+</html>
