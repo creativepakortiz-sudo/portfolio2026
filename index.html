@@ -175,108 +175,123 @@
   </div>
 
   <div class="projects-list">
-  <div class="eci-banner reveal">
-    <div class="eci-banner-inner">
-      <div>
-        <div class="eci-header-row">
-          <span class="eci-label" data-i18n data-en="Currently · Since Oct 2023" data-es="Actualmente · Desde oct 2023">Currently · Since Oct 2023</span>
-          <img src="assets/eci-logo.svg" alt="El Corte Inglés" class="eci-logo" onerror="this.style.display='none'">
-        </div>
-        <h3 class="eci-title" data-i18n-html data-en="El Corte Inglés — <em>Designing at scale</em>" data-es="El Corte Inglés — <em>Diseñando a escala</em>">El Corte Inglés — <em>Designing at scale</em></h3>
-        <p class="eci-desc" data-i18n data-en="Working as a Product Designer within the product design team, embedded in cross-functional squads alongside product managers, engineers, and data analysts. Collaborating in a full agile environment (Scrum) on one of the biggest e-commerce platforms in Spain." data-es="Trabajando como Product Designer dentro del equipo de diseño de producto, integrado en squads multidisciplinares junto a product managers, ingenieros y analistas de datos. Colaborando en un entorno ágil (Scrum) en una de las mayores plataformas de e-commerce de España.">Working as a Product Designer within the product design team, embedded in cross-functional squads alongside product managers, engineers, and data analysts. Collaborating in a full agile environment (Scrum) on one of the biggest e-commerce platforms in Spain.</p>
-      </div>
-      <div class="eci-squads">
-        <div class="eci-squad-item">
-          <div class="eci-squad-icon">🔍</div>
-          <div class="eci-squad-info"><span class="squad-name" data-i18n data-en="Search Squad" data-es="Squad de Búsqueda">Search Squad</span><span class="squad-desc" data-i18n data-en="Improving search relevance & user findability" data-es="Mejorando la relevancia de búsqueda y la localización">Improving search relevance & user findability</span><button class="squad-cs-btn" onclick="openCaseStudy('eci-buscador.html')" data-i18n data-en="Ver case study" data-es="Ver case study">Ver case study</button></div>
-        </div>
-        <div class="eci-squad-item">
-          <div class="eci-squad-icon">🛒</div>
-          <div class="eci-squad-info"><span class="squad-name-row"><span class="squad-name" data-i18n data-en="Shopping Squad" data-es="Squad de Compra">Shopping Squad</span><span class="squad-coming-soon" data-i18n data-en="Coming soon" data-es="Próximamente">Coming soon</span></span><span class="squad-desc" data-i18n data-en="Optimizing the purchasing experience" data-es="Optimizando la experiencia de compra">Optimizing the purchasing experience</span></div>
-        </div>
-        <div class="eci-squad-item">
-          <div class="eci-squad-icon">👤</div>
-          <div class="eci-squad-info"><span class="squad-name" data-i18n data-en="Customer Squad" data-es="Squad de Cliente">Customer Squad</span><span class="squad-desc" data-i18n data-en="Login, registration & account experience" data-es="Login, registro y experiencia de cuenta">Login, registration & account experience</span><button class="squad-cs-btn" onclick="openCaseStudy('eci-login.html')" data-i18n data-en="Ver case study" data-es="Ver case study">Ver case study</button></div>
-        </div>
-      </div>
+  <!-- SHOPPING SQUAD — coming soon -->
+  <div class="ph-card reveal ph-card--disabled">
+    <div class="ph-visual" style="background:#1A4F3A;">
+      <span class="ph-squad-label">🛒 Shopping Squad</span>
+      <span class="ph-client-badge">El Corte Inglés</span>
+    </div>
+    <div class="ph-info">
+      <span class="ph-meta" data-i18n data-en="E-commerce · UX/UI · 2023–present" data-es="E-commerce · UX/UI · 2023–presente">E-commerce · UX/UI · 2023–present</span>
+      <h3 class="ph-title" data-i18n data-en="Shopping Squad — Optimizing the purchasing experience" data-es="Shopping Squad — Optimizando la experiencia de compra">Shopping Squad — Optimizing the purchasing experience</h3>
+      <p class="ph-company" data-i18n data-en="Product Designer · El Corte Inglés" data-es="Product Designer · El Corte Inglés">Product Designer · El Corte Inglés</p>
+      <p class="ph-desc" data-i18n data-en="Improving the end-to-end shopping flow, from product listing to checkout, in one of Spain's largest e-commerce platforms." data-es="Mejorando el flujo de compra de extremo a extremo, desde el listado de producto hasta el checkout, en una de las mayores plataformas de e-commerce de España.">Improving the end-to-end shopping flow, from product listing to checkout, in one of Spain's largest e-commerce platforms.</p>
+      <div class="ph-tags-row"><span class="ph-tag-chip">Product Design</span><span class="ph-tag-chip">E-commerce</span><span class="ph-tag-chip">Scrum</span><span class="ph-tag-chip">Design System</span></div>
+      <span class="ph-coming-soon-btn" data-i18n data-en="Coming soon" data-es="Próximamente">Coming soon</span>
     </div>
   </div>
-  <div class="project-card reveal project-card--linked" onclick="openCaseStudy('woowbe.html')" style="cursor:pointer">
-    <div class="project-visual" style="background:#F2EDE6;min-height:300px;overflow:hidden;position:relative;display:flex;align-items:center">
-      <img src="assets/img_02.webp" alt="Woowbe" style="position:absolute;top:28px;left:28px;z-index:2;width:72px;height:72px;border-radius:18px;flex-shrink:0">
-      <img src="assets/img_03.svg" alt="" style="position:absolute;right:0;bottom:0;height:100%;width:auto;object-fit:contain;object-position:right bottom">
+  <!-- SEARCH SQUAD -->
+  <div class="ph-card reveal ph-card--linked" onclick="openCaseStudy('eci-buscador.html')" style="cursor:pointer">
+    <div class="ph-visual" style="background:#0D3D5C;">
+      <span class="ph-squad-label">🔍 Search Squad</span>
+      <span class="ph-client-badge">El Corte Inglés</span>
     </div>
+    <div class="ph-info">
+      <span class="ph-meta" data-i18n data-en="E-commerce · Search UX · 2023–present" data-es="E-commerce · Search UX · 2023–presente">E-commerce · Search UX · 2023–present</span>
+      <h3 class="ph-title" data-i18n data-en="Search Squad — Improving search relevance & findability" data-es="Search Squad — Mejorando la relevancia de búsqueda y localización">Search Squad — Improving search relevance & findability</h3>
+      <p class="ph-company" data-i18n data-en="Product Designer · El Corte Inglés" data-es="Product Designer · El Corte Inglés">Product Designer · El Corte Inglés</p>
+      <p class="ph-desc" data-i18n data-en="Redesigning the search experience to surface the right products faster, reducing zero-result rates and improving conversion." data-es="Rediseñando la experiencia de búsqueda para mostrar los productos correctos más rápido, reduciendo las tasas de cero resultados y mejorando la conversión.">Redesigning the search experience to surface the right products faster, reducing zero-result rates and improving conversion.</p>
+      <div class="ph-tags-row"><span class="ph-tag-chip">Search UX</span><span class="ph-tag-chip">Information Architecture</span><span class="ph-tag-chip">Scrum</span><span class="ph-tag-chip">A/B Testing</span></div>
+      <a class="ph-cs-btn" onclick="event.stopPropagation(); openCaseStudy('eci-buscador.html'); return false;" href="#" data-i18n data-en="View case study →" data-es="Ver case study →">Ver case study →</a>
+    </div>
+  </div>
+  <!-- CUSTOMER SQUAD -->
+  <div class="ph-card reveal ph-card--linked" onclick="openCaseStudy('eci-login.html')" style="cursor:pointer">
+    <div class="ph-visual" style="background:#3D1A5C;">
+      <span class="ph-squad-label">👤 Customer Squad</span>
+      <span class="ph-client-badge">El Corte Inglés</span>
+    </div>
+    <div class="ph-info">
+      <span class="ph-meta" data-i18n data-en="E-commerce · Auth & Account · 2023–present" data-es="E-commerce · Auth & Cuenta · 2023–presente">E-commerce · Auth & Account · 2023–present</span>
+      <h3 class="ph-title" data-i18n data-en="Customer Squad — Login, registration & account experience" data-es="Customer Squad — Login, registro y experiencia de cuenta">Customer Squad — Login, registration & account experience</h3>
+      <p class="ph-company" data-i18n data-en="Product Designer · El Corte Inglés" data-es="Product Designer · El Corte Inglés">Product Designer · El Corte Inglés</p>
+      <p class="ph-desc" data-i18n data-en="Redesigning authentication and account flows to reduce friction, increase registration completion and improve the post-login experience." data-es="Rediseñando los flujos de autenticación y cuenta para reducir la fricción, aumentar la tasa de registro y mejorar la experiencia post-login.">Redesigning authentication and account flows to reduce friction, increase registration completion and improve the post-login experience.</p>
+      <div class="ph-tags-row"><span class="ph-tag-chip">Auth UX</span><span class="ph-tag-chip">User Research</span><span class="ph-tag-chip">Scrum</span><span class="ph-tag-chip">Design System</span></div>
+      <a class="ph-cs-btn" onclick="event.stopPropagation(); openCaseStudy('eci-login.html'); return false;" href="#" data-i18n data-en="View case study →" data-es="Ver case study →">Ver case study →</a>
+    </div>
+  </div>
+  <!-- WOOWBE -->
+  <div class="ph-card reveal ph-card--linked" onclick="openCaseStudy('woowbe.html')" style="cursor:pointer">
+    <div class="ph-visual" style="background:#F2EDE6;position:relative;overflow:hidden;">
+      <img src="assets/img_02.webp" alt="Woowbe" style="position:absolute;top:24px;left:24px;width:64px;height:64px;border-radius:16px;z-index:2;">
+      <img src="assets/img_03.svg" alt="" style="position:absolute;right:0;bottom:0;height:100%;width:auto;object-fit:contain;object-position:right bottom;">
+    </div>
+    <div class="ph-info">
+      <span class="ph-meta" data-i18n data-en="Fintech · Card-Linked Offers · iOS & Android · 2020–2023" data-es="Fintech · Card-Linked Offers · iOS & Android · 2020–2023">Fintech · Card-Linked Offers · iOS & Android · 2020–2023</span>
+      <h3 class="ph-title" data-i18n data-en="Woowbe — Frictionless automatic cashback" data-es="Woowbe — Cashback automático sin fricción">Woowbe — Cashback automático sin fricción</h3>
+      <p class="ph-company" data-i18n data-en="Lead Product Designer · Woowbe" data-es="Lead Product Designer · Woowbe">Lead Product Designer · Woowbe</p>
+      <p class="ph-desc" data-i18n data-en="An intelligence layer between bank card and points of sale. When an eligible transaction is detected, cashback is credited automatically — no coupons, no QR codes, no friction." data-es="Una capa de inteligencia entre la tarjeta bancaria y los puntos de venta. Cuando se detecta una transacción elegible, el cashback se abona automáticamente — sin cupones, sin QRs, sin fricción.">An intelligence layer between bank card and points of sale. When an eligible transaction is detected, cashback is credited automatically — no coupons, no QR codes, no friction.</p>
+      <div class="ph-tags-row"><span class="ph-tag-chip">Product Design</span><span class="ph-tag-chip">Design System</span><span class="ph-tag-chip">Mobile App</span><span class="ph-tag-chip">B2B Portal</span><span class="ph-tag-chip">Card-Linked Offers</span></div>
+      <a class="ph-cs-btn" onclick="event.stopPropagation(); openCaseStudy('woowbe.html'); return false;" href="#" data-i18n data-en="View case study →" data-es="Ver case study →">Ver case study →</a>
+    </div>
+  </div>
+  <!-- CLOTHESHOW -->
+  <div class="ph-card reveal ph-card--linked" onclick="openCaseStudy('clotheshow.html')" style="cursor:pointer">
+    <div class="ph-visual" style="background:#F7F0E8;overflow:hidden;padding:0;">
+      <img src="assets/img_05.jpg" alt="ClotheShow app" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="ph-info">
+      <span class="ph-meta" data-i18n data-en="Fashion Tech · Interaction · iOS · 2018" data-es="Fashion Tech · Interacción · iOS · 2018">Fashion Tech · Interaction · iOS · 2018</span>
+      <h3 class="ph-title" data-i18n data-en="ClotheShow — Rate and discover next season's collection" data-es="ClotheShow — Descubre y valora las prendas de la próxima colección">ClotheShow — Rate and discover next season's collection</h3>
+      <p class="ph-company" data-i18n data-en="UX/UI Mobile Designer · Softtek × Zara Man" data-es="UX/UI Mobile Designer · Softtek × Zara Man">UX/UI Mobile Designer · Softtek × Zara Man</p>
+      <p class="ph-desc" data-i18n data-en="A private iOS app replacing paper-based garment rating at seasonal presentations. Emoji reactions convert to real-time quantitative rankings for buying decisions." data-es="Una app iOS privada que sustituye la valoración de prendas en papel en las presentaciones de temporada. Las reacciones emoji se convierten en rankings cuantitativos en tiempo real para las decisiones de compra.">A private iOS app replacing paper-based garment rating at seasonal presentations. Emoji reactions convert to real-time quantitative rankings for buying decisions.</p>
+      <div class="ph-tags-row"><span class="ph-tag-chip">Interaction Design</span><span class="ph-tag-chip">Fashion Tech</span><span class="ph-tag-chip">iOS</span><span class="ph-tag-chip">Axure Prototype</span></div>
+      <a class="ph-cs-btn" onclick="event.stopPropagation(); openCaseStudy('clotheshow.html'); return false;" href="#" data-i18n data-en="View case study →" data-es="Ver case study →">Ver case study →</a>
+    </div>
+  </div>
+  <!-- 4ANDGO -->
+  <div class="ph-card reveal ph-card--linked" onclick="openCaseStudy('4andgo.html')" style="cursor:pointer">
+    <div class="ph-visual" style="background:#F2E8E4;overflow:hidden;padding:0;">
+      <img src="assets/img_04.jpg" alt="4andGo projects" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="ph-info">
+      <span class="ph-meta" data-i18n data-en="Mobile · UX/UI · Interaction · 2015–2017" data-es="Mobile · UX/UI · Interacción · 2015–2017">Mobile · UX/UI · Interaction · 2015–2017</span>
+      <h3 class="ph-title" data-i18n data-en="4andGo — Mobile design for media and large brands" data-es="4andGo — Diseño mobile para medios y grandes marcas">4andGo — Mobile design for media and large brands</h3>
+      <p class="ph-company" data-i18n data-en="UX/UI Mobile Designer · 4andGo" data-es="UX/UI Mobile Designer · 4andGo">UX/UI Mobile Designer · 4andGo</p>
+      <p class="ph-desc" data-i18n data-en="Complex mobile experiences for premium media and consumer brands: BBVA Open Space, BBVA Open Summit 2017, Cadena SER, El Español." data-es="Experiencias mobile complejas para grandes marcas de medios y consumo: BBVA Open Space, BBVA Open Summit 2017, Cadena SER, El Español.">Complex mobile experiences for premium media and consumer brands: BBVA Open Space, BBVA Open Summit 2017, Cadena SER, El Español.</p>
+      <div class="ph-tags-row"><span class="ph-tag-chip">Mobile UX/UI</span><span class="ph-tag-chip">iOS / Android</span><span class="ph-tag-chip">Responsive Web</span><span class="ph-tag-chip">Art Direction</span></div>
+      <a class="ph-cs-btn" onclick="event.stopPropagation(); openCaseStudy('4andgo.html'); return false;" href="#" data-i18n data-en="View projects →" data-es="Ver proyectos →">Ver proyectos →</a>
+    </div>
+  </div>
+  <!-- INDITEX LOGISTICS -->
+  <div class="ph-card reveal ph-card--disabled">
+    <div class="ph-visual" style="background:#8FBFB0;overflow:hidden;padding:0;">
+      <img src="assets/img_06.jpg" alt="Inditex Logistics" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="ph-info">
+      <span class="ph-meta" data-i18n data-en="Retail Logistics · Enterprise UX · 2017–2019" data-es="Logística en Retail · Enterprise UX · 2017–2019">Retail Logistics · Enterprise UX · 2017–2019</span>
+      <h3 class="ph-title" data-i18n data-en="Inditex Logistics — Simplifying warehouse operations" data-es="Inditex Logistics — Simplificando las operaciones de almacén">Inditex Logistics — Simplifying warehouse operations</h3>
+      <p class="ph-company" data-i18n data-en="UX/UI Designer · Softtek for Inditex" data-es="UX/UI Designer · Softtek para Inditex">UX/UI Designer · Softtek para Inditex</p>
+      <p class="ph-desc" data-i18n data-en="Redesign of internal logistics platforms — packaging, stock, delivery and warehouse process management — simplifying interfaces to improve daily operations for warehouse staff." data-es="Rediseño de plataformas internas de logística — empaquetado, stock, repartos y gestión de procesos de almacén — simplificando interfaces para mejorar las operaciones diarias del personal.">Redesign of internal logistics platforms — packaging, stock, delivery and warehouse process management — simplifying interfaces to improve daily operations for warehouse staff.</p>
+      <div class="ph-tags-row"><span class="ph-tag-chip">Enterprise UX</span><span class="ph-tag-chip">Retail Logistics</span><span class="ph-tag-chip">Information Architecture</span><span class="ph-tag-chip">Card Sorting</span></div>
+      <span class="ph-coming-soon-btn" data-i18n data-en="Coming soon" data-es="Próximamente">Coming soon</span>
+    </div>
+  </div>
+  <!-- BANKINTER -->
+  <div class="ph-card reveal ph-card--disabled">
+    <div class="ph-visual" style="background:#ECEEF0;overflow:hidden;padding:0;">
+      <img src="assets/img_07.jpg" alt="Bankinter Internal Tool" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="ph-info">
+      <span class="ph-meta" data-i18n data-en="Banking · Enterprise UX · 2017–2019" data-es="Banca · Enterprise UX · 2017–2019">Banking · Enterprise UX · 2017–2019</span>
+      <h3 class="ph-title" data-i18n data-en="Bankinter — Redesigning internal banking tools" data-es="Bankinter — Rediseño de herramientas internas bancarias">Bankinter — Redesigning internal banking tools</h3>
+      <p class="ph-company" data-i18n data-en="UX/UI Designer · Softtek for Bankinter" data-es="UX/UI Designer · Softtek para Bankinter">UX/UI Designer · Softtek para Bankinter</p>
+      <p class="ph-desc" data-i18n data-en="Redesign of internal tools applying Information Architecture, Card Sorting and real-user validation, simplifying workflows and reducing cognitive load for banking managers." data-es="Rediseño de herramientas internas aplicando Arquitectura de Información, Card Sorting y validación con usuarios reales, simplificando flujos y reduciendo la carga cognitiva para los gestores bancarios.">Redesign of internal tools applying Information Architecture, Card Sorting and real-user validation, simplifying workflows and reducing cognitive load for banking managers.</p>
+      <div class="ph-tags-row"><span class="ph-tag-chip">Enterprise UX</span><span class="ph-tag-chip">Banking</span><span class="ph-tag-chip">Information Architecture</span><span class="ph-tag-chip">Card Sorting</span></div>
+      <span class="ph-coming-soon-btn" data-i18n data-en="Coming soon" data-es="Próximamente">Coming soon</span>
+    </div>
+  </div>
 
-    <div class="project-info">
-      <span class="project-tag" data-i18n data-en="Fintech · Card-Linked Offers · iOS &amp; Android · 2020–2023" data-es="Fintech · Card-Linked Offers · iOS &amp; Android · 2020–2023">Fintech · Card-Linked Offers · iOS &amp; Android · 2020–2023</span>
-      <h3 class="project-title" data-i18n data-en="Woowbe — Frictionless automatic cashback" data-es="Woowbe — Cashback automático sin fricción">Woowbe — Cashback automático sin fricción</h3>
-      <p class="project-company" data-i18n data-en="Lead Product Designer · Woowbe" data-es="Lead Product Designer · Woowbe">Lead Product Designer · Woowbe</p>
-      <div class="story-block"><span class="story-label" data-i18n data-en="The Problem" data-es="El Problema">The Problem</span><p class="story-text" data-i18n data-en="Existing loyalty programmes are fragmented and full of friction for all three ecosystem actors: users lose rewards through complexity, merchants invest without measuring real ROI, and banks lack the technology to build their own programme." data-es="Los programas de fidelización existentes son fragmentados y llenos de fricción para los tres actores: el usuario pierde recompensas por complejidad, el comercio invierte sin medir ROI real y el banco no tiene tecnología para crear un programa propio.">Los programas de fidelización existentes son fragmentados y llenos de fricción para los tres actores: el usuario pierde recompensas por complejidad, el comercio invierte sin medir ROI real y el banco no tiene tecnología para crear un programa propio.</p></div>
-      <div class="story-block"><span class="story-label" data-i18n data-en="The Solution" data-es="La Solución">The Solution</span><p class="story-text" data-i18n data-en="Woowbe acts as an intelligence layer between the bank card and points of sale. When an eligible transaction is detected, cashback is credited automatically — no coupons, no QR codes, no change in payment habits." data-es="Woowbe actúa como capa de inteligencia entre la tarjeta bancaria y los puntos de venta. Cuando se detecta una transacción elegible, el cashback se abona automáticamente — sin cupones, sin QRs, sin cambiar hábitos de pago.">Woowbe actúa como capa de inteligencia entre la tarjeta bancaria y los puntos de venta. Cuando se detecta una transacción elegible, el cashback se abona automáticamente — sin cupones, sin QRs, sin cambiar hábitos de pago.</p></div>
-      <div class="story-block"><span class="story-label" data-i18n data-en="My Role" data-es="Mi Rol">My Role</span><p class="story-text" data-i18n data-en="I led end-to-end design for 3 years: B2C mobile app (iOS &amp; Android), B2B merchant portal, Design System, onboarding and Card-Linking flows, and design management for partner banks." data-es="Lideré el diseño end-to-end durante 3 años: app móvil B2C (iOS &amp; Android), portal B2B para comercios, Design System, flujos de onboarding y Card-Linking, y gestión del diseño para bancos partners.">Lideré el diseño end-to-end durante 3 años: app móvil B2C (iOS &amp; Android), portal B2B para comercios, Design System, flujos de onboarding y Card-Linking, y gestión del diseño para bancos partners.</p></div>
-      <div class="project-tags-row"><span class="project-tag-chip">Product Design</span><span class="project-tag-chip">Design System</span><span class="project-tag-chip">Mobile App</span><span class="project-tag-chip">B2B Portal</span><span class="project-tag-chip">Card-Linked Offers</span><span class="project-tag-chip">User Research</span></div>
-      <a class="case-study-btn" onclick="event.stopPropagation(); openCaseStudy('woowbe.html'); return false;" href="#" data-i18n data-en="View case study →" data-es="Ver case study →">Ver case study →</a>
-    </div>
-  </div>
-  <div class="project-card reveal project-card--linked" onclick="openCaseStudy('4andgo.html')" style="cursor:pointer">
-    <div class="project-visual" style="background:#F2E8E4;overflow:hidden;padding:0">
-      <img src="assets/img_04.jpg" alt="4andGo projects" style="width:100%;height:auto;display:block">
-    </div>
-    <div class="project-info">
-      <span class="project-tag" data-i18n data-en="Mobile · UX/UI · Interaction · 2015–2017" data-es="Mobile · UX/UI · Interacción · 2015–2017">Mobile · UX/UI · Interaction · 2015–2017</span>
-      <h3 class="project-title" data-i18n data-en="4andGo — Mobile design for media and large brands" data-es="4andGo — Diseño mobile para medios y grandes marcas">4andGo — Diseño mobile para medios y grandes marcas</h3>
-      <p class="project-company" data-i18n data-en="UX/UI Mobile Designer · 4andGo" data-es="UX/UI Mobile Designer · 4andGo">UX/UI Mobile Designer · 4andGo</p>
-      <div class="story-block"><span class="story-label" data-i18n data-en="The Challenge" data-es="El Reto">The Challenge</span><p class="story-text" data-i18n data-en="Design complex mobile experiences for large media and consumer brands where interaction design and visual quality had to match premium standards." data-es="Diseñar experiencias mobile complejas para grandes marcas de medios y consumo donde el diseño de interacción y la calidad visual debían estar a la altura del estándar premium de cada marca.">Diseñar experiencias mobile complejas para grandes marcas de medios y consumo donde el diseño de interacción y la calidad visual debían estar a la altura del estándar premium de cada marca.</p></div>
-      <div class="story-block"><span class="story-label" data-i18n data-en="Key Projects" data-es="Proyectos Clave">Proyectos Clave</span><p class="story-text" data-i18n data-en="BBVA Open Space · BBVA Open Summit 2017 · Guía del Ocio App · Cadena SER App · El Español App" data-es="BBVA Open Space · BBVA Open Summit 2017 · App Guía del Ocio · App Cadena SER · App El Español">BBVA Open Space · BBVA Open Summit 2017 · App Guía del Ocio · App Cadena SER · App El Español</p></div>
-      <div class="project-tags-row"><span class="project-tag-chip">Mobile UX/UI</span><span class="project-tag-chip">iOS / Android</span><span class="project-tag-chip">Responsive Web</span><span class="project-tag-chip">Art Direction</span></div>
-      <a class="case-study-btn" onclick="event.stopPropagation(); openCaseStudy('4andgo.html'); return false;" href="#" data-i18n data-en="View projects →" data-es="Ver proyectos →">Ver proyectos →</a>
-    </div>
-  </div>
-
-  <div class="project-card reveal project-card--linked" onclick="openCaseStudy('clotheshow.html')" style="cursor:pointer">
-    <div class="project-visual" style="background:#F7F0E8;overflow:hidden;padding:0">
-      <img src="assets/img_05.jpg" alt="ClotheShow app" style="width:100%;height:auto;display:block">
-    </div>
-    <div class="project-info">
-      <span class="project-tag" data-i18n data-en="Fashion Tech · Interaction · iOS · 2018" data-es="Fashion Tech · Interacción · iOS · 2018">Fashion Tech · Interaction · iOS · 2018</span>
-      <h3 class="project-title" data-i18n data-en="ClotheShow — Rate and discover next season's collection" data-es="ClotheShow — Descubre y valora las prendas de la próxima colección">ClotheShow — Descubre y valora las prendas de la próxima colección</h3>
-      <p class="project-company" data-i18n data-en="UX/UI Mobile Designer · Softtek × Zara Man" data-es="UX/UI Mobile Designer · Softtek × Zara Man">UX/UI Mobile Designer · Softtek × Zara Man</p>
-      <div class="story-block"><span class="story-label" data-i18n data-en="The Problem" data-es="El Problema">The Problem</span><p class="story-text" data-i18n data-en="Each season, Zara Man store managers attended new collection presentations using a PDF on a tablet, rating garments by hand on paper. Notes were collected manually at the end to decide which pieces went to market." data-es="Cada temporada, los responsables de tienda de Zara Man valoraban la nueva colección sobre un PDF en tablet, anotando sus opiniones a mano en papel. Al final de la sesión se recogían las notas para decidir qué prendas saldrían al mercado.">Cada temporada, los responsables de tienda de Zara Man valoraban la nueva colección sobre un PDF en tablet, anotando sus opiniones a mano en papel. Al final de la sesión se recogían las notas para decidir qué prendas saldrían al mercado.</p></div>
-      <div class="story-block"><span class="story-label" data-i18n data-en="The Solution" data-es="La Solución">The Solution</span><p class="story-text" data-i18n data-en="A private iOS app where invited attendees browse the collection as a feed, react to each garment with an emoji-based rating, and leave comments. Reactions convert automatically into quantitative data, generating a real-time ranking of best-rated pieces." data-es="Una app iOS privada donde los asistentes exploran la colección en un feed, reaccionan a cada prenda con valoraciones por emojis y dejan comentarios. Las reacciones se convierten automáticamente en datos cuantitativos, generando un ranking en tiempo real de las prendas mejor valoradas.">Una app iOS privada donde los asistentes exploran la colección en un feed, reaccionan a cada prenda con valoraciones por emojis y dejan comentarios. Las reacciones se convierten automáticamente en datos cuantitativos, generando un ranking en tiempo real de las prendas mejor valoradas.</p></div>
-      <div class="story-block"><span class="story-label" data-i18n data-en="My Role" data-es="Mi Rol">My Role</span><p class="story-text" data-i18n data-en="Designed the full interaction model: the garment feed, the emoji-based reaction mechanic, the detail view, the pre-event waiting screen and the circular content flow. Delivered a fully interactive Axure prototype." data-es="Diseñé el modelo de interacción completo: el feed de prendas, la mecánica de valoración por reacciones, la vista de detalle, la pantalla de espera pre-evento y el flujo circular de contenido. Entregué un prototipo completamente interactivo en Axure.">Diseñé el modelo de interacción completo: el feed de prendas, la mecánica de valoración por reacciones, la vista de detalle, la pantalla de espera pre-evento y el flujo circular de contenido. Entregué un prototipo completamente interactivo en Axure.</p></div>
-      <div class="project-tags-row"><span class="project-tag-chip">Interaction Design</span><span class="project-tag-chip">Fashion Tech</span><span class="project-tag-chip">iOS</span><span class="project-tag-chip">Axure Prototype</span><span class="project-tag-chip">Data-driven Design</span><span class="project-tag-chip">Internal Tool</span></div>
-      <a class="case-study-btn" onclick="event.stopPropagation(); openCaseStudy('clotheshow.html'); return false;" href="#" data-i18n data-en="View case study →" data-es="Ver case study →">Ver case study →</a>
-    </div>
-  </div>
-  <div class="project-card reveal">
-    <div class="project-visual" style="background:#8FBFB0;overflow:hidden;padding:0">
-      <img src="assets/img_06.jpg" alt="Card Sorting session — Inditex Logistics" style="width:100%;height:auto;display:block">
-    </div>
-    <div class="project-info">
-      <span class="project-tag" data-i18n data-en="Retail Logistics · Enterprise UX · 2017–2019" data-es="Logística en Retail · Enterprise UX · 2017–2019">Retail Logistics · Enterprise UX · 2017–2019</span>
-      <h3 class="project-title" data-i18n data-en="Inditex Logistics — Simplifying warehouse operations" data-es="Inditex Logistics — Simplificando las operaciones de almacén">Inditex Logistics — Simplificando las operaciones de almacén</h3>
-      <p class="project-company" data-i18n data-en="UX/UI Designer · Softtek for Inditex" data-es="UX/UI Designer · Softtek para Inditex">UX/UI Designer · Softtek para Inditex</p>
-      <div class="story-block"><span class="story-label" data-i18n data-en="The Problem" data-es="El Problema">The Problem</span><p class="story-text" data-i18n data-en="Internal logistics management tools had been designed by developers and technical profiles, translating all technical complexity directly into the interface and making daily warehouse operations unnecessarily hard for staff." data-es="Las herramientas internas de gestión logística de Inditex tenían interfaces diseñadas por desarrolladores y perfiles técnicos, trasladando toda la complejidad técnica al diseño y haciendo las operaciones diarias innecesariamente difíciles para el personal de almacén.">Las herramientas internas de gestión logística de Inditex tenían interfaces diseñadas por desarrolladores y perfiles técnicos, trasladando toda la complejidad técnica al diseño y haciendo las operaciones diarias innecesariamente difíciles para el personal de almacén.</p></div>
-      <div class="story-block"><span class="story-label" data-i18n data-en="The Solution" data-es="La Solución">The Solution</span><p class="story-text" data-i18n data-en="Redesign of the packaging, stock, delivery and general warehouse process management platforms. Simplified interfaces focusing on task execution flows to improve daily operations." data-es="Rediseño de las plataformas de gestión de empaquetado, stock, repartos y procesos de almacén. Simplificación de interfaces haciendo foco en flujos de ejecución de tareas para mejorar las operaciones diarias.">Rediseño de las plataformas de gestión de empaquetado, stock, repartos y procesos de almacén. Simplificación de interfaces haciendo foco en flujos de ejecución de tareas para mejorar las operaciones diarias.</p></div>
-      <div class="project-tags-row"><span class="project-tag-chip">Enterprise UX</span><span class="project-tag-chip">Retail Logistics</span><span class="project-tag-chip">Information Architecture</span><span class="project-tag-chip">Card Sorting</span><span class="project-tag-chip">Wireframing</span></div>
-      <a class="case-study-btn" disabled data-i18n data-en="Case study coming soon" data-es="Case study próximamente">Case study próximamente</a>
-    </div>
-  </div>
-
-  <div class="project-card reveal">
-    <div class="project-visual" style="background:#ECEEF0;overflow:hidden;padding:0">
-      <img src="assets/img_07.jpg" alt="Bankinter Internal Tool UI" style="width:100%;height:auto;display:block">
-    </div>
-    <div class="project-info">
-      <span class="project-tag" data-i18n data-en="Banking · Enterprise UX · 2017–2019" data-es="Banca · Enterprise UX · 2017–2019">Banking · Enterprise UX · 2017–2019</span>
-      <h3 class="project-title" data-i18n data-en="Bankinter — Redesigning internal banking tools" data-es="Bankinter — Rediseño de herramientas internas bancarias">Bankinter — Rediseño de herramientas internas bancarias</h3>
-      <p class="project-company" data-i18n data-en="UX/UI Designer · Softtek for Bankinter" data-es="UX/UI Designer · Softtek para Bankinter">UX/UI Designer · Softtek para Bankinter</p>
-      <div class="story-block"><span class="story-label" data-i18n data-en="The Problem" data-es="El Problema">The Problem</span><p class="story-text" data-i18n data-en="Internal banking tools had 90s-era interfaces: dense, inconsistent and inaccessible. Managers took twice as long to complete key tasks due to poor information architecture and visual complexity." data-es="Las herramientas internas bancarias tenían interfaces de los años 90: densas, inconsistentes y sin accesibilidad. Los gestores tardaban el doble en completar tareas clave por la mala arquitectura de información y la complejidad visual.">Las herramientas internas bancarias tenían interfaces de los años 90: densas, inconsistentes y sin accesibilidad. Los gestores tardaban el doble en completar tareas clave por la mala arquitectura de información y la complejidad visual.</p></div>
-      <div class="story-block"><span class="story-label" data-i18n data-en="The Solution" data-es="La Solución">The Solution</span><p class="story-text" data-i18n data-en="Redesign of the internal tool applying Information Architecture, Card Sorting and real-user validation before each delivery, simplifying workflows and reducing cognitive load." data-es="Rediseño de la herramienta interna aplicando Arquitectura de Información, Card Sorting y validación con usuarios reales antes de cada entrega, simplificando flujos y reduciendo la carga cognitiva.">Rediseño de la herramienta interna aplicando Arquitectura de Información, Card Sorting y validación con usuarios reales antes de cada entrega, simplificando flujos y reduciendo la carga cognitiva.</p></div>
-      <div class="project-tags-row"><span class="project-tag-chip">Enterprise UX</span><span class="project-tag-chip">Banking</span><span class="project-tag-chip">Information Architecture</span><span class="project-tag-chip">Card Sorting</span><span class="project-tag-chip">Wireframing</span></div>
-      <a class="case-study-btn" disabled data-i18n data-en="Case study coming soon" data-es="Case study próximamente">Case study próximamente</a>
-    </div>
-  </div>
 
   </div><!-- /projects-list -->
 
