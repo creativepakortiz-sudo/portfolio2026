@@ -945,10 +945,12 @@
     var lbImg = document.getElementById('imgLightboxImg');
     lbImg.src = imgEl.src; lbImg.alt = imgEl.alt;
     lb.classList.add('open'); document.body.style.overflow = 'hidden';
+    try { window.parent.postMessage({ type: 'imgLightbox', open: true }, '*'); } catch(e) {}
   }
   function closeImgLightbox() {
     var lb = document.getElementById('imgLightbox');
     lb.classList.remove('open'); document.body.style.overflow = '';
+    try { window.parent.postMessage({ type: 'imgLightbox', open: false }, '*'); } catch(e) {}
   }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeImgLightbox(); });
 </script>
