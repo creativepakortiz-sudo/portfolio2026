@@ -110,9 +110,6 @@ section{padding:100px max(48px, calc(50% - 592px))}
 .projects{background:#F3F7F4}
 .projects-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px}
 .projects-list{display:flex;flex-direction:column;gap:24px}
-.projects-list .eci-banner{grid-column:1/-1}
-@media(min-width:1024px){.projects-list{display:grid;grid-template-columns:1fr 1fr;gap:24px}}
-@media(min-width:1400px){.projects-list{grid-template-columns:1fr 1fr 1fr}}
 .project-card{display:flex;flex-direction:column;background:var(--white);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);transition:transform var(--dur-slow) var(--ease-spring),box-shadow var(--dur-slow) var(--ease-out-smooth),border-color var(--dur-mid) var(--ease-out-smooth)}
 @media(hover:hover){.project-card--linked:hover{transform:translateY(-6px) scale(1.005);box-shadow:0 24px 64px rgba(0,0,0,.1);border-color:var(--border-strong)}}
 .project-card.reverse{flex-direction:column}
@@ -261,3 +258,28 @@ footer p{font-size:13px;color:var(--ink-light)}
 .img-lightbox-inner img{display:block;max-width:100%;max-height:calc(100vh - 80px);border-radius:12px;box-shadow:0 32px 80px rgba(0,0,0,.4)}
 .img-lightbox-close{position:absolute;top:-14px;right:-14px;width:32px;height:32px;border-radius:50%;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#1a1a18;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform var(--dur-mid) var(--ease-spring)}
 .img-lightbox-close:hover{transform:scale(1.15) rotate(90deg)}
+
+/* ── Horizontal project cards (ph-card) ── */
+.projects-list{display:flex;flex-direction:column;gap:20px}
+.ph-card{display:flex;flex-direction:row;background:var(--white);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);transition:transform var(--dur-slow) var(--ease-spring),box-shadow var(--dur-slow) var(--ease-out-smooth),border-color var(--dur-mid) var(--ease-out-smooth)}
+.ph-card--disabled{opacity:.55;pointer-events:none}
+@media(hover:hover){.ph-card--linked:hover{transform:translateY(-4px) scale(1.003);box-shadow:0 20px 56px rgba(0,0,0,.09);border-color:var(--border-strong)}}
+.ph-visual{flex:0 0 38%;min-height:240px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ph-squad-label{position:absolute;bottom:20px;left:20px;font-size:.75rem;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.9);background:rgba(0,0,0,.25);padding:6px 12px;border-radius:100px;backdrop-filter:blur(6px)}
+.ph-client-badge{position:absolute;top:16px;left:16px;font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.ph-info{flex:1;padding:32px 36px;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.ph-meta{font-size:.72rem;font-weight:500;letter-spacing:.04em;color:var(--ink-muted);text-transform:uppercase}
+.ph-title{font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.3;margin:0}
+.ph-company{font-size:.8rem;color:var(--ink-muted);margin:0}
+.ph-desc{font-size:.875rem;color:var(--ink-secondary);line-height:1.6;margin:4px 0 8px}
+.ph-tags-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.ph-tag-chip{font-size:.7rem;font-weight:500;padding:4px 10px;border-radius:100px;background:var(--surface);color:var(--ink-secondary);border:1px solid var(--border)}
+.ph-cs-btn{align-self:flex-start;margin-top:12px;font-size:.8rem;font-weight:600;color:var(--sage);text-decoration:none;padding:8px 18px;border-radius:100px;border:1.5px solid var(--sage);background:transparent;cursor:pointer;transition:background var(--dur-mid) var(--ease-out-smooth),color var(--dur-mid) var(--ease-out-smooth),transform var(--dur-mid) var(--ease-spring)}
+@media(hover:hover){.ph-cs-btn:hover{background:var(--sage);color:var(--white);transform:translateY(-2px)}}
+.ph-coming-soon-btn{align-self:flex-start;margin-top:12px;font-size:.8rem;font-weight:600;color:var(--ink-muted);padding:8px 18px;border-radius:100px;border:1.5px solid var(--border);background:transparent}
+@media(max-width:768px){
+  .ph-card{flex-direction:column}
+  .ph-visual{flex:none;min-height:180px;width:100%}
+  .ph-info{padding:24px 20px}
+  .ph-title{font-size:1rem}
+}
