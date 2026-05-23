@@ -206,24 +206,39 @@
 
   /* ─ PHONES ─ */
   .phones-band { background: var(--white); padding: 88px 48px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .phones-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 48px; }
-  .phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .phone-frame { width: 185px; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 48px rgba(26,26,24,.12), 0 0 0 1px rgba(26,26,24,.06); }
-  .phone-frame img { width: 100%; display: block; }
+  .phones-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 48px; }
+  .phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; position: relative; }
+  .phone-frame { width: 220px; aspect-ratio: 9/19.5; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 48px rgba(26,26,24,.12), 0 0 0 1px rgba(26,26,24,.06); position: relative; }
+  .phone-frame.tall { aspect-ratio: 9/22; }
+  .phone-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; cursor: zoom-in; }
+  .phone-wrap .img-zoom-btn { position: absolute; bottom: 10px; right: 10px; z-index: 10; display: flex; align-items: center; gap: 6px; padding: 6px 10px; background: rgba(255,255,255,.9); backdrop-filter: blur(6px); border: 1px solid rgba(0,0,0,.1); border-radius: 20px; font-size: 11px; font-weight: 500; color: var(--ink); cursor: pointer; opacity: 0; transform: translateY(4px); transition: opacity .2s, transform .2s; white-space: nowrap; }
+  .phone-wrap:hover .img-zoom-btn { opacity: 1; transform: translateY(0); }
+  .phone-wrap .img-zoom-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+  @media(max-width:768px) { .phone-wrap .img-zoom-btn { opacity: 1; transform: translateY(0); } }
   .phone-cap { font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-light); text-align: center; }
 
   /* ─ SCREENS / DESKTOP ─ */
-  .screens-band { background: var(--cream); padding: 88px 48px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .screens-band { background: var(--white); padding: 88px 48px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .screens-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
   .screens-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 32px; }
   .screen-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 20px rgba(26,26,24,.06); }
-  .screen-card img { width: 100%; display: block; }
+  .screen-card .img-wrap { position: relative; overflow: hidden; background: var(--cream); display: flex; align-items: flex-start; justify-content: center; }
+  .screen-card .img-wrap.desktop-h { height: 280px; }
+  .screen-card .img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; cursor: zoom-in; }
+  .screen-card .img-zoom-btn { position: absolute; bottom: 10px; right: 10px; display: flex; align-items: center; gap: 6px; padding: 6px 10px; background: rgba(255,255,255,.9); backdrop-filter: blur(6px); border: 1px solid rgba(0,0,0,.1); border-radius: 20px; font-size: 11px; font-weight: 500; color: var(--ink); cursor: pointer; opacity: 0; transform: translateY(4px); transition: opacity .2s, transform .2s; white-space: nowrap; }
+  .screen-card .img-wrap:hover .img-zoom-btn { opacity: 1; transform: translateY(0); }
+  .screen-card .img-zoom-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+  @media(max-width:768px) { .screen-card .img-zoom-btn { opacity: 1; transform: translateY(0); } }
   .screen-cap { padding: 10px 14px; font-size: 11px; font-weight: 500; letter-spacing: .5px; text-transform: uppercase; color: var(--ink-light); text-align: center; border-top: 1px solid var(--border); background: var(--cream); }
 
-  /* ─ DESKTOP FRAME ─ */
-  .desktop-frame { border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 20px 60px rgba(26,26,24,.12), 0 0 0 1px rgba(26,26,24,.06); background: var(--white); margin-top: 32px; }
-  .desktop-frame img { width: 100%; display: block; }
-  .desktop-cap { padding: 12px 20px; font-size: 11px; font-weight: 500; letter-spacing: .5px; text-transform: uppercase; color: var(--ink-light); text-align: center; border-top: 1px solid var(--border); background: var(--cream); }
+  /* ─ LIGHTBOX ─ */
+  .img-lightbox { position: fixed; inset: 0; z-index: 600; background: rgba(0,0,0,0); backdrop-filter: blur(0px); display: flex; align-items: center; justify-content: center; pointer-events: none; transition: background .3s, backdrop-filter .3s; }
+  .img-lightbox.open { background: rgba(0,0,0,.75); backdrop-filter: blur(8px); pointer-events: all; }
+  .img-lightbox-inner { position: relative; max-width: calc(100vw - 48px); max-height: calc(100vh - 80px); transform: scale(.94); opacity: 0; transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .25s ease; }
+  .img-lightbox.open .img-lightbox-inner { transform: scale(1); opacity: 1; }
+  .img-lightbox-inner img { display: block; max-width: 100%; max-height: calc(100vh - 80px); border-radius: 12px; box-shadow: 0 32px 80px rgba(0,0,0,.4); }
+  .img-lightbox-close { position: absolute; top: -14px; right: -14px; width: 32px; height: 32px; border-radius: 50%; background: #fff; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #1a1a18; box-shadow: 0 4px 16px rgba(0,0,0,.2); transition: transform .25s ease; }
+  .img-lightbox-close:hover { transform: scale(1.15) rotate(90deg); }
 
   /* sub-label */
   .sub-label { display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-light); margin-bottom: 20px; }
@@ -423,7 +438,7 @@
 
   <div class="brands-grid reveal" style="margin-top:40px">
     <div class="brand-tile"><span>El Corte Inglés</span></div>
-    <div class="brand-tile"><span>Supercor</span></div>
+    <div class="brand-tile"><span>Supermercado</span></div>
     <div class="brand-tile"><span>Hipercor</span></div>
     <div class="brand-tile"><span>Sfera</span></div>
     <div class="brand-tile"><span>Primeriti</span></div>
@@ -613,119 +628,176 @@
 
 <!-- 06 PANTALLAS MOBILE -->
 <div class="phones-band" id="pantallas">
-  <span class="section-label reveal" data-i18n data-es="06 · Pantallas · Mobile" data-en="06 · Screens · Mobile">06 &middot; Pantallas &middot; Mobile</span>
-  <h2 class="section-title reveal" style="margin-bottom:8px" data-i18n-html
-    data-es="El flujo completo<br>en <em>mobile.</em>"
-    data-en="The complete flow<br>on <em>mobile.</em>">
-    El flujo completo<br>en <em>mobile.</em>
-  </h2>
-  <p class="body-l reveal" style="margin-bottom:40px" data-i18n
-    data-es="Pantallas del flujo de acceso y registro en dispositivo móvil, organizadas por los dos caminos posibles tras introducir el email."
-    data-en="Screens of the access and registration flow on mobile device, organised by the two possible paths after entering the email.">
-    Pantallas del flujo de acceso y registro en dispositivo móvil, organizadas por los dos caminos posibles tras introducir el email.
-  </p>
+  <section style="padding:0">
+    <span class="section-label reveal" data-i18n data-es="06 · Pantallas · Mobile" data-en="06 · Screens · Mobile">06 &middot; Pantallas &middot; Mobile</span>
+    <h2 class="section-title reveal" style="margin-bottom:8px" data-i18n-html
+      data-es="El flujo completo<br>en <em>mobile.</em>"
+      data-en="The complete flow<br>on <em>mobile.</em>">
+      El flujo completo<br>en <em>mobile.</em>
+    </h2>
+    <p class="body-l reveal" style="margin-bottom:40px" data-i18n
+      data-es="Pantallas del flujo de acceso y registro en dispositivo móvil, organizadas por los dos caminos posibles tras introducir el email."
+      data-en="Screens of the access and registration flow on mobile device, organised by the two possible paths after entering the email.">
+      Pantallas del flujo de acceso y registro en dispositivo móvil, organizadas por los dos caminos posibles tras introducir el email.
+    </p>
 
-  <!-- Access flow -->
-  <div class="sub-label reveal">
-    <span class="dot"></span>
-    <span data-i18n data-es="Flujo de acceso — Email y contraseña" data-en="Access flow — Email and password">Flujo de acceso — Email y contraseña</span>
-  </div>
-  <div class="phones-row reveal">
-    <div class="phone-wrap">
-      <div class="phone-frame">
-        <img src="assets/eci_m_01_email.png" alt="Email entry" onerror="this.style.background='#e8ede9';this.style.minHeight='340px';this.alt=''">
-      </div>
-      <span class="phone-cap" data-i18n data-es="Entrada email" data-en="Email entry">Entrada email</span>
+    <!-- Access flow -->
+    <div class="sub-label reveal">
+      <span class="dot"></span>
+      <span data-i18n data-es="Flujo de acceso — Email y contraseña" data-en="Access flow — Email and password">Flujo de acceso — Email y contraseña</span>
     </div>
-    <div class="phone-wrap">
-      <div class="phone-frame">
-        <img src="assets/eci_m_02_idioma.png" alt="Language selector" onerror="this.style.background='#e8ede9';this.style.minHeight='340px';this.alt=''">
+    <div class="phones-row reveal">
+      <div class="phone-wrap">
+        <div class="phone-frame tall">
+          <img src="assets/eci_m_01_email.png" alt="Email entry" onclick="openImgLightbox(this)">
+        </div>
+        <button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.phone-wrap').querySelector('img'))">
+          <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4"/><path d="M11 11L8 8"/></svg>
+          <span data-i18n data-es="Ampliar imagen" data-en="Expand image">Ampliar imagen</span>
+        </button>
+        <span class="phone-cap" data-i18n data-es="Entrada email" data-en="Email entry">Entrada email</span>
       </div>
-      <span class="phone-cap" data-i18n data-es="Selector de idioma" data-en="Language selector">Selector de idioma</span>
-    </div>
-    <div class="phone-wrap">
-      <div class="phone-frame">
-        <img src="assets/eci_m_05_password_filled.png" alt="Password filled" onerror="this.style.background='#e8ede9';this.style.minHeight='340px';this.alt=''">
+      <div class="phone-wrap">
+        <div class="phone-frame tall">
+          <img src="assets/eci_m_02_idioma.png" alt="Language selector" onclick="openImgLightbox(this)">
+        </div>
+        <button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.phone-wrap').querySelector('img'))">
+          <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4"/><path d="M11 11L8 8"/></svg>
+          <span data-i18n data-es="Ampliar imagen" data-en="Expand image">Ampliar imagen</span>
+        </button>
+        <span class="phone-cap" data-i18n data-es="Selector de idioma" data-en="Language selector">Selector de idioma</span>
       </div>
-      <span class="phone-cap" data-i18n data-es="Contraseña introducida" data-en="Password filled">Contraseña introducida</span>
+      <div class="phone-wrap">
+        <div class="phone-frame tall">
+          <img src="assets/eci_m_05_password_filled.png" alt="Password filled" onclick="openImgLightbox(this)">
+        </div>
+        <button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.phone-wrap').querySelector('img'))">
+          <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4"/><path d="M11 11L8 8"/></svg>
+          <span data-i18n data-es="Ampliar imagen" data-en="Expand image">Ampliar imagen</span>
+        </button>
+        <span class="phone-cap" data-i18n data-es="Contraseña introducida" data-en="Password filled">Contraseña introducida</span>
+      </div>
     </div>
-  </div>
 
-  <!-- Registration flow -->
-  <div class="sub-label reveal" style="margin-top:48px">
-    <span class="dot gold"></span>
-    <span data-i18n data-es="Flujo de registro — Verificación y datos" data-en="Registration flow — Verification and data">Flujo de registro — Verificación y datos</span>
-  </div>
-  <div class="phones-row reveal">
-    <div class="phone-wrap">
-      <div class="phone-frame">
-        <img src="assets/eci_m_07_verify_filled.png" alt="Verification code filled" onerror="this.style.background='#e8ede9';this.style.minHeight='340px';this.alt=''">
-      </div>
-      <span class="phone-cap" data-i18n data-es="Verificación — código" data-en="Verification — code">Verificación — código</span>
+    <!-- Registration flow -->
+    <div class="sub-label reveal" style="margin-top:56px">
+      <span class="dot gold"></span>
+      <span data-i18n data-es="Flujo de registro — Verificación y datos" data-en="Registration flow — Verification and data">Flujo de registro — Verificación y datos</span>
     </div>
-
-    <div class="phone-wrap">
-      <div class="phone-frame">
-        <img src="assets/eci_m_09_register_form.png" alt="Registration form" onerror="this.style.background='#e8ede9';this.style.minHeight='340px';this.alt=''">
+    <div class="phones-row reveal">
+      <div class="phone-wrap">
+        <div class="phone-frame tall">
+          <img src="assets/eci_m_07_verify_filled.png" alt="Verification code" onclick="openImgLightbox(this)">
+        </div>
+        <button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.phone-wrap').querySelector('img'))">
+          <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4"/><path d="M11 11L8 8"/></svg>
+          <span data-i18n data-es="Ampliar imagen" data-en="Expand image">Ampliar imagen</span>
+        </button>
+        <span class="phone-cap" data-i18n data-es="Verificación — código" data-en="Verification — code">Verificación — código</span>
       </div>
-      <span class="phone-cap" data-i18n data-es="Datos de registro" data-en="Registration form">Datos de registro</span>
-    </div>
-    <div class="phone-wrap">
-      <div class="phone-frame">
-        <img src="assets/eci_m_10_welcome.png" alt="Welcome screen" onerror="this.style.background='#e8ede9';this.style.minHeight='340px';this.alt=''">
+      <div class="phone-wrap">
+        <div class="phone-frame tall">
+          <img src="assets/eci_m_09_register_form.png" alt="Registration form" onclick="openImgLightbox(this)">
+        </div>
+        <button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.phone-wrap').querySelector('img'))">
+          <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4"/><path d="M11 11L8 8"/></svg>
+          <span data-i18n data-es="Ampliar imagen" data-en="Expand image">Ampliar imagen</span>
+        </button>
+        <span class="phone-cap" data-i18n data-es="Datos de registro" data-en="Registration form">Datos de registro</span>
       </div>
-      <span class="phone-cap" data-i18n data-es="Bienvenida" data-en="Welcome">Bienvenida</span>
+      <div class="phone-wrap">
+        <div class="phone-frame tall">
+          <img src="assets/eci_m_10_welcome.png" alt="Welcome" onclick="openImgLightbox(this)">
+        </div>
+        <button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.phone-wrap').querySelector('img'))">
+          <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4"/><path d="M11 11L8 8"/></svg>
+          <span data-i18n data-es="Ampliar imagen" data-en="Expand image">Ampliar imagen</span>
+        </button>
+        <span class="phone-cap" data-i18n data-es="Bienvenida" data-en="Welcome">Bienvenida</span>
+      </div>
     </div>
-  </div>
+  </section>
 </div>
 
 <!-- 06b PANTALLAS DESKTOP -->
 <div class="screens-band">
-  <span class="section-label reveal" data-i18n data-es="06 · Pantallas · Desktop" data-en="06 · Screens · Desktop">06 &middot; Pantallas &middot; Desktop</span>
-  <h2 class="section-title reveal" style="margin-bottom:8px" data-i18n-html
-    data-es="El mismo flujo,<br>adaptado a <em>pantalla grande.</em>"
-    data-en="The same flow,<br>adapted for <em>large screen.</em>">
-    El mismo flujo,<br>adaptado a <em>pantalla grande.</em>
-  </h2>
-  <p class="body-l reveal" style="margin-bottom:40px" data-i18n
-    data-es="En desktop, la pantalla divide el espacio en dos columnas: la izquierda con el formulario y la derecha con el refuerzo del concepto de grupo mediante el código QR de descarga de la app."
-    data-en="On desktop, the screen divides the space into two columns: the left with the form and the right reinforcing the group concept through the app download QR code.">
-    En desktop, la pantalla divide el espacio en dos columnas: la izquierda con el formulario y la derecha con el refuerzo del concepto de grupo mediante el código QR de descarga de la app.
-  </p>
+  <section style="padding:0">
+    <span class="section-label reveal" data-i18n data-es="06 · Pantallas · Desktop" data-en="06 · Screens · Desktop">06 &middot; Pantallas &middot; Desktop</span>
+    <h2 class="section-title reveal" style="margin-bottom:8px" data-i18n-html
+      data-es="El mismo flujo,<br>adaptado a <em>pantalla grande.</em>"
+      data-en="The same flow,<br>adapted for <em>large screen.</em>">
+      El mismo flujo,<br>adaptado a <em>pantalla grande.</em>
+    </h2>
+    <p class="body-l reveal" style="margin-bottom:40px" data-i18n
+      data-es="En desktop, la pantalla divide el espacio en dos columnas: la izquierda con el formulario y la derecha con el refuerzo del concepto de grupo mediante el código QR de descarga de la app."
+      data-en="On desktop, the screen divides the space into two columns: the left with the form and the right reinforcing the group concept through the app download QR code.">
+      En desktop, la pantalla divide el espacio en dos columnas: la izquierda con el formulario y la derecha con el refuerzo del concepto de grupo mediante el código QR de descarga de la app.
+    </p>
 
-  <div class="sub-label reveal">
-    <span class="dot"></span>
-    <span data-i18n data-es="Flujo de acceso — Email y contraseña" data-en="Access flow — Email and password">Flujo de acceso — Email y contraseña</span>
-  </div>
-  <div class="screens-2 reveal">
-    <div class="screen-card">
-      <img src="assets/eci_d_01_email.png" alt="Desktop email entry" onerror="this.style.background='#e8ede9';this.style.minHeight='200px'">
-      <div class="screen-cap" data-i18n data-es="Entrada de email" data-en="Email entry">Entrada de email</div>
+    <div class="sub-label reveal">
+      <span class="dot"></span>
+      <span data-i18n data-es="Flujo de acceso — Email y contraseña" data-en="Access flow — Email and password">Flujo de acceso — Email y contraseña</span>
     </div>
-    <div class="screen-card">
-      <img src="assets/eci_d_02_password.png" alt="Desktop password" onerror="this.style.background='#e8ede9';this.style.minHeight='200px'">
-      <div class="screen-cap" data-i18n data-es="Contraseña (usuario existente)" data-en="Password (existing user)">Contraseña (usuario existente)</div>
+    <div class="screens-2 reveal">
+      <div class="screen-card">
+        <div class="img-wrap desktop-h">
+          <img src="assets/eci_d_01_email.png" alt="Desktop email entry" onclick="openImgLightbox(this)">
+          <button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))">
+            <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4"/><path d="M11 11L8 8"/></svg>
+            <span data-i18n data-es="Ampliar imagen" data-en="Expand image">Ampliar imagen</span>
+          </button>
+        </div>
+        <div class="screen-cap" data-i18n data-es="Entrada de email" data-en="Email entry">Entrada de email</div>
+      </div>
+      <div class="screen-card">
+        <div class="img-wrap desktop-h">
+          <img src="assets/eci_d_02_password.png" alt="Desktop password" onclick="openImgLightbox(this)">
+          <button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))">
+            <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4"/><path d="M11 11L8 8"/></svg>
+            <span data-i18n data-es="Ampliar imagen" data-en="Expand image">Ampliar imagen</span>
+          </button>
+        </div>
+        <div class="screen-cap" data-i18n data-es="Contraseña (usuario existente)" data-en="Password (existing user)">Contraseña (usuario existente)</div>
+      </div>
     </div>
-  </div>
 
-  <div class="sub-label reveal" style="margin-top:48px">
-    <span class="dot gold"></span>
-    <span data-i18n data-es="Flujo de registro — Verificación y datos" data-en="Registration flow — Verification and data">Flujo de registro — Verificación y datos</span>
-  </div>
-  <div class="screens-3 reveal">
-    <div class="screen-card">
-      <img src="assets/eci_d_03_verify.png" alt="Desktop verification" onerror="this.style.background='#e8ede9';this.style.minHeight='180px'">
-      <div class="screen-cap" data-i18n data-es="Verificación de código" data-en="Code verification">Verificación de código</div>
+    <div class="sub-label reveal" style="margin-top:48px">
+      <span class="dot gold"></span>
+      <span data-i18n data-es="Flujo de registro — Verificación y datos" data-en="Registration flow — Verification and data">Flujo de registro — Verificación y datos</span>
     </div>
-    <div class="screen-card">
-      <img src="assets/eci_d_04_register.png" alt="Desktop registration" onerror="this.style.background='#e8ede9';this.style.minHeight='180px'">
-      <div class="screen-cap" data-i18n data-es="Datos de registro" data-en="Registration data">Datos de registro</div>
+    <div class="screens-3 reveal">
+      <div class="screen-card">
+        <div class="img-wrap desktop-h">
+          <img src="assets/eci_d_03_verify.png" alt="Desktop verification" onclick="openImgLightbox(this)">
+          <button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))">
+            <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4"/><path d="M11 11L8 8"/></svg>
+            <span data-i18n data-es="Ampliar imagen" data-en="Expand image">Ampliar imagen</span>
+          </button>
+        </div>
+        <div class="screen-cap" data-i18n data-es="Verificación de código" data-en="Code verification">Verificación de código</div>
+      </div>
+      <div class="screen-card">
+        <div class="img-wrap desktop-h">
+          <img src="assets/eci_d_04_register.png" alt="Desktop registration" onclick="openImgLightbox(this)">
+          <button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))">
+            <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4"/><path d="M11 11L8 8"/></svg>
+            <span data-i18n data-es="Ampliar imagen" data-en="Expand image">Ampliar imagen</span>
+          </button>
+        </div>
+        <div class="screen-cap" data-i18n data-es="Datos de registro" data-en="Registration data">Datos de registro</div>
+      </div>
+      <div class="screen-card">
+        <div class="img-wrap desktop-h">
+          <img src="assets/eci_d_05_welcome.png" alt="Desktop welcome" onclick="openImgLightbox(this)">
+          <button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))">
+            <svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4"/><path d="M11 11L8 8"/></svg>
+            <span data-i18n data-es="Ampliar imagen" data-en="Expand image">Ampliar imagen</span>
+          </button>
+        </div>
+        <div class="screen-cap" data-i18n data-es="Bienvenida al grupo" data-en="Group welcome">Bienvenida al grupo</div>
+      </div>
     </div>
-    <div class="screen-card">
-      <img src="assets/eci_d_05_welcome.png" alt="Desktop welcome" onerror="this.style.background='#e8ede9';this.style.minHeight='180px'">
-      <div class="screen-cap" data-i18n data-es="Bienvenida al grupo" data-en="Group welcome">Bienvenida al grupo</div>
-    </div>
-  </div>
+  </section>
 </div>
 
 <!-- 07 RESULTADO -->
@@ -867,6 +939,28 @@
     });
     setActive(current);
   }, { passive: true });
+
+  function openImgLightbox(imgEl) {
+    var lb = document.getElementById('imgLightbox');
+    var lbImg = document.getElementById('imgLightboxImg');
+    lbImg.src = imgEl.src; lbImg.alt = imgEl.alt;
+    lb.classList.add('open'); document.body.style.overflow = 'hidden';
+  }
+  function closeImgLightbox() {
+    var lb = document.getElementById('imgLightbox');
+    lb.classList.remove('open'); document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeImgLightbox(); });
 </script>
+<!-- Image lightbox -->
+<div class="img-lightbox" id="imgLightbox" onclick="if(event.target===this)closeImgLightbox()">
+  <div class="img-lightbox-inner">
+    <button class="img-lightbox-close" onclick="closeImgLightbox()">
+      <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l9 9M10 1l-9 9"/></svg>
+    </button>
+    <img id="imgLightboxImg" src="" alt="">
+  </div>
+</div>
+
 </body>
 </html>
