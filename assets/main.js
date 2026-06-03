@@ -72,19 +72,63 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 (function() {
   var nav = document.getElementById('nav');
   var identity = document.getElementById('navIdentity');
-  var cta = document.getElementById('mobileCta');
   if (!nav || !identity) return;
   function update() {
     var identityGone = window.scrollY >= identity.offsetHeight + 200;
     nav.classList.toggle('is-sticky', identityGone);
-    if (cta && window.innerWidth <= 768) {
-      var nearBottom = (document.body.scrollHeight - window.scrollY - window.innerHeight) < 200;
-      cta.style.opacity = (identityGone && !nearBottom) ? '1' : '0';
-      cta.style.pointerEvents = (identityGone && !nearBottom) ? 'auto' : 'none';
-    }
   }
   window.addEventListener('scroll', update, { passive: true });
   update();
+})();
+
+// ── Mobile contact CTA: visible from start, hides on scroll-down,
+//    returns on scroll-up or after 2s idle, stays hidden over #contact ──
+(function() {
+  var cta = document.getElementById('mobileCta');
+  var contact = document.getElementById('contact');
+  if (!cta) return;
+
+  var IDLE = 2000;   // ms after scroll stops before it returns
+  var DELTA = 6;     // px threshold to register a real scroll move
+  var lastY = window.scrollY;
+  var idleTimer = null;
+
+  function isMobile() { return window.innerWidth <= 768; }
+  function atContact() {
+    return contact && contact.getBoundingClientRect().top < window.innerHeight;
+  }
+  function show() {
+    if (!isMobile() || atContact()) return;
+    cta.classList.add('is-visible');
+  }
+  function hide() { cta.classList.remove('is-visible'); }
+
+  function onScroll() {
+    if (!isMobile()) return;
+    var y = window.scrollY;
+    var diff = y - lastY;
+
+    if (atContact()) {
+      hide();
+    } else if (diff > DELTA) {        // scrolling down
+      hide();
+    } else if (diff < -DELTA) {       // scrolling up
+      show();
+    }
+    lastY = y;
+
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(show, IDLE);   // return after 2s of stillness
+  }
+
+  function sync() {
+    lastY = window.scrollY;
+    if (isMobile() && !atContact()) show(); else hide();
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', sync, { passive: true });
+  sync();   // visible from the start
 })();
 
 // ── Glitch word cycle on hero-bg-text ─────────────────────────────────────
