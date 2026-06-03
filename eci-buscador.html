@@ -289,14 +289,33 @@
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  /* ── MOBILE HEADER ── */
+  .mobile-header { display: none; }
+
   /* ─ RESPONSIVE ─ */
   @media(max-width:900px) {
-    .subnav { padding: 0 20px; height: 52px; }
+    .mobile-header {
+      display: block; position: fixed; top: 0; left: 0; right: 0; z-index: 95;
+      background: rgba(244,244,242,0.95);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    }
+    .mobile-header-inner {
+      display: flex; align-items: center; height: 52px; padding: 0 20px; gap: 12px;
+    }
+    .mobile-header-icon {
+      width: 28px; height: 28px; border-radius: 6px; overflow: hidden; flex-shrink: 0;
+    }
+    .mobile-header-icon img { width: 100%; height: 100%; display: block; object-fit: contain; }
+    .mobile-header-title {
+      font-family: var(--font-display); font-size: 15px;
+      font-weight: 400; color: var(--ink); letter-spacing: -.3px;
+    }
+    .subnav { position: sticky; top: 52px; padding: 0 20px; height: 52px; }
     .subnav::after { content: ''; pointer-events: none; position: absolute; top: 0; right: 0; bottom: 0; width: 48px; background: linear-gradient(to right, transparent, rgba(244,244,242,1) 80%); z-index: 2; }
     .subnav-icon { display: none; }
     .subnav-links { gap: 8px; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-right: 48px; }
     .subnav-links a { font-size: 15px; padding: 5px 16px; }
-    .hero { padding: 40px 20px 48px; }
+    .hero { padding: 72px 20px 48px; }
     section { padding: 64px 20px; }
     .metrics-grid, .problem-grid, .modules-grid { grid-template-columns: 1fr; }
     .industry-metrics { grid-template-columns: 1fr 1fr; }
@@ -313,6 +332,16 @@
 </style>
 </head>
 <body>
+
+<!-- MOBILE HEADER -->
+<header class="mobile-header">
+  <div class="mobile-header-inner">
+    <div class="mobile-header-icon">
+      <img src="assets/ECI_logo.png" alt="El Corte Inglés">
+    </div>
+    <span class="mobile-header-title">Buscador</span>
+  </div>
+</header>
 
 <!-- HERO -->
 <div class="hero" id="home">
@@ -794,8 +823,14 @@
   function fitHero() {
     var hero = document.querySelector('.hero');
     var subnav = document.querySelector('.subnav');
+    var mobileHeader = document.querySelector('.mobile-header');
+    var isMobile = window.innerWidth <= 900;
     if (!hero || !subnav) return;
-    hero.style.minHeight = (window.innerHeight - subnav.offsetHeight) + 'px';
+    if (isMobile && mobileHeader) {
+      hero.style.minHeight = (window.innerHeight - mobileHeader.offsetHeight - subnav.offsetHeight) + 'px';
+    } else {
+      hero.style.minHeight = (window.innerHeight - subnav.offsetHeight) + 'px';
+    }
   }
   fitHero();
   window.addEventListener('resize', fitHero);
