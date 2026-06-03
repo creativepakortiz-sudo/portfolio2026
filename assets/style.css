@@ -277,6 +277,7 @@ footer p{font-size:13px;color:var(--ink-light)}
 .ph-cs-btn{align-self:flex-start;margin-top:12px;font-size:.8rem;font-weight:600;color:var(--sage);text-decoration:none;padding:8px 18px;border-radius:100px;border:1.5px solid var(--sage);background:transparent;cursor:pointer;transition:background var(--dur-mid) var(--ease-out-smooth),color var(--dur-mid) var(--ease-out-smooth),transform var(--dur-mid) var(--ease-spring)}
 @media(hover:hover){.ph-cs-btn:hover{background:var(--sage);color:var(--white);transform:translateY(-2px)}}
 .ph-coming-soon-btn{align-self:flex-start;margin-top:12px;font-size:.8rem;font-weight:600;color:var(--ink-muted);padding:8px 18px;border-radius:100px;border:1.5px solid var(--border);background:transparent}
+.ph-not-available-btn{align-self:flex-start;margin-top:12px;font-size:.8rem;font-weight:600;color:var(--ink-light);padding:8px 18px;border-radius:100px;border:1.5px solid transparent;background:rgba(26,26,24,.06);letter-spacing:.01em}
 @media(max-width:768px){
   .ph-card{flex-direction:column}
   .ph-visual{flex:none;min-height:180px;width:100%}
