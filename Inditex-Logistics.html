@@ -301,17 +301,6 @@
   /* ─ SOURCES NOTE ─ */
   .sources { font-size: 12px; font-weight: 300; color: var(--ink-light); line-height: 1.7; margin-top: 24px; max-width: 720px; }
 
-  /* ─ MISSING-ASSET PLACEHOLDER ─ */
-  .img-ph {
-    display: flex; align-items: center; justify-content: center; text-align: center;
-    width: 100%; height: 100%; min-height: 200px; padding: 16px;
-    background: var(--cream);
-    background-image: repeating-linear-gradient(45deg, rgba(26,26,24,.025) 0 10px, transparent 10px 20px);
-    border: 1px dashed var(--border-strong);
-    color: var(--ink-light); font-size: 10px; font-weight: 600;
-    letter-spacing: 1.2px; text-transform: uppercase; line-height: 1.5;
-  }
-  .phone-frame .img-ph { min-height: 0; }
 
   /* ─ ANIM ─ */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -462,18 +451,18 @@
 
   <div class="sub-label reveal"><span class="dot coral"></span> <span data-i18n data-es="Antes — interfaz heredada" data-en="Before — legacy interface">Antes — interfaz heredada</span></div>
   <div class="gallery-web-2 reveal">
-    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_old_01.png" alt="ROES — Informe de bultos (antes)"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Informe de bultos — antes" data-en="Parcel report — before">Informe de bultos — antes</div></div>
-    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_old_02.png" alt="ROES — Gestión de órdenes de trabajo (antes)"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Órdenes de trabajo — antes" data-en="Work orders — before">Órdenes de trabajo — antes</div></div>
+    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_old_01.png" alt="ROES — Informe de bultos (antes)"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Informe de bultos — antes" data-en="Parcel report — before">Informe de bultos — antes</div></div>
+    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_old_02.png" alt="ROES — Gestión de órdenes de trabajo (antes)"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Órdenes de trabajo — antes" data-en="Work orders — before">Órdenes de trabajo — antes</div></div>
   </div>
 
   <div class="sub-label reveal"><span class="dot"></span> <span data-i18n data-es="Después — el rediseño" data-en="After — the redesign">Después — el rediseño</span></div>
   <div class="gallery-web reveal">
-    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_new_01.png" alt="ROES — Órdenes de compra"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Órdenes de compra" data-en="Purchase orders">Órdenes de compra</div></div>
-    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_new_02.png" alt="ROES — Filtros como chips"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Filtros como chips" data-en="Filters as chips">Filtros como chips</div></div>
-    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_new_03.png" alt="ROES — Columnas configurables"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Columnas configurables" data-en="Configurable columns">Columnas configurables</div></div>
-    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_new_04.png" alt="ROES — Estado vacío"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Estado vacío" data-en="Empty state">Estado vacío</div></div>
-    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_new_05.png" alt="ROES — Órdenes de trabajo"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Órdenes de trabajo" data-en="Work orders">Órdenes de trabajo</div></div>
-    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_new_06.png" alt="ROES — Cerrar OT: bloqueo por bultos abiertos"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Cerrar OT — bloqueo explicado" data-en="Close order — explained block">Cerrar OT — bloqueo explicado</div></div>
+    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_new_01.png" alt="ROES — Órdenes de compra"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Órdenes de compra" data-en="Purchase orders">Órdenes de compra</div></div>
+    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_new_02.png" alt="ROES — Filtros como chips"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Filtros como chips" data-en="Filters as chips">Filtros como chips</div></div>
+    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_new_03.png" alt="ROES — Columnas configurables"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Columnas configurables" data-en="Configurable columns">Columnas configurables</div></div>
+    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_new_04.png" alt="ROES — Estado vacío"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Estado vacío" data-en="Empty state">Estado vacío</div></div>
+    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_new_05.png" alt="ROES — Órdenes de trabajo"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Órdenes de trabajo" data-en="Work orders">Órdenes de trabajo</div></div>
+    <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_roes_new_06.png" alt="ROES — Cerrar OT: bloqueo por bultos abiertos"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Cerrar OT — bloqueo explicado" data-en="Close order — explained block">Cerrar OT — bloqueo explicado</div></div>
   </div>
 
   <div class="prog-grid reveal">
@@ -493,19 +482,19 @@
 
     <div class="sub-label reveal"><span class="dot coral"></span> <span data-i18n data-es="Antes — app de escritorio (WinForms)" data-en="Before — desktop app (WinForms)">Antes — app de escritorio (WinForms)</span></div>
     <div class="screens-3 reveal">
-      <div class="screen-card"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_old_01.png" alt="ePAC antiguo — Inicio"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Inicio" data-en="Home">Inicio</div></div>
-      <div class="screen-card"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_old_02.png" alt="ePAC antiguo — Selección de caja"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Selección de caja" data-en="Box selection">Selección de caja</div></div>
-      <div class="screen-card"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_old_03.png" alt="ePAC antiguo — Error de sistema"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Error del sistema" data-en="System error">Error del sistema</div></div>
+      <div class="screen-card"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_old_01.png" alt="ePAC antiguo — Inicio"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Inicio" data-en="Home">Inicio</div></div>
+      <div class="screen-card"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_old_02.png" alt="ePAC antiguo — Selección de caja"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Selección de caja" data-en="Box selection">Selección de caja</div></div>
+      <div class="screen-card"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_old_03.png" alt="ePAC antiguo — Error de sistema"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Error del sistema" data-en="System error">Error del sistema</div></div>
     </div>
 
     <div class="sub-label reveal"><span class="dot"></span> <span data-i18n data-es="Después — el rediseño" data-en="After — the redesign">Después — el rediseño</span></div>
     <div class="gallery-web reveal">
-      <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_new_01.png" alt="ePAC — Login SGA"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Login SGA" data-en="SGA login">Login SGA</div></div>
-      <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_new_02.png" alt="ePAC — Cuadrante: kanban de estados"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Cuadrante — kanban" data-en="Quadrant — kanban">Cuadrante — kanban</div></div>
-      <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_new_03.png" alt="ePAC — Seleccionar caja (3D)"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Seleccionar caja (3D)" data-en="Select box (3D)">Seleccionar caja (3D)</div></div>
-      <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_new_04.png" alt="ePAC — Muro 5×5"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Muro 5×5" data-en="5×5 wall">Muro 5×5</div></div>
-      <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_new_05.png" alt="ePAC — Marcado de tara sobre la prenda"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Marcado de tara" data-en="Defect marking">Marcado de tara</div></div>
-      <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_new_06.png" alt="ePAC — Empaquetado: cajas y rail de impresión"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button></div><div class="screen-web-cap" data-i18n data-es="Cajas y rail de impresión" data-en="Boxes and print rail">Cajas y rail de impresión</div></div>
+      <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_new_01.png" alt="ePAC — Login SGA"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Login SGA" data-en="SGA login">Login SGA</div></div>
+      <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_new_02.png" alt="ePAC — Cuadrante: kanban de estados"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Cuadrante — kanban" data-en="Quadrant — kanban">Cuadrante — kanban</div></div>
+      <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_new_03.png" alt="ePAC — Seleccionar caja (3D)"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Seleccionar caja (3D)" data-en="Select box (3D)">Seleccionar caja (3D)</div></div>
+      <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_new_04.png" alt="ePAC — Muro 5×5"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Muro 5×5" data-en="5×5 wall">Muro 5×5</div></div>
+      <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_new_05.png" alt="ePAC — Marcado de tara sobre la prenda"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Marcado de tara" data-en="Defect marking">Marcado de tara</div></div>
+      <div class="screen-web"><div class="img-wrap"><img onclick="openImgLightbox(this)" src="assets/inditex_epac_new_06.png" alt="ePAC — Empaquetado: cajas y rail de impresión"><button class="img-zoom-btn" onclick="openImgLightbox(this.closest('.img-wrap').querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button></div><div class="screen-web-cap" data-i18n data-es="Cajas y rail de impresión" data-en="Boxes and print rail">Cajas y rail de impresión</div></div>
     </div>
 
     <div class="prog-grid reveal">
@@ -526,32 +515,32 @@
     <div class="phones-row reveal">
       <div class="phone-wrap">
         <div class="phone-frame"><img onclick="openImgLightbox(this)" src="assets/inditex_pda_01.png" alt="PDA — Hola: PTL o Parking"></div>
-        <button class="img-zoom-btn" onclick="openImgLightbox(this.previousElementSibling.querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button>
+        <button class="img-zoom-btn" onclick="openImgLightbox(this.previousElementSibling.querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button>
         <div class="phone-cap" data-i18n data-es="Hola — PTL / Parking" data-en="Hello — PTL / Parking">Hola — PTL / Parking</div>
       </div>
       <div class="phone-wrap">
         <div class="phone-frame"><img onclick="openImgLightbox(this)" src="assets/inditex_pda_02.png" alt="PDA — Escanear cuadrante"></div>
-        <button class="img-zoom-btn" onclick="openImgLightbox(this.previousElementSibling.querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button>
+        <button class="img-zoom-btn" onclick="openImgLightbox(this.previousElementSibling.querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button>
         <div class="phone-cap" data-i18n data-es="Escanear cuadrante" data-en="Scan quadrant">Escanear cuadrante</div>
       </div>
       <div class="phone-wrap">
         <div class="phone-frame"><img onclick="openImgLightbox(this)" src="assets/inditex_pda_03.png" alt="PDA — Faltan N"></div>
-        <button class="img-zoom-btn" onclick="openImgLightbox(this.previousElementSibling.querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button>
+        <button class="img-zoom-btn" onclick="openImgLightbox(this.previousElementSibling.querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button>
         <div class="phone-cap" data-i18n data-es="Faltan N — contenedores" data-en="N remaining — containers">Faltan N — contenedores</div>
       </div>
       <div class="phone-wrap">
         <div class="phone-frame"><img onclick="openImgLightbox(this)" src="assets/inditex_pda_04.png" alt="PDA — Clasificar: ubicación A1"></div>
-        <button class="img-zoom-btn" onclick="openImgLightbox(this.previousElementSibling.querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button>
+        <button class="img-zoom-btn" onclick="openImgLightbox(this.previousElementSibling.querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button>
         <div class="phone-cap" data-i18n data-es="Clasificar — A1" data-en="Sort — A1">Clasificar — A1</div>
       </div>
       <div class="phone-wrap">
         <div class="phone-frame"><img onclick="openImgLightbox(this)" src="assets/inditex_pda_05.png" alt="PDA — Ubicación G10"></div>
-        <button class="img-zoom-btn" onclick="openImgLightbox(this.previousElementSibling.querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button>
+        <button class="img-zoom-btn" onclick="openImgLightbox(this.previousElementSibling.querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button>
         <div class="phone-cap" data-i18n data-es="Ubicación G10" data-en="Location G10">Ubicación G10</div>
       </div>
       <div class="phone-wrap">
         <div class="phone-frame"><img onclick="openImgLightbox(this)" src="assets/inditex_pda_06.png" alt="PDA — Parking"></div>
-        <button class="img-zoom-btn" onclick="openImgLightbox(this.previousElementSibling.querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span data-i18n data-es="Ampliar" data-en="Zoom">Ampliar</span></button>
+        <button class="img-zoom-btn" onclick="openImgLightbox(this.previousElementSibling.querySelector('img'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>Ampliar imagen</button>
         <div class="phone-cap">Parking</div>
       </div>
     </div>
@@ -636,26 +625,8 @@
   fitHero();
   window.addEventListener('resize', fitHero);
 
-  // Graceful fallback for not-yet-exported assets
-  function attachImgFallbacks() {
-    document.querySelectorAll('img').forEach(function(img) {
-      img.addEventListener('error', function() {
-        if (img.classList.contains('brand-logo')) {
-          var s = document.createElement('span');
-          s.className = 'brand-logo-text';
-          s.textContent = 'INDITEX';
-          img.replaceWith(s);
-          return;
-        }
-        var ph = document.createElement('div');
-        ph.className = 'img-ph';
-        ph.textContent = img.getAttribute('alt') || 'Imagen';
-        img.replaceWith(ph);
-      });
-    });
-  }
 
-  document.addEventListener('DOMContentLoaded', function() { applyLang(currentLang); fitHero(); attachImgFallbacks(); });
+  document.addEventListener('DOMContentLoaded', function() { applyLang(currentLang); fitHero(); });
 
   // ── Reveal on scroll
   const io = new IntersectionObserver((entries) => {
@@ -702,7 +673,6 @@
 </div>
 <script>
 function openImgLightbox(imgEl) {
-  if (!imgEl || !imgEl.src) return;
   var lb = document.getElementById('imgLightbox');
   var lbImg = document.getElementById('imgLightboxImg');
   lbImg.src = imgEl.src;
